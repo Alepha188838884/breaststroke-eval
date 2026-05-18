@@ -1,0 +1,45 @@
+# 蛙泳蹬腿评估系统 —— Python 依赖
+#
+# 推荐用 conda 环境（见 environment.yml / 下方说明），而非直接 pip install -r。
+# macOS arm64 上 mmcv 没有预编译 wheel、chumpy 的 setup.py 在构建隔离下会失败，
+# 因此 OpenMMLab 全家桶需要按特定顺序、带 --no-build-isolation 安装：
+#
+#   conda create -n breaststrokeEval python=3.10 -y
+#   conda install -n breaststrokeEval -c conda-forge -y \
+#       "numpy>=1.24,<2.0" "scipy>=1.11" "opencv>=4.8" "matplotlib>=3.7" \
+#       "tqdm>=4.65" "pyyaml>=6.0" pytorch torchvision
+#   conda run -n breaststrokeEval pip install \
+#       "gymnasium>=0.29" "stable-baselines3>=2.1" "dtw-python>=1.3,<1.5.4" openmim ninja cython
+#   conda run -n breaststrokeEval pip install "mmengine>=0.8" "mmcv==2.1.0" --no-build-isolation
+#   conda run -n breaststrokeEval pip install chumpy --no-build-isolation
+#   conda run -n breaststrokeEval pip install "mmdet>=3.0.0,<3.4.0" "mmpose>=1.0.0" --no-build-isolation
+#
+# 注意：
+#   - numpy 必须 <2.0（mmcv/mmpose 与 numpy 1.x ABI 绑定）。
+#   - dtw-python 1.5.4+ 强制 numpy>=2.0，故锁到 <1.5.4。
+#   - mmcv 锁 2.1.0：mmdet 3.3 / mmpose 1.3 要求 mmcv<2.2.0。
+
+# --- 核心数值/视觉 ---
+numpy>=1.24,<2.0
+scipy>=1.11
+opencv-python>=4.8
+matplotlib>=3.7
+tqdm>=4.65
+pyyaml>=6.0
+
+# --- 深度学习 ---
+torch>=2.0
+torchvision>=0.15
+
+# --- 姿态估计（OpenMMLab）---
+mmengine>=0.8
+mmcv>=2.0,<2.2
+mmdet>=3.0,<3.4
+mmpose>=1.0
+
+# --- 时序对齐 ---
+dtw-python>=1.3,<1.5.4
+
+# --- 强化学习 ---
+gymnasium>=0.29
+stable-baselines3>=2.1

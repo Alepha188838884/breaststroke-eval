@@ -1,0 +1,36 @@
+# conda 环境定义：蛙泳蹬腿评估系统
+#
+# 用法：
+#   conda env create -f environment.yml
+#   conda activate breaststrokeEval
+#
+# 注意：pip 段里的 OpenMMLab 包（mmcv/mmdet/mmpose）和 chumpy 在 macOS arm64 上
+# 需要从源码编译且要 --no-build-isolation；conda env create 走默认 pip 可能失败。
+# 若失败，请按 requirements.txt 顶部的分步命令手动安装 pip 部分。
+name: breaststrokeEval
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - numpy>=1.24,<2.0
+  - scipy>=1.11
+  - opencv>=4.8
+  - matplotlib>=3.7
+  - tqdm>=4.65
+  - pyyaml>=6.0
+  - pytorch>=2.0
+  - torchvision>=0.15
+  - ninja
+  - cython
+  - pip
+  - pip:
+      - gymnasium>=0.29
+      - stable-baselines3>=2.1
+      - dtw-python>=1.3,<1.5.4
+      - openmim
+      # 以下三个建议手动 pip install --no-build-isolation 安装（见 requirements.txt 顶部）：
+      # - mmengine>=0.8
+      # - mmcv==2.1.0
+      # - chumpy
+      # - mmdet>=3.0.0,<3.4.0
+      # - mmpose>=1.0.0
