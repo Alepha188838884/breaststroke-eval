@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.npy
+*.mp4
+models/
+data/raw/
+data/processed/
+data/templates/
+.ipynb_checkpoints/
+venv/
+.DS_Store
