@@ -6,6 +6,7 @@ import logging
 import os
 
 import numpy as np
+from scipy.ndimage import median_filter
 from scipy.signal import find_peaks
 
 logger = logging.getLogger(__name__)
@@ -14,6 +15,19 @@ logger = logging.getLogger(__name__)
 # 蹬腿周期长度过滤阈值（帧数）
 _MIN_CYCLE_FRAMES: int = 10
 _MAX_CYCLE_FRAMES: int = 120
+
+# 周期分割（波谷检测）参数。
+# 真实蛙泳蹬腿约 1.0–1.5 s（@30fps ≈ 30–45 帧）。早期实现仅用
+# ``distance=_MIN_CYCLE_FRAMES`` 且无 prominence 门限，姿态抖动的微小凹陷被误判为
+# 波谷（实测 35 s 冠军视频被切成 77 个 ~0.46 s 的伪周期）。现引入三道防线：
+#   1. 中值滤波去除 ≤2 帧的姿态崩坏尖刺（HRNet 偶发把膝角顶到 6°/180°）；
+#   2. 自适应 prominence 门限（按平滑信号 std 缩放，对幅度不同的信号自适应）；
+#   3. 更大的波谷最小间距，低于任何真实蹬腿节奏即可，避免把一个周期切成两半。
+# 平滑信号仅用于**定位**波谷，切片时仍取原始特征，不损失数据保真度。
+_SMOOTH_KERNEL: int = 5            # 中值滤波核宽（奇数），抑制 ≤2 帧尖刺
+_VALLEY_MIN_DISTANCE: int = 20     # 相邻波谷最小间距（帧），≈0.67 s
+_PROMINENCE_FACTOR: float = 0.25   # 自适应 prominence = factor × 平滑信号 std
+_PROMINENCE_FLOOR: float = 5.0     # prominence 绝对下界（度），防近似平直信号噪声成峰
 
 # 4 个阶段及其加权
 _PHASE_NAMES: tuple[str, str, str, str] = ("recovery", "catch", "power", "glide")
@@ -87,11 +101,12 @@ class DTWAligner:
     ) -> list[np.ndarray]:
         """通过检测指定角度列的周期性波谷分割出单个蹬腿周期。
 
-        实现要点：
-            - 对 features[:, angle_column] 取负，用 scipy.signal.find_peaks
-              查找极小值（即原信号的波谷）
-            - 相邻波谷之间为一个完整蹬腿周期
-            - 过滤帧数 < _MIN_CYCLE_FRAMES 或 > _MAX_CYCLE_FRAMES 的异常周期
+        实现要点（见模块顶部 ``_SMOOTH_KERNEL`` 等常量说明）：
+            - 对 ``features[:, angle_column]`` 先做中值滤波去除姿态尖刺；
+            - 取负后用 ``scipy.signal.find_peaks`` 查找波谷，施加自适应
+              ``prominence`` 门限与最小间距 ``distance``，剔除噪声凹陷；
+            - 相邻波谷之间为一个完整蹬腿周期；切片取**原始**（未平滑）特征；
+            - 过滤帧数 < _MIN_CYCLE_FRAMES 或 > _MAX_CYCLE_FRAMES 的异常周期。
 
         Args:
             features: shape (N, 10) 的连续特征矩阵
@@ -111,9 +126,18 @@ class DTWAligner:
             )
             return []
 
-        signal = features[:, angle_column]
-        # 设置波谷间最小距离，避免在抖动信号上产生密集峰
-        valleys, _ = find_peaks(-signal, distance=_MIN_CYCLE_FRAMES)
+        raw_signal = features[:, angle_column]
+        # 中值滤波（mode='nearest' 复制边缘，避免零填充在首尾造成伪波谷）仅用于
+        # 定位波谷；核宽不超过序列长度（取奇数）。
+        kernel = min(_SMOOTH_KERNEL, n if n % 2 == 1 else n - 1)
+        kernel = max(1, kernel)
+        smoothed = median_filter(raw_signal, size=kernel, mode="nearest")
+
+        # 自适应 prominence：随信号幅度缩放，对平直信号保留绝对下界以免噪声成峰。
+        prominence = max(_PROMINENCE_FLOOR, _PROMINENCE_FACTOR * float(smoothed.std()))
+        valleys, _ = find_peaks(
+            -smoothed, distance=_VALLEY_MIN_DISTANCE, prominence=prominence
+        )
 
         cycles: list[np.ndarray] = []
         filtered = 0
@@ -125,8 +149,12 @@ class DTWAligner:
             cycles.append(features[start:end])
 
         logger.info(
-            "周期分割完成 | 检测到波谷 %d 个，得到周期 %d 个，过滤异常 %d 个",
+            "周期分割完成 | 波谷 %d 个 (prominence=%.1f, distance=%d, 平滑核=%d) "
+            "→ 周期 %d 个，过滤异常 %d 个",
             len(valleys),
+            prominence,
+            _VALLEY_MIN_DISTANCE,
+            kernel,
             len(cycles),
             filtered,
         )
@@ -223,6 +251,51 @@ class DTWAligner:
                 # 序列过短导致段为空时，回退为 0
                 deviations[name] = 0.0
         return deviations
+
+    def compute_signed_phase_feature_deviations(
+        self,
+        aligned_query: np.ndarray,
+        aligned_template: np.ndarray,
+    ) -> dict[str, np.ndarray]:
+        """计算每个阶段、每个角度列的**有符号**平均偏差（query − template）。
+
+        与 :meth:`compute_phase_deviations` 使用完全相同的阶段切分边界，但**不取
+        绝对值**：正值表示该角度大于模板（关节更伸展），负值表示小于模板（更屈曲
+        / 伸展不足）。供 :class:`~src.feedback.FeedbackGenerator` 生成方向性建议。
+
+        Args:
+            aligned_query: shape (L, 10) 的对齐后 query 序列
+            aligned_template: shape (L, 10) 的对齐后模板序列
+
+        Returns:
+            ``{phase_name: ndarray(shape=(4,))}``，4 个分量依次对应前 4 列角度
+            （left_knee / right_knee / left_hip / right_hip）的有符号平均偏差。
+            序列过短导致某阶段为空时该阶段回退为全零向量。
+        """
+        if aligned_query.shape != aligned_template.shape:
+            raise ValueError(
+                "aligned_query 与 aligned_template 形状不一致: "
+                f"{aligned_query.shape} vs {aligned_template.shape}"
+            )
+
+        signed = (
+            aligned_query[:, :_ANGLE_COLS] - aligned_template[:, :_ANGLE_COLS]
+        )
+        l = signed.shape[0]
+        bounds = [
+            (0, l // 4),
+            (l // 4, l // 2),
+            (l // 2, (3 * l) // 4),
+            ((3 * l) // 4, l),
+        ]
+
+        out: dict[str, np.ndarray] = {}
+        for name, (s, e) in zip(_PHASE_NAMES, bounds):
+            if e > s:
+                out[name] = signed[s:e].mean(axis=0).astype(np.float64)
+            else:
+                out[name] = np.zeros(_ANGLE_COLS, dtype=np.float64)
+        return out
 
     def compute_overall_deviation(
         self, phase_deviations: dict[str, float]
