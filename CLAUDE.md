@@ -26,7 +26,7 @@ IB Extended Essay 项目：**蛙泳蹬腿评估系统（Breaststroke Kick Evalua
 
 关键设计决策：
 - RL采用单步episode：agent看完整个蹬腿周期特征，输出一个分数
-- 离散动作空间：20档 × 5分 = 0-100分
+- 离散动作空间：21档 × 5分 = 0-100分（0,5,…,100，含端点）
 - 参考分数权重：角度偏差0.40、对称性0.20、时序0.20、平滑度0.20
 - 蹬腿分为4阶段：recovery/catch/power/glide，power阶段权重最高(0.40)
 

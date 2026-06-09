@@ -8,4 +8,5 @@ data/processed/
 data/templates/
 .ipynb_checkpoints/
 venv/
+venv_pose/
 .DS_Store

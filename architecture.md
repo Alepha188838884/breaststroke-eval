@@ -119,11 +119,15 @@ class DTWAligner:
     segment_kick_cycles(features: np.ndarray) -> list[np.ndarray]
         # detects individual kick cycles from continuous sequence
         # returns list of per-cycle feature matrices
-    align(query: np.ndarray, template: np.ndarray) -> tuple[np.ndarray, np.ndarray, float]
+    align(query: np.ndarray) -> tuple[np.ndarray, np.ndarray, float]
+        # aligns query against self.template (loaded at init)
         # returns (aligned_query, aligned_template, dtw_distance)
     compute_phase_deviations(aligned_query, aligned_template) -> dict[str, float]
-        # returns {phase_name: deviation_score} for each kick phase
+        # returns {phase_name: deviation_score} (mean ABS deviation) per kick phase
         # phases: recovery, catch, power, glide
+    compute_signed_phase_feature_deviations(aligned_query, aligned_template) -> dict[str, np.ndarray]
+        # returns {phase_name: ndarray(4,)} signed (query-template) mean per angle column
+        # consumed by FeedbackGenerator for directional feedback
 ```
 
 **输入**: 待评估特征序列 + 模板特征序列
@@ -137,7 +141,7 @@ class DTWAligner:
 ```
 class BreaststrokeKickEnv(gymnasium.Env):
     observation_space: Box  # 对齐后的偏差特征向量
-    action_space: Discrete(20)  # 20个分数档位，每档5分 (0-100)
+    action_space: Discrete(21)  # 21个分数档位，每档5分 (0,5,…,100，含端点)
 
     __init__(template_path: str, reward_weights: dict)
 
@@ -147,8 +151,8 @@ class BreaststrokeKickEnv(gymnasium.Env):
         # observation = flattened deviation features for entire kick cycle
 
     step(action: int) -> tuple[np.ndarray, float, bool, bool, dict]
-        # action = score bin (0-19, maps to 0-100)
-        # reward = -|predicted_score - reference_score|
+        # action = score bin (0-20, maps to 0-100)
+        # reward = -|predicted_score - reference_score| / 100  (normalised to [-1, 0])
         #   where reference_score is computed from:
         #     angle_deviation * 0.40
         #     symmetry * 0.20
@@ -157,12 +161,13 @@ class BreaststrokeKickEnv(gymnasium.Env):
         # episode ends after one action (single-step episode)
         # returns (obs, reward, terminated=True, truncated=False, info)
 
-    _compute_reference_score(deviations: dict) -> float
-        # weighted combination of deviation metrics -> 0-100 score
+    _compute_reference_score(cycle, phase_devs, overall_deviation, warp_amount) -> float
+        # weighted combination of angle/symmetry/timing/smoothness -> 0-100 score
+        # (rounded to nearest multiple of 5, matching the action bins)
 ```
 
 **State空间**: 一个完整蹬腿周期的偏差特征向量（对齐后各帧各角度与模板的差值，加上对称性和timing指标）
-**Action空间**: Discrete(20)，对应0-100分的20个档位
+**Action空间**: Discrete(21)，对应0-100分的21个档位（0,5,…,100）
 **Reward**: 预测分数与参考分数的负绝对误差
 **Episode**: 单步——agent看完一个周期的特征，输出一个分数，episode结束
 
@@ -188,10 +193,11 @@ def evaluate_agent(model_path: str, test_videos: list[str]) -> dict
 ```
 class FeedbackGenerator:
     __init__()
-    generate(score: int, phase_deviations: dict, feature_deviations: dict) -> list[str]
-        # returns list of actionable feedback strings
-        # e.g. ["Power phase: knee extension insufficient, try to fully extend legs during kick"]
-        # prioritized by deviation magnitude
+    generate(score: float, signed_phase_deviations: dict[str, np.ndarray]) -> list[str]
+        # signed_phase_deviations from DTWAligner.compute_signed_phase_feature_deviations
+        # returns actionable feedback strings, phase-neutral directional wording
+        # e.g. ["Power phase — left knee: more flexed than reference (-30°)"]
+        # prioritized by severity = |deviation| × phase weight (power weighted highest)
 ```
 
 **输入**: 评分 + 各阶段/各特征的偏差
@@ -204,12 +210,16 @@ class FeedbackGenerator:
 
 ```
 class EvaluationPipeline:
-    __init__(config_path: str, model_path: str)
-    build_template(video_path: str) -> None
-        # Module 1 -> 2 -> 3 -> save to templates/
+    __init__(config_path: str, model_path: str | None = None, template_path: str | None = None)
+        # paths/hyperparams from config.yaml; model lazily loaded on first scoring
+    build_template(video_path: str, out_path: str | None = None) -> np.ndarray
+        # Module 1 -> 2 -> 3 -> segment -> save median-length single cycle; returns it
+    score_features(features: np.ndarray) -> dict
+        # core path (no pose dep): segment -> per-cycle Module 5 + 6
     score_video(video_path: str) -> dict
-        # Module 1 -> 2 -> 3 -> 4 -> 5 -> 6
-        # returns {"score": int, "phase_scores": dict, "feedback": list[str]}
+        # Module 1 -> 2 -> 3 then score_features
+        # returns {"score": int, "n_cycles": int, "cycles": [per-cycle dicts]}
+        # each cycle dict: {agent_score, reference_score, phase_deviations, feedback}
 ```
 
 ---
@@ -243,7 +253,7 @@ Video (.mp4)
 ## 5. Key Design Decisions
 
 1. **Single-step RL episode**: Agent receives full kick cycle features, outputs one score. Not frame-by-frame.
-2. **Discrete action space**: 20 bins × 5 points = 0-100 range. Simpler than continuous regression.
+2. **Discrete action space**: 21 bins × 5 points = 0-100 range (0,5,…,100 inclusive). Simpler than continuous regression.
 3. **Reference score as reward signal**: Weighted combination of angle deviation (0.40), symmetry (0.20), timing (0.20), smoothness (0.20).
 4. **DTW for alignment**: Handles different kick speeds between swimmers.
 5. **Phase-aware scoring**: Kick split into recovery/catch/power/glide, power phase weighted highest (0.40).
