@@ -75,16 +75,20 @@ _REFERENCE_WEIGHTS: dict[str, float] = {
     "timing": 0.20,
     "smoothness": 0.20,
 }
-# 各因素映射到 [0, 1]（0=完美，1=最差）的归一化上界
-_ANGLE_DEV_MAX: float = 90.0      # 加权阶段偏差 ≥ 90° 视为最差
-_SYMMETRY_DEV_MAX: float = 60.0   # 左右关节差 ≥ 60° 视为最差
-_SMOOTHNESS_MAX: float = 500.0    # 角速度 std ≥ 500°/s 视为最差
+# 各因素映射到 [0, 1]（0=完美，1=最差）的归一化上界。
+# 数值标定自 SwimXYZ 蛙泳 base 骨架 / Side_underwater 视角 834 个周期的分布（≈各因素
+# P99），使参考分数铺开到 0–100 而非压在高位窄带。换数据集 / 视角时用 train_agent 打印
+# 的 factor_distribution() 重新标定（旧默认 90/60/500 远大于实际偏差，分数曾压在 [70,90]）。
+_ANGLE_DEV_MAX: float = 20.0      # 加权阶段角度偏差 ≥ 20° 视为最差
+_SYMMETRY_DEV_MAX: float = 18.0   # 左右关节差 ≥ 18° 视为最差
+_SMOOTHNESS_MAX: float = 120.0    # 角速度 std ≥ 120°/s 视为最差
 # timing：warp_amount 已自归一化到 [0,1]（0=匀速对齐，1=阶段节奏最大错位），故上限取
 # 1.0，即 timing 因素 = warp_amount。若真实数据（SwimXYZ）分布集中在某区间，可据
 # train_env.factor_distribution() 的 timing_warp 分位下调本值以铺开分数。整体匀速
 # 快/慢会被 DTW 对齐吸收，不计入此项。
 # （旧版分母用 max(Q,T) 致 DTW 天然偏大、实测 champion 75% 周期顶到上限而退化为常数。）
-_TIMING_WARP_MAX: float = 1.0
+# 标定自 SwimXYZ 834 周期分布（warp P99≈0.87）。
+_TIMING_WARP_MAX: float = 0.9
 
 
 def _build_obs_bounds() -> tuple[np.ndarray, np.ndarray]:

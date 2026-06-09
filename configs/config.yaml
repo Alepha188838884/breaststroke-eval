@@ -58,11 +58,11 @@ reference_score:
     symmetry: 0.20
     timing: 0.20
     smoothness: 0.20
-  scale_max:
-    angle_dev: 90.0       # 加权阶段角度偏差 ≥ 该值视为最差
-    symmetry_dev: 60.0    # 左右关节差 ≥ 该值视为最差
-    timing_warp: 1.0      # warp_amount 已自归一化到[0,1]，故上限取 1.0（可据真实分布下调）
-    smoothness: 500.0     # 角速度 std ≥ 该值视为最差平滑度
+  scale_max:                # 标定自 SwimXYZ base/Side_underwater 834 周期分布(≈P99)
+    angle_dev: 20.0       # 加权阶段角度偏差 ≥ 该值视为最差
+    symmetry_dev: 18.0    # 左右关节差 ≥ 该值视为最差
+    timing_warp: 0.9      # DTW warp 相对超出量 ≥ 该值视为最差时序
+    smoothness: 120.0     # 角速度 std ≥ 该值视为最差平滑度
 
 # ---------------------------------------------------------------------------- #
 # PPO 训练 (train_agent.py)  ——【运行时】

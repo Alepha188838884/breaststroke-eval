@@ -1,59 +1,69 @@
-"""SwimXYZ 数据集加载器：解析 COCO17 标注并转为项目所需的关节字典序列。
+"""SwimXYZ 数据集加载器：解析 2D 关键点 ``.txt`` 标注（默认 base/SMPL 骨架）。
 
-返回的关节字典格式与 ``PoseEstimator.estimate_single`` 输出完全兼容，
-可以直接传入 ``FeatureExtractor.extract_sequence_features``。
+SwimXYZ（Fiche et al., ACM MIG 2023）的 2D 标注是 **分号(``;``) 分隔、逗号(``,``)
+作小数点** 的文本文件：首行为带关节名的表头（如 ``L Calf.x;L Calf.y;L Calf.z;...``），
+其后每行是一帧；数据行中**空字段表示画面外/缺失关节**。文件按目录树组织：
+
+    {stroke}/{view}/{swimmer}/{water}/{lighting}/{speed}/{position}/{skeleton}/{coord}.txt
+
+每个 ``{skeleton}/{coord}.txt`` 即一个序列。默认用 ``base`` 骨架（SMPL/Biped 真值，
+下肢解剖正确）+ ``Side_underwater`` 视角 + ``2D_cam.txt``——数据集导出的 ``COCO`` /
+``body25`` 骨架下肢关节损坏（小腿长达 1.6m），会让膝角失真，**不可用**。
+
+本加载器**按表头列名**取所需关节（不依赖列序），返回与 ``PoseEstimator.estimate_single``
+完全兼容的关节字典列表，可直接传入 ``FeatureExtractor.extract_sequence_features``。
+合成真值无遮挡时置信度置 ``1.0``，缺失关节置 ``0.0``（下游据此丢帧）。``z`` 列为深度，
+本项目只用 ``x,y``。
 """
 
 from __future__ import annotations
 
-import json
 import logging
 import os
-from typing import Any
-
-import numpy as np
-
-# 直接复用 pose_estimator 的 COCO 索引，避免双份常量漂移
-from src.pose_estimator import _COCO_INDEX
-
 
 logger = logging.getLogger(__name__)
 
 
-# COCO17 关键点总数（每帧的关节数量）
-_NUM_COCO_KEYPOINTS: int = 17
-
-# JSON 文件中常见的"帧列表"键
-_FRAMES_KEYS: tuple[str, ...] = (
-    "frames",
-    "annotations",
-    "keypoints_2d",
-    "keypoints",
-    "poses",
-    "data",
-)
-
-# 单帧字典中常见的"关键点"键
-_FRAME_KP_KEYS: tuple[str, ...] = (
-    "keypoints_2d",
-    "keypoints",
-    "joints_2d",
-    "joints",
-    "pose_2d",
-    "pose",
-)
+# SwimXYZ 关节名 → 项目所需关节名（仅下肢 + 肩，用于角度 / 对称性 / 角速度）。
+# 采用 **base（SMPL/Biped 真值）骨架** 的命名：其下肢解剖正确（thigh≈shank≈0.45m），
+# 而数据集导出的 OpenPose 风格 ``COCO`` / ``body25`` 骨架下肢关节损坏（小腿长达 1.6m、
+# 踝点错位），会使膝角退化失真，故不可用。Biped 命名中 Thigh/Calf/Foot 的关节枢轴
+# 分别位于髋 / 膝 / 踝；UpperArm 枢轴位于肩。mid_shoulder 由左右肩中点计算。
+_SWIMXYZ_JOINT_MAP: dict[str, str] = {
+    "L UpperArm": "left_shoulder",
+    "R UpperArm": "right_shoulder",
+    "L Thigh": "left_hip",
+    "R Thigh": "right_hip",
+    "L Calf": "left_knee",
+    "R Calf": "right_knee",
+    "L Foot": "left_ankle",
+    "R Foot": "right_ankle",
+}
 
 
 class SwimXYZLoader:
-    """加载 SwimXYZ 数据集 COCO17 标注并转换为项目关节字典格式。"""
+    """加载 SwimXYZ 的 2D 关键点 ``.txt`` 标注并转换为项目关节字典格式。"""
 
-    def __init__(self, labels_dir: str, stroke: str = "breaststroke") -> None:
+    def __init__(
+        self,
+        labels_dir: str,
+        stroke: str = "breaststroke",
+        skeleton: str = "base",
+        coord_file: str = "2D_cam.txt",
+        view: str | None = "Side_underwater",
+    ) -> None:
         """初始化加载器。
 
         Args:
-            labels_dir: 解压后的标注目录路径
-                （如 ``"data/swimxyz/Breaststroke_labels/"``）。
-            stroke: 泳姿名称，仅用于日志，默认 ``"breaststroke"``。
+            labels_dir: 解压后的标注根目录（递归扫描，如 ``data/swimxyz/Breaststroke``）。
+            stroke: 泳姿名称，仅用于日志。
+            skeleton: 骨架子目录名，默认 ``base``（SMPL/Biped 真值，下肢解剖正确）。
+                **不要用 ``COCO`` / ``body25``**：数据集这两个 OpenPose 风格导出的下肢
+                关节损坏，膝角会失真。
+            coord_file: 坐标文件名，默认 ``2D_cam.txt``（相机像素坐标）。
+            view: 仅纳入路径含 ``/{view}/`` 的序列；``None`` 表示全部视角。默认
+                ``Side_underwater``——侧下方机位与矢状面近似垂直，2D 膝角不被前缩
+                （俯视 / 正面视角会把蹬腿前缩成退化信号）。
 
         Raises:
             FileNotFoundError: ``labels_dir`` 不存在。
@@ -62,22 +72,32 @@ class SwimXYZLoader:
             raise FileNotFoundError(f"SwimXYZ 标注目录不存在: {labels_dir}")
         self.labels_dir = labels_dir
         self.stroke = stroke
+        self.skeleton = skeleton
+        self.coord_file = coord_file
+        self.view = view
         self._sequence_paths: list[str] = self._discover_files()
         logger.info(
-            "SwimXYZLoader 初始化完成 | stroke=%s | dir=%s | files=%d",
+            "SwimXYZLoader 初始化完成 | stroke=%s | skeleton=%s | view=%s | dir=%s | 序列=%d",
             stroke,
+            skeleton,
+            view,
             labels_dir,
             len(self._sequence_paths),
         )
 
     def _discover_files(self) -> list[str]:
-        """递归扫描 ``labels_dir`` 下所有 ``.json`` / ``.npy`` 标注文件。"""
+        """递归查找 ``{skeleton}/{coord_file}`` 标注文件（可按 ``view`` 过滤）。"""
         out: list[str] = []
+        view_tag = f"{os.sep}{self.view}{os.sep}" if self.view else None
         for root, _, files in os.walk(self.labels_dir):
-            for name in files:
-                lower = name.lower()
-                if lower.endswith(".json") or lower.endswith(".npy"):
-                    out.append(os.path.join(root, name))
+            if os.path.basename(root) != self.skeleton:
+                continue
+            if self.coord_file not in files:
+                continue
+            path = os.path.join(root, self.coord_file)
+            if view_tag is not None and view_tag not in path:
+                continue
+            out.append(path)
         out.sort()
         return out
 
@@ -88,53 +108,84 @@ class SwimXYZLoader:
     def load_sequence(
         self, label_path: str
     ) -> list[dict[str, tuple[float, float, float]]]:
-        """从单个标注文件加载关节序列。
-
-        返回值格式与 :meth:`PoseEstimator.estimate_single` 完全兼容：
-        列表中每项是 ``{joint_name: (x, y, confidence)}`` 字典，
-        包含 ``left_shoulder``、``right_shoulder``、``left_hip``、
-        ``right_hip``、``left_knee``、``right_knee``、``left_ankle``、
-        ``right_ankle`` 与 ``mid_shoulder``。
-
-        合成数据真值的置信度全部置为 ``1.0``。
+        """从单个 SwimXYZ ``.txt`` 标注加载关节序列。
 
         Args:
-            label_path: 标注文件路径（``.json`` 或 ``.npy``）。
+            label_path: 标注文件路径（``;`` 分隔、``,`` 作小数点、首行表头）。
 
         Returns:
-            关节字典列表，长度等于帧数。
+            关节字典列表，每项 ``{joint_name: (x, y, confidence)}``。可见关节
+            ``confidence=1.0``；**画面外/缺失关节**（数据行中以空字段 ``;;`` 表示）
+            ``confidence=0.0``，交由 ``FeatureExtractor`` 的最小置信度门限丢弃该帧。
 
         Raises:
             FileNotFoundError: 文件不存在。
-            ValueError: 文件格式无法识别为有效的 COCO17 关键点序列。
+            ValueError: 表头缺少所需关节列，或文件无数据行。
         """
         if not os.path.isfile(label_path):
             raise FileNotFoundError(f"标注文件不存在: {label_path}")
 
-        if label_path.lower().endswith(".npy"):
-            keypoints = self._load_npy_keypoints(label_path)
-        else:
-            keypoints = self._load_json_keypoints(label_path)
+        with open(label_path, "r", encoding="utf-8") as f:
+            lines = f.read().splitlines()
+        if len(lines) < 2:
+            raise ValueError(f"标注文件 {label_path} 行数不足（需表头 + ≥1 帧）")
 
-        if keypoints.ndim != 3 or keypoints.shape[1] != _NUM_COCO_KEYPOINTS:
-            raise ValueError(
-                f"关键点数组 shape 异常: {keypoints.shape}，"
-                f"期望 (N, {_NUM_COCO_KEYPOINTS}, >=2)"
+        # 按位置解析：表头与数据均**保留空字段**（SwimXYZ 用空字段表示画面外/缺失
+        # 关节，过滤空字段会错位）。表头末尾的空串不计入列名映射。
+        header = lines[0].split(";")
+        col_index = {name: i for i, name in enumerate(header) if name != ""}
+
+        joint_cols: dict[str, tuple[int, int]] = {}
+        for src, dst in _SWIMXYZ_JOINT_MAP.items():
+            xk, yk = f"{src}.x", f"{src}.y"
+            if xk not in col_index or yk not in col_index:
+                raise ValueError(
+                    f"标注 {label_path} 表头缺少关节 {src} 的 .x/.y 列；"
+                    f"请确认 skeleton='{self.skeleton}' 是否含下肢关节。"
+                )
+            joint_cols[dst] = (col_index[xk], col_index[yk])
+
+        def _coord(fields: list[str], i: int) -> tuple[float, bool]:
+            """返回 (值, 是否有效)；越界或空字段判为无效。"""
+            if i >= len(fields):
+                return 0.0, False
+            s = fields[i].strip()
+            if s == "":
+                return 0.0, False
+            try:
+                return float(s.replace(",", ".")), True
+            except ValueError:
+                return 0.0, False
+
+        sequence: list[dict[str, tuple[float, float, float]]] = []
+        for line in lines[1:]:
+            if line.strip() == "":
+                continue
+            fields = line.split(";")  # 保留空字段以维持列对齐
+            joints: dict[str, tuple[float, float, float]] = {}
+            for dst, (xi, yi) in joint_cols.items():
+                x, ox = _coord(fields, xi)
+                y, oy = _coord(fields, yi)
+                conf = 1.0 if (ox and oy) else 0.0  # 缺失关节 → 0，下游据此丢帧
+                joints[dst] = (x, y, conf)
+            ls, rs = joints["left_shoulder"], joints["right_shoulder"]
+            joints["mid_shoulder"] = (
+                (ls[0] + rs[0]) / 2.0,
+                (ls[1] + rs[1]) / 2.0,
+                min(ls[2], rs[2]),
             )
+            sequence.append(joints)
 
-        joint_sequence: list[dict[str, tuple[float, float, float]]] = []
-        for frame_kpts in keypoints:
-            joint_sequence.append(self._frame_to_joint_dict(frame_kpts))
+        if not sequence:
+            raise ValueError(f"标注 {label_path} 无任何数据行")
 
-        logger.info(
-            "加载序列 %s | 帧数=%d", label_path, len(joint_sequence)
-        )
-        return joint_sequence
+        logger.info("加载序列 %s | 帧数=%d", label_path, len(sequence))
+        return sequence
 
     def load_all_sequences(
         self,
     ) -> list[list[dict[str, tuple[float, float, float]]]]:
-        """加载所有标注文件，返回关节序列列表。"""
+        """加载所有标注文件，跳过无法解析的文件。"""
         sequences: list[list[dict[str, tuple[float, float, float]]]] = []
         for path in self._sequence_paths:
             try:
@@ -148,189 +199,3 @@ class SwimXYZLoader:
             total_frames,
         )
         return sequences
-
-    # ------------------------------------------------------------------ #
-    # 内部：格式适配
-    # ------------------------------------------------------------------ #
-
-    def _frame_to_joint_dict(
-        self, frame_kpts: np.ndarray
-    ) -> dict[str, tuple[float, float, float]]:
-        """将 ``(17, >=2)`` 的单帧关键点矩阵转为项目所需的关节字典。
-
-        若关键点矩阵第 3 列存在（COCO 可见度标志 v：0=未标注、1=被遮挡、
-        2=可见），则按以下规则换算置信度：``v==0`` → 0.0、``v==1`` → 0.5、
-        ``v>=2`` → 1.0。否则（``shape[1] == 2``）默认置信度 1.0。
-        ``mid_shoulder`` 由左右肩中点计算，置信度取两者较小值（保持与
-        :class:`PoseEstimator` 一致）。
-        """
-        has_visibility = frame_kpts.shape[1] >= 3
-        joints: dict[str, tuple[float, float, float]] = {}
-        for name, idx in _COCO_INDEX.items():
-            x = float(frame_kpts[idx, 0])
-            y = float(frame_kpts[idx, 1])
-            if has_visibility:
-                v = float(frame_kpts[idx, 2])
-                if v <= 0.0:
-                    conf = 0.0
-                elif v < 2.0:
-                    conf = 0.5
-                else:
-                    conf = 1.0
-            else:
-                conf = 1.0
-            joints[name] = (x, y, conf)
-
-        ls = joints["left_shoulder"]
-        rs = joints["right_shoulder"]
-        joints["mid_shoulder"] = (
-            (ls[0] + rs[0]) / 2.0,
-            (ls[1] + rs[1]) / 2.0,
-            min(ls[2], rs[2]),
-        )
-        return joints
-
-    @staticmethod
-    def _load_npy_keypoints(path: str) -> np.ndarray:
-        """加载 ``.npy`` 标注并归一为 ``(N, 17, >=2)`` 数组。"""
-        arr = np.load(path, allow_pickle=False)
-        return SwimXYZLoader._normalize_keypoint_array(arr, source=path)
-
-    @staticmethod
-    def _load_json_keypoints(path: str) -> np.ndarray:
-        """加载 ``.json`` 标注，尝试多种常见结构后归一为 ``(N, 17, >=2)``。
-
-        ``json.JSONDecodeError`` / ``UnicodeDecodeError`` 会被包装为
-        ``ValueError`` 抛出，让上层的 ``load_all_sequences`` 可以按既有
-        ``(ValueError, FileNotFoundError)`` 路径跳过该文件而非整体崩溃。
-        """
-        try:
-            with open(path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-        except (json.JSONDecodeError, UnicodeDecodeError) as exc:
-            raise ValueError(
-                f"JSON 文件 {path} 解析失败: {exc.__class__.__name__}: {exc}"
-            ) from exc
-
-        frame_arrays = SwimXYZLoader._extract_frame_arrays(data)
-        if not frame_arrays:
-            raise ValueError(
-                "无法从 JSON 中识别出帧序列，"
-                f"顶层类型={type(data).__name__}，"
-                f"键={list(data.keys()) if isinstance(data, dict) else 'N/A'}"
-            )
-
-        stacked = np.stack(frame_arrays, axis=0)
-        return SwimXYZLoader._normalize_keypoint_array(stacked, source=path)
-
-    @staticmethod
-    def _extract_frame_arrays(data: Any) -> list[np.ndarray]:
-        """递归地从 JSON 顶层结构中抽取每帧的 ``(17, >=2)`` 关键点数组。"""
-        # 情况 1: 顶层就是帧列表
-        if isinstance(data, list):
-            return SwimXYZLoader._list_to_frame_arrays(data)
-
-        # 情况 2: 顶层是 dict，尝试常见键
-        if isinstance(data, dict):
-            for key in _FRAMES_KEYS:
-                if key in data:
-                    inner = data[key]
-                    if isinstance(inner, list):
-                        frames = SwimXYZLoader._list_to_frame_arrays(inner)
-                        if frames:
-                            return frames
-            # 部分 SwimXYZ 变体把整段序列以矩阵形式直接放在 dict 中
-            for key in ("pose_2d", "keypoints_2d", "joints_2d", "kp2d"):
-                if key in data:
-                    try:
-                        arr = np.asarray(data[key], dtype=np.float64)
-                        if (
-                            arr.ndim == 3
-                            and arr.shape[1] == _NUM_COCO_KEYPOINTS
-                            and arr.shape[2] >= 2
-                        ):
-                            return [arr[i] for i in range(arr.shape[0])]
-                    except (TypeError, ValueError):
-                        continue
-        return []
-
-    @staticmethod
-    def _list_to_frame_arrays(items: list[Any]) -> list[np.ndarray]:
-        """将"帧列表"中的每项解析为 ``(17, >=2)`` 矩阵。
-
-        偶发畸形帧（个别 coerce 失败）会被跳过而非丢弃整段序列，避免一坏帧
-        损失整段数据。若 **全部** 帧都无法解析则返回 ``[]``，让上层
-        ``_extract_frame_arrays`` 按"非帧序列"继续尝试其它结构 / 键。
-        """
-        frames: list[np.ndarray] = []
-        skipped = 0
-        for item in items:
-            frame = SwimXYZLoader._coerce_frame_keypoints(item)
-            if frame is None:
-                skipped += 1
-                continue
-            frames.append(frame)
-        if not frames:
-            return []
-        if skipped:
-            logger.warning(
-                "_list_to_frame_arrays 跳过 %d/%d 个无法解析的畸形帧",
-                skipped,
-                len(items),
-            )
-        return frames
-
-    @staticmethod
-    def _coerce_frame_keypoints(item: Any) -> np.ndarray | None:
-        """把单帧条目（dict 或 list）转换为 ``(17, >=2)`` 关键点矩阵。"""
-        # dict 形式：在已知关键点字段中寻找
-        if isinstance(item, dict):
-            for key in _FRAME_KP_KEYS:
-                if key in item:
-                    arr = SwimXYZLoader._array_from_keypoints(item[key])
-                    if arr is not None:
-                        return arr
-            return None
-
-        # list / ndarray 形式：可能是 (17, 2)、(17, 3) 或 flat (34,)/(51,)
-        return SwimXYZLoader._array_from_keypoints(item)
-
-    @staticmethod
-    def _array_from_keypoints(raw: Any) -> np.ndarray | None:
-        """把任意关键点表达形式转为 ``(17, >=2)`` ``float64`` 数组。"""
-        try:
-            arr = np.asarray(raw, dtype=np.float64)
-        except (TypeError, ValueError):
-            return None
-
-        if arr.ndim == 2 and arr.shape[0] == _NUM_COCO_KEYPOINTS and arr.shape[1] >= 2:
-            return arr
-        if arr.ndim == 1:
-            # flat 形式：(17*k,)
-            if arr.size == _NUM_COCO_KEYPOINTS * 2:
-                return arr.reshape(_NUM_COCO_KEYPOINTS, 2)
-            if arr.size == _NUM_COCO_KEYPOINTS * 3:
-                return arr.reshape(_NUM_COCO_KEYPOINTS, 3)
-        return None
-
-    @staticmethod
-    def _normalize_keypoint_array(arr: np.ndarray, source: str) -> np.ndarray:
-        """将各种合法形状归一为 ``(N, 17, >=2)`` ``float64`` 数组。"""
-        arr = np.asarray(arr, dtype=np.float64)
-
-        # 已经是目标形状
-        if arr.ndim == 3 and arr.shape[1] == _NUM_COCO_KEYPOINTS and arr.shape[2] >= 2:
-            return arr
-
-        # (N, 17*2) 或 (N, 17*3) 的扁平形式
-        if arr.ndim == 2 and arr.shape[1] in (
-            _NUM_COCO_KEYPOINTS * 2,
-            _NUM_COCO_KEYPOINTS * 3,
-        ):
-            per_kp = arr.shape[1] // _NUM_COCO_KEYPOINTS
-            return arr.reshape(arr.shape[0], _NUM_COCO_KEYPOINTS, per_kp)
-
-        raise ValueError(
-            f"无法将标注 {source} 归一为 (N, 17, >=2) 形状，"
-            f"实际 shape={arr.shape}, dtype={arr.dtype}"
-        )
