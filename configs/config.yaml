@@ -1,0 +1,80 @@
+# 蛙泳蹬腿评估系统 —— 集中配置（architecture.md §1：所有超参数与路径）
+#
+# 消费方说明：
+#   - paths / training / training.ppo  → train_agent.py 启动时读取（CLI 参数可覆盖）
+#   - paths / video / pose / feedback  → pipeline.py 端到端流程读取
+#   - segmentation / reference_score    → 见各自小节注释：标【运行时】的由对应模块
+#     直接消费；标【镜像·文档】的仅记录在册，运行时真值在代码常量中（避免双源漂移）。
+
+# ---------------------------------------------------------------------------- #
+# 路径
+# ---------------------------------------------------------------------------- #
+paths:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  template: data/templates/champion_template.npy
+  model_output: models/ppo_kick_scorer.zip
+  # SwimXYZ 解压后的 Breaststroke 标注目录（训练数据，需自行下载放置）
+  swimxyz_labels_dir: data/swimxyz/Breaststroke_labels
+
+# ---------------------------------------------------------------------------- #
+# 视频处理 (VideoLoader) + 姿态估计 (PoseEstimator)  ——【运行时】pipeline 消费
+# ---------------------------------------------------------------------------- #
+video:
+  fps: 30
+  resize_width: 640
+  resize_height: 480
+pose:
+  model_name: hrnet_w48
+  device: mps          # mps / cuda / cpu
+  min_confidence: 0.3
+
+# ---------------------------------------------------------------------------- #
+# 周期分割 (DTWAligner.segment_kick_cycles)  ——【镜像·文档】
+# 运行时真值见 src/dtw_aligner.py 模块常量；此处记录以便论文引用与统一调参。
+# ---------------------------------------------------------------------------- #
+segmentation:
+  smooth_kernel: 5          # 中值滤波核宽（去姿态尖刺）
+  valley_min_distance: 20   # 相邻波谷最小间距（帧）
+  prominence_factor: 0.25   # 自适应 prominence = factor × 平滑信号 std
+  prominence_floor: 5.0     # prominence 绝对下界（度）
+  min_cycle_frames: 10
+  max_cycle_frames: 120
+
+# ---------------------------------------------------------------------------- #
+# 参考分数 4 因素加权 (kick_env)  ——【镜像·文档】architecture.md §5
+# 运行时真值见 src/kick_env.py 模块常量。
+# ---------------------------------------------------------------------------- #
+reference_score:
+  weights:
+    angle: 0.40
+    symmetry: 0.20
+    timing: 0.20
+    smoothness: 0.20
+  scale_max:
+    angle_dev: 90.0       # 加权阶段角度偏差 ≥ 该值视为最差
+    symmetry_dev: 60.0    # 左右关节差 ≥ 该值视为最差
+    timing_warp: 1.0      # warp_amount 已自归一化到[0,1]，故上限取 1.0（可据真实分布下调）
+    smoothness: 500.0     # 角速度 std ≥ 该值视为最差平滑度
+
+# ---------------------------------------------------------------------------- #
+# PPO 训练 (train_agent.py)  ——【运行时】
+# ---------------------------------------------------------------------------- #
+training:
+  total_timesteps: 50000
+  train_ratio: 0.8        # 序列级 train/val 划分比例
+  n_val_episodes: 100
+  fps: 30                 # 角速度计算帧率（SwimXYZ 真实渲染帧率未知，30 为假设）
+  seed: 42
+  ppo:
+    n_steps: 256
+    batch_size: 64
+    n_epochs: 10
+    learning_rate: 0.0003
+
+# ---------------------------------------------------------------------------- #
+# 反馈生成 (FeedbackGenerator)  ——【运行时】pipeline 消费
+# ---------------------------------------------------------------------------- #
+feedback:
+  deviation_threshold_deg: 10.0   # 单阶段单关节有符号偏差超过此值才触发建议
+  max_items: 5                    # 最多返回的建议条数（按严重度排序后截断）
