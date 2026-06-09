@@ -174,8 +174,41 @@ def test_feature_extractor() -> None:
 
 
 # --------------------------------------------------------------------------- #
+# 模块 3：姿态崩坏帧修复
+# --------------------------------------------------------------------------- #
+
+def test_pose_failure_repair() -> None:
+    # 平滑大幅摆动（模拟真实蹬腿膝角 50–170° 摆动）
+    t = np.linspace(0.0, 4.0 * np.pi, 60)
+    clean = np.stack([110.0 - 60.0 * np.cos(t + k * 0.3) for k in range(4)], axis=1)
+
+    # 注入两个单帧尖刺，取值刻意远离各自局部中值以构成明确崩坏：
+    # 帧30 左膝 clean≈50°→顶到 175°；帧45 左髋 clean≈160°→崩到 30°
+    corrupted = clean.copy()
+    corrupted[30, 0] = 175.0
+    corrupted[45, 2] = 30.0
+
+    repaired, n_bad = FeatureExtractor._repair_pose_failures(corrupted)
+    assert n_bad >= 2, f"应检出 ≥2 个崩坏帧，得到 {n_bad}"
+    assert abs(repaired[30, 0] - clean[30, 0]) < 15.0, (
+        f"帧30左膝应被插值修复回≈{clean[30,0]:.0f}，得到 {repaired[30,0]:.0f}"
+    )
+    assert abs(repaired[45, 2] - clean[45, 2]) < 15.0, (
+        f"帧45左髋应被插值修复回≈{clean[45,2]:.0f}，得到 {repaired[45,2]:.0f}"
+    )
+
+    # 干净序列：零修复且原值不变（平滑大幅摆动不被误伤）
+    r2, n2 = FeatureExtractor._repair_pose_failures(clean)
+    assert n2 == 0, f"干净序列应零修复，得到 {n2}"
+    assert np.allclose(r2, clean), "干净序列不应被改动"
+
+    print("test_pose_failure_repair PASSED")
+
+
+# --------------------------------------------------------------------------- #
 
 if __name__ == "__main__":
     test_video_loader()
     test_feature_extractor()
+    test_pose_failure_repair()
     print("ALL TESTS PASSED")

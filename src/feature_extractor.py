@@ -6,8 +6,17 @@ import logging
 from typing import Optional
 
 import numpy as np
+from scipy.ndimage import median_filter
 
 logger = logging.getLogger(__name__)
+
+
+# 姿态崩坏帧修复参数（见 FeatureExtractor._repair_pose_failures）。
+# HRNet 偶发把关节点放到共线/错位处，使某角度单帧跳到病理值（如膝角被顶到 ~0°/180°
+# 再跳回）。真实蹬腿膝角天然在 ~35–180° 大幅摆动，故不能按"角度值离群"判定（会误伤
+# 合法深屈膝）；崩坏的真正特征是"单帧相对局部中值的巨幅跳变"，用中值滤波偏差检测。
+_POSE_SMOOTH_KERNEL: int = 5      # 中值滤波核宽（奇数），定位尖刺；对孤立尖刺稳健
+_POSE_SPIKE_DEG: float = 40.0     # 单帧角度偏离局部中值 > 该值视为崩坏（保守，远高于正常帧间变化）
 
 
 # 特征矩阵的列名（顺序固定，与 extract_sequence_features 输出一致）
@@ -89,6 +98,37 @@ class FeatureExtractor:
         cos_theta = max(-1.0, min(1.0, cos_theta))
         angle = float(np.degrees(np.arccos(cos_theta)))
         return float(np.clip(angle, 0.0, 180.0))
+
+    @staticmethod
+    def _repair_pose_failures(angles: np.ndarray) -> tuple[np.ndarray, int]:
+        """检测并线性插值修复姿态崩坏导致的角度尖刺帧（逐列独立处理）。
+
+        判据：某角度列单帧偏离其局部中值（中值滤波，对孤立尖刺稳健）超过
+        ``_POSE_SPIKE_DEG``。仅修复该列命中的帧（用同列相邻好帧线性插值），不波及
+        同帧其它正常列。真实平滑的大幅摆动不会被误判。
+
+        Args:
+            angles: shape ``(N, 4)`` 的角度矩阵（不就地修改）。
+
+        Returns:
+            ``(repaired_angles, n_repaired_frames)``；``n_repaired_frames`` 为至少
+            有一列被修复的帧数。某列好帧不足 2 个时跳过该列（无法可靠插值）。
+        """
+        A = np.array(angles, dtype=np.float64)
+        n = A.shape[0]
+        if n < _POSE_SMOOTH_KERNEL:
+            return A, 0
+        bad_any = np.zeros(n, dtype=bool)
+        for j in range(A.shape[1]):
+            col = A[:, j]
+            smoothed = median_filter(col, size=_POSE_SMOOTH_KERNEL, mode="nearest")
+            badj = np.abs(col - smoothed) > _POSE_SPIKE_DEG
+            good = np.where(~badj)[0]
+            if badj.any() and good.size >= 2:
+                bad_idx = np.where(badj)[0]
+                A[bad_idx, j] = np.interp(bad_idx, good, col[good])
+                bad_any |= badj
+        return A, int(bad_any.sum())
 
     def _all_confident(
         self,
@@ -181,7 +221,18 @@ class FeatureExtractor:
             dtype=np.float64,
         )
 
-        # 对前 4 列角度做中心差分计算角速度
+        # 姿态崩坏帧修复（在算角速度之前）：修复角度尖刺并据此重算对称性，避免尖刺
+        # 污染下游 DTW 对齐 / 对称性 / 角速度 / 评分。clean 合成数据上几乎零命中。
+        repaired, n_bad = self._repair_pose_failures(base[:, :4])
+        if n_bad:
+            base[:, :4] = repaired
+            base[:, 4] = np.abs(base[:, 0] - base[:, 1])  # knee_symmetry
+            base[:, 5] = np.abs(base[:, 2] - base[:, 3])  # hip_symmetry
+            logger.info(
+                "姿态崩坏帧修复 | %d/%d 帧的角度尖刺已插值修复", n_bad, n_valid
+            )
+
+        # 对前 4 列角度做中心差分计算角速度（用修复后的角度）
         angles = base[:, :4]
         velocity = np.zeros_like(angles)
         if n_valid >= 2:

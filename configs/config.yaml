@@ -29,6 +29,13 @@ pose:
   device: mps          # mps / cuda / cpu
   min_confidence: 0.3
 
+# 特征提取：姿态崩坏帧修复 (FeatureExtractor)  ——【镜像·文档】
+# 运行时真值见 src/feature_extractor.py 模块常量。单帧角度偏离局部中值超过
+# spike_deg 即判为 HRNet 崩坏帧并线性插值修复（clean 合成数据上近似 no-op）。
+feature_extraction:
+  pose_repair_smooth_kernel: 5   # 中值滤波核宽（定位尖刺）
+  pose_repair_spike_deg: 40.0    # 单帧偏离局部中值 > 该值(度)视为崩坏帧
+
 # ---------------------------------------------------------------------------- #
 # 周期分割 (DTWAligner.segment_kick_cycles)  ——【镜像·文档】
 # 运行时真值见 src/dtw_aligner.py 模块常量；此处记录以便论文引用与统一调参。
