@@ -23,3 +23,7 @@ Extended_Essay_Final.docx
 Extended Essay.pdf
 main (13).pdf
 Breaststroke_Kick_EE_Deck.pptx
+
+# Local Python environment created by the README commands
+.venv/
+.pytest_cache/

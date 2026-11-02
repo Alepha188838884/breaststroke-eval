@@ -101,3 +101,20 @@
 1. 43 条 Kinetics 盲评是否执行仍未决（checklist 第 8 项，正文已兼容两种结局）。
 2. 定稿阶段：字数压缩（4.2 优先）、删 HTML 注释、图表编号连续性核查。
 3. 小提醒：make_fig4b_pairs.py 有 4 条 Pyright 类型提示（Line2D 私有导入等），运行无碍，未修。
+
+## 2026-11-02 会话：GitHub 发布 + README + 历史清理
+### 本次完成
+- 仓库 `Alepha188838884/breaststroke-eval` 用于大学作品集，保持公开。论文相关文件（`Essay/`、`文献/`、定稿 docx、大纲 PDF、PPT）和 `test_videos/` 只留本地，已写入 `.gitignore`。
+- 本地 `main` 历史已删除 `Essay/`、`文献/`，备份分支 `backup/before-history-clean`。这个分支和 `feat/eval-pipeline-modules` 仍含旧文件，不要推送。
+- 新增 `README.md`：经独立 reviewer 两轮核查，并在全新克隆中实测命令。
+
+### 已验证的事实（新）
+- **观测并非与公式无关**：symmetry、smoothness 两项（权重共 0.40）可由 28 维 obs 精确重建（误差约 1e-6）。只对这两个截断项做线性拟合，test MAE=4.25（R² 0.82），PPO=4.44；配对 video-level bootstrap 差值 0.19，95% CI [-0.61, 0.97]。→ 不能再说"PPO 触到监督天花板"或"观测不含答案"。
+- **阶段标签与动作不符**：四阶段是 DTW 路径等分。模板左膝各段均值 51/138/174/170°，"power"（权重 0.40）落在已接近伸直的腿上。
+- **模型跨 numpy**：`ppo_kick_scorer_kinetics.zip` 在 numpy 2 下保存，经 pipeline 在 `venv_pose`（numpy 1.26）加载失败。`--video` 单进程路径用这个模型跑不通，要分两步：提特征 → `--features` 打分。
+- 全新克隆缺 `data/templates/*.npy` 和 `models/`（被 `.gitignore` 排除），只能跑测试，不能复现分数。
+
+### 遗留
+1. 线上清理要用户手动强制推送（权限分类器拦截）。
+2. 论文正文引用的 PPO 结论和阶段说法需要按上面的事实复核。
+3. 用户决定（2026-11-02）：`outputs/` 中取自 champion.mp4 的 3 张帧图不下架，模板和模型不上传。
