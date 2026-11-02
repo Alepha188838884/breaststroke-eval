@@ -1,0 +1,430 @@
+INFO src.dtw_aligner: 已加载模板 data/templates/champion_template.npy | shape=(45, 10)
+INFO src.video_loader: 已打开视频 test_videos/IMG_4641.MOV | 原始FPS=59.97, 总帧数=920, 目标FPS=30, 抽帧间隔=2
+INFO src.pose_estimator: 初始化人体检测器（mmdet, RTMDet-M）...
+INFO src.pose_estimator: 初始化 HRNet 姿态模型（mmpose, hrnet_w48）...
+/Users/erichuang/Desktop/01 Study/IB learning/Extended Essay/venv_pose/lib/python3.11/site-packages/mmpose/datasets/datasets/utils.py:102: UserWarning: The metainfo config file "configs/_base_/datasets/coco.py" does not exist. A matched config file "/Users/erichuang/Desktop/01 Study/IB learning/Extended Essay/venv_pose/lib/python3.11/site-packages/mmpose/.mim/configs/_base_/datasets/coco.py" will be used instead.
+  warnings.warn(
+Loads checkpoint by http backend from path: https://download.openmmlab.com/mmdetection/v3.0/rtmdet/rtmdet_m_8xb32-300e_coco/rtmdet_m_8xb32-300e_coco_20220719_112220-229f527c.pth
+The model and loaded state dict do not match exactly
+
+unexpected key in source state_dict: data_preprocessor.mean, data_preprocessor.std
+
+Loads checkpoint by http backend from path: https://download.openmmlab.com/mmpose/top_down/hrnet/hrnet_w48_coco_256x192-b9e0b3ab_20200708.pth
+08/05 14:49:19 - mmengine - WARNING - The current default scope "mmpose" is not "mmdet", `init_default_scope` will force set the currentdefault scope to "mmdet".
+/Users/erichuang/Desktop/01 Study/IB learning/Extended Essay/venv_pose/lib/python3.11/site-packages/mmdet/models/layers/se_layer.py:158: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(enabled=False):
+/Users/erichuang/Desktop/01 Study/IB learning/Extended Essay/venv_pose/lib/python3.11/site-packages/mmdet/models/backbones/csp_darknet.py:118: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(enabled=False):
+/Users/erichuang/Desktop/01 Study/IB learning/Extended Essay/venv_pose/lib/python3.11/site-packages/torch/functional.py:505: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /Users/runner/work/pytorch/pytorch/aten/src/ATen/native/TensorShape.cpp:4384.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+WARNING __main__: 姿态估计设备 mps 不可用 (RuntimeError)，回退 CPU
+INFO src.pose_estimator: 初始化人体检测器（mmdet, RTMDet-M）...
+INFO src.pose_estimator: 初始化 HRNet 姿态模型（mmpose, hrnet_w48）...
+Loads checkpoint by http backend from path: https://download.openmmlab.com/mmdetection/v3.0/rtmdet/rtmdet_m_8xb32-300e_coco/rtmdet_m_8xb32-300e_coco_20220719_112220-229f527c.pth
+The model and loaded state dict do not match exactly
+
+unexpected key in source state_dict: data_preprocessor.mean, data_preprocessor.std
+
+08/05 14:49:20 - mmengine - WARNING - The current default scope "mmdet" is not "mmpose", `init_default_scope` will force set the currentdefault scope to "mmpose".
+Loads checkpoint by http backend from path: https://download.openmmlab.com/mmpose/top_down/hrnet/hrnet_w48_coco_256x192-b9e0b3ab_20200708.pth
+HRNet 姿态估计:   0%|          | 0/460 [00:00<?, ?it/s]WARNING src.pose_estimator: 帧 0 姿态估计失败: 未检测到人体
+HRNet 姿态估计:   0%|          | 1/460 [00:00<04:01,  1.90it/s]WARNING src.pose_estimator: 帧 1 姿态估计失败: 未检测到人体
+HRNet 姿态估计:   0%|          | 2/460 [00:00<03:27,  2.20it/s]WARNING src.pose_estimator: 帧 2 姿态估计失败: 未检测到人体
+HRNet 姿态估计:   1%|          | 3/460 [00:01<03:17,  2.32it/s]WARNING src.pose_estimator: 帧 3 姿态估计失败: 未检测到人体
+HRNet 姿态估计:   1%|          | 4/460 [00:01<03:18,  2.30it/s]WARNING src.pose_estimator: 帧 4 姿态估计失败: 未检测到人体
+HRNet 姿态估计:   1%|          | 5/460 [00:02<03:12,  2.37it/s]WARNING src.pose_estimator: 帧 5 姿态估计失败: 未检测到人体
+HRNet 姿态估计:   1%|▏         | 6/460 [00:02<03:08,  2.41it/s]WARNING src.pose_estimator: 帧 6 姿态估计失败: 未检测到人体
+HRNet 姿态估计:   2%|▏         | 7/460 [00:02<03:04,  2.45it/s]WARNING src.pose_estimator: 帧 7 姿态估计失败: 未检测到人体
+HRNet 姿态估计:   2%|▏         | 8/460 [00:03<03:05,  2.44it/s]WARNING src.pose_estimator: 帧 8 姿态估计失败: 未检测到人体
+HRNet 姿态估计:   2%|▏         | 9/460 [00:03<03:06,  2.42it/s]WARNING src.pose_estimator: 帧 9 姿态估计失败: 下肢有效关节数不足 (0 < 4)
+HRNet 姿态估计:   2%|▏         | 10/460 [00:04<03:47,  1.98it/s]WARNING src.pose_estimator: 帧 10 姿态估计失败: 未检测到人体
+HRNet 姿态估计:   2%|▏         | 11/460 [00:04<03:32,  2.11it/s]WARNING src.pose_estimator: 帧 11 姿态估计失败: 下肢有效关节数不足 (0 < 4)
+HRNet 姿态估计:   3%|▎         | 12/460 [00:05<04:12,  1.78it/s]WARNING src.pose_estimator: 帧 12 姿态估计失败: 下肢有效关节数不足 (0 < 4)
+HRNet 姿态估计:   3%|▎         | 13/460 [00:06<04:30,  1.65it/s]WARNING src.pose_estimator: 帧 13 姿态估计失败: 下肢有效关节数不足 (0 < 4)
+HRNet 姿态估计:   3%|▎         | 14/460 [00:07<04:38,  1.60it/s]WARNING src.pose_estimator: 帧 14 姿态估计失败: 下肢有效关节数不足 (0 < 4)
+HRNet 姿态估计:   3%|▎         | 15/460 [00:07<04:43,  1.57it/s]WARNING src.pose_estimator: 帧 15 姿态估计失败: 下肢有效关节数不足 (0 < 4)
+HRNet 姿态估计:   3%|▎         | 16/460 [00:08<04:54,  1.51it/s]WARNING src.pose_estimator: 帧 16 姿态估计失败: 下肢有效关节数不足 (0 < 4)
+HRNet 姿态估计:   4%|▎         | 17/460 [00:09<04:50,  1.52it/s]WARNING src.pose_estimator: 帧 17 姿态估计失败: 下肢有效关节数不足 (0 < 4)
+HRNet 姿态估计:   4%|▍         | 18/460 [00:09<05:06,  1.44it/s]WARNING src.pose_estimator: 帧 18 姿态估计失败: 下肢有效关节数不足 (0 < 4)
+HRNet 姿态估计:   4%|▍         | 19/460 [00:10<05:16,  1.39it/s]WARNING src.pose_estimator: 帧 19 姿态估计失败: 未检测到人体
+HRNet 姿态估计:   4%|▍         | 20/460 [00:11<04:35,  1.59it/s]WARNING src.pose_estimator: 帧 20 姿态估计失败: 未检测到人体
+HRNet 姿态估计:   5%|▍         | 21/460 [00:11<04:11,  1.74it/s]WARNING src.pose_estimator: 帧 21 姿态估计失败: 未检测到人体
+HRNet 姿态估计:   5%|▍         | 22/460 [00:11<03:49,  1.91it/s]WARNING src.pose_estimator: 帧 22 姿态估计失败: 未检测到人体
+HRNet 姿态估计:   5%|▌         | 23/460 [00:12<03:32,  2.05it/s]HRNet 姿态估计:   5%|▌         | 24/460 [00:13<04:01,  1.81it/s]HRNet 姿态估计:   5%|▌         | 25/460 [00:13<04:14,  1.71it/s]HRNet 姿态估计:   6%|▌         | 26/460 [00:14<04:28,  1.62it/s]HRNet 姿态估计:   6%|▌         | 27/460 [00:15<04:34,  1.58it/s]HRNet 姿态估计:   6%|▌         | 28/460 [00:15<04:50,  1.49it/s]HRNet 姿态估计:   6%|▋         | 29/460 [00:16<05:00,  1.43it/s]HRNet 姿态估计:   7%|▋         | 30/460 [00:17<05:04,  1.41it/s]HRNet 姿态估计:   7%|▋         | 31/460 [00:18<05:04,  1.41it/s]HRNet 姿态估计:   7%|▋         | 32/460 [00:18<05:04,  1.40it/s]HRNet 姿态估计:   7%|▋         | 33/460 [00:19<05:06,  1.39it/s]HRNet 姿态估计:   7%|▋         | 34/460 [00:20<05:05,  1.39it/s]HRNet 姿态估计:   8%|▊         | 35/460 [00:20<04:56,  1.44it/s]HRNet 姿态估计:   8%|▊         | 36/460 [00:21<05:01,  1.40it/s]HRNet 姿态估计:   8%|▊         | 37/460 [00:22<04:58,  1.42it/s]HRNet 姿态估计:   8%|▊         | 38/460 [00:22<04:59,  1.41it/s]HRNet 姿态估计:   8%|▊         | 39/460 [00:23<04:54,  1.43it/s]HRNet 姿态估计:   9%|▊         | 40/460 [00:24<04:56,  1.42it/s]HRNet 姿态估计:   9%|▉         | 41/460 [00:25<05:04,  1.38it/s]HRNet 姿态估计:   9%|▉         | 42/460 [00:25<05:01,  1.39it/s]HRNet 姿态估计:   9%|▉         | 43/460 [00:26<04:50,  1.43it/s]HRNet 姿态估计:  10%|▉         | 44/460 [00:27<04:44,  1.46it/s]HRNet 姿态估计:  10%|▉         | 45/460 [00:27<04:46,  1.45it/s]HRNet 姿态估计:  10%|█         | 46/460 [00:28<04:45,  1.45it/s]HRNet 姿态估计:  10%|█         | 47/460 [00:29<04:43,  1.46it/s]HRNet 姿态估计:  10%|█         | 48/460 [00:29<04:38,  1.48it/s]HRNet 姿态估计:  11%|█         | 49/460 [00:30<04:39,  1.47it/s]HRNet 姿态估计:  11%|█         | 50/460 [00:31<04:42,  1.45it/s]HRNet 姿态估计:  11%|█         | 51/460 [00:32<04:45,  1.43it/s]HRNet 姿态估计:  11%|█▏        | 52/460 [00:32<04:42,  1.45it/s]HRNet 姿态估计:  12%|█▏        | 53/460 [00:33<04:39,  1.46it/s]HRNet 姿态估计:  12%|█▏        | 54/460 [00:34<04:40,  1.45it/s]HRNet 姿态估计:  12%|█▏        | 55/460 [00:34<04:45,  1.42it/s]HRNet 姿态估计:  12%|█▏        | 56/460 [00:35<04:49,  1.40it/s]HRNet 姿态估计:  12%|█▏        | 57/460 [00:36<04:44,  1.42it/s]HRNet 姿态估计:  13%|█▎        | 58/460 [00:36<04:36,  1.46it/s]HRNet 姿态估计:  13%|█▎        | 59/460 [00:37<04:29,  1.49it/s]HRNet 姿态估计:  13%|█▎        | 60/460 [00:38<04:37,  1.44it/s]HRNet 姿态估计:  13%|█▎        | 61/460 [00:38<04:35,  1.45it/s]HRNet 姿态估计:  13%|█▎        | 62/460 [00:39<04:33,  1.45it/s]HRNet 姿态估计:  14%|█▎        | 63/460 [00:40<04:43,  1.40it/s]HRNet 姿态估计:  14%|█▍        | 64/460 [00:41<04:39,  1.42it/s]HRNet 姿态估计:  14%|█▍        | 65/460 [00:41<04:40,  1.41it/s]HRNet 姿态估计:  14%|█▍        | 66/460 [00:42<04:32,  1.44it/s]HRNet 姿态估计:  15%|█▍        | 67/460 [00:43<04:32,  1.44it/s]HRNet 姿态估计:  15%|█▍        | 68/460 [00:43<04:31,  1.44it/s]HRNet 姿态估计:  15%|█▌        | 69/460 [00:44<04:26,  1.47it/s]HRNet 姿态估计:  15%|█▌        | 70/460 [00:45<04:28,  1.45it/s]WARNING src.pose_estimator: 帧 70 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  15%|█▌        | 71/460 [00:45<03:53,  1.67it/s]WARNING src.pose_estimator: 帧 71 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  16%|█▌        | 72/460 [00:45<03:29,  1.85it/s]WARNING src.pose_estimator: 帧 72 姿态估计失败: 下肢有效关节数不足 (3 < 4)
+HRNet 姿态估计:  16%|█▌        | 73/460 [00:46<03:50,  1.68it/s]WARNING src.pose_estimator: 帧 73 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  16%|█▌        | 74/460 [00:47<03:27,  1.86it/s]WARNING src.pose_estimator: 帧 74 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  16%|█▋        | 75/460 [00:47<03:12,  2.00it/s]WARNING src.pose_estimator: 帧 75 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  17%|█▋        | 76/460 [00:47<03:02,  2.10it/s]WARNING src.pose_estimator: 帧 76 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  17%|█▋        | 77/460 [00:48<02:54,  2.19it/s]WARNING src.pose_estimator: 帧 77 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  17%|█▋        | 78/460 [00:48<02:45,  2.30it/s]WARNING src.pose_estimator: 帧 78 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  17%|█▋        | 79/460 [00:49<02:43,  2.33it/s]WARNING src.pose_estimator: 帧 79 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  17%|█▋        | 80/460 [00:49<02:38,  2.40it/s]WARNING src.pose_estimator: 帧 80 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  18%|█▊        | 81/460 [00:49<02:35,  2.43it/s]WARNING src.pose_estimator: 帧 81 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  18%|█▊        | 82/460 [00:50<02:34,  2.45it/s]WARNING src.pose_estimator: 帧 82 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  18%|█▊        | 83/460 [00:50<02:31,  2.49it/s]WARNING src.pose_estimator: 帧 83 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  18%|█▊        | 84/460 [00:51<02:27,  2.54it/s]WARNING src.pose_estimator: 帧 84 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  18%|█▊        | 85/460 [00:51<02:26,  2.55it/s]WARNING src.pose_estimator: 帧 85 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  19%|█▊        | 86/460 [00:51<02:27,  2.53it/s]WARNING src.pose_estimator: 帧 86 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  19%|█▉        | 87/460 [00:52<02:26,  2.55it/s]WARNING src.pose_estimator: 帧 87 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  19%|█▉        | 88/460 [00:52<02:26,  2.54it/s]WARNING src.pose_estimator: 帧 88 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  19%|█▉        | 89/460 [00:53<02:28,  2.50it/s]WARNING src.pose_estimator: 帧 89 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  20%|█▉        | 90/460 [00:53<02:27,  2.50it/s]WARNING src.pose_estimator: 帧 90 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  20%|█▉        | 91/460 [00:53<02:32,  2.43it/s]WARNING src.pose_estimator: 帧 91 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  20%|██        | 92/460 [00:54<02:32,  2.41it/s]WARNING src.pose_estimator: 帧 92 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  20%|██        | 93/460 [00:54<02:29,  2.46it/s]WARNING src.pose_estimator: 帧 93 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  20%|██        | 94/460 [00:55<02:31,  2.42it/s]WARNING src.pose_estimator: 帧 94 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  21%|██        | 95/460 [00:55<02:29,  2.44it/s]WARNING src.pose_estimator: 帧 95 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  21%|██        | 96/460 [00:55<02:27,  2.47it/s]WARNING src.pose_estimator: 帧 96 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  21%|██        | 97/460 [00:56<02:28,  2.44it/s]WARNING src.pose_estimator: 帧 97 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  21%|██▏       | 98/460 [00:56<02:28,  2.44it/s]WARNING src.pose_estimator: 帧 98 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  22%|██▏       | 99/460 [00:57<02:25,  2.48it/s]WARNING src.pose_estimator: 帧 99 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  22%|██▏       | 100/460 [00:57<02:24,  2.50it/s]WARNING src.pose_estimator: 帧 100 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  22%|██▏       | 101/460 [00:57<02:23,  2.51it/s]WARNING src.pose_estimator: 帧 101 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  22%|██▏       | 102/460 [00:58<02:22,  2.50it/s]WARNING src.pose_estimator: 帧 102 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  22%|██▏       | 103/460 [00:58<02:22,  2.50it/s]WARNING src.pose_estimator: 帧 103 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  23%|██▎       | 104/460 [00:59<02:21,  2.52it/s]WARNING src.pose_estimator: 帧 104 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  23%|██▎       | 105/460 [00:59<02:19,  2.54it/s]WARNING src.pose_estimator: 帧 105 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  23%|██▎       | 106/460 [00:59<02:17,  2.57it/s]WARNING src.pose_estimator: 帧 106 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  23%|██▎       | 107/460 [01:00<02:16,  2.58it/s]WARNING src.pose_estimator: 帧 107 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  23%|██▎       | 108/460 [01:00<02:16,  2.57it/s]WARNING src.pose_estimator: 帧 108 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  24%|██▎       | 109/460 [01:01<02:16,  2.58it/s]WARNING src.pose_estimator: 帧 109 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  24%|██▍       | 110/460 [01:01<02:17,  2.54it/s]WARNING src.pose_estimator: 帧 110 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  24%|██▍       | 111/460 [01:01<02:17,  2.53it/s]WARNING src.pose_estimator: 帧 111 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  24%|██▍       | 112/460 [01:02<02:16,  2.56it/s]WARNING src.pose_estimator: 帧 112 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  25%|██▍       | 113/460 [01:02<02:24,  2.41it/s]WARNING src.pose_estimator: 帧 113 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  25%|██▍       | 114/460 [01:03<02:20,  2.46it/s]WARNING src.pose_estimator: 帧 114 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  25%|██▌       | 115/460 [01:03<02:18,  2.50it/s]WARNING src.pose_estimator: 帧 115 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  25%|██▌       | 116/460 [01:03<02:15,  2.54it/s]WARNING src.pose_estimator: 帧 116 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  25%|██▌       | 117/460 [01:04<02:15,  2.54it/s]WARNING src.pose_estimator: 帧 117 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  26%|██▌       | 118/460 [01:04<02:17,  2.49it/s]WARNING src.pose_estimator: 帧 118 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  26%|██▌       | 119/460 [01:05<02:17,  2.47it/s]WARNING src.pose_estimator: 帧 119 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  26%|██▌       | 120/460 [01:05<02:16,  2.49it/s]WARNING src.pose_estimator: 帧 120 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  26%|██▋       | 121/460 [01:05<02:15,  2.49it/s]WARNING src.pose_estimator: 帧 121 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  27%|██▋       | 122/460 [01:06<02:21,  2.39it/s]WARNING src.pose_estimator: 帧 122 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  27%|██▋       | 123/460 [01:06<02:25,  2.32it/s]WARNING src.pose_estimator: 帧 123 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  27%|██▋       | 124/460 [01:07<02:20,  2.40it/s]WARNING src.pose_estimator: 帧 124 姿态估计失败: 下肢有效关节数不足 (3 < 4)
+HRNet 姿态估计:  27%|██▋       | 125/460 [01:07<02:45,  2.03it/s]WARNING src.pose_estimator: 帧 125 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  27%|██▋       | 126/460 [01:08<02:33,  2.17it/s]WARNING src.pose_estimator: 帧 126 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  28%|██▊       | 127/460 [01:08<02:25,  2.29it/s]HRNet 姿态估计:  28%|██▊       | 128/460 [01:09<02:47,  1.98it/s]WARNING src.pose_estimator: 帧 128 姿态估计失败: 下肢有效关节数不足 (2 < 4)
+HRNet 姿态估计:  28%|██▊       | 129/460 [01:09<03:00,  1.83it/s]HRNet 姿态估计:  28%|██▊       | 130/460 [01:10<03:12,  1.71it/s]HRNet 姿态估计:  28%|██▊       | 131/460 [01:11<03:18,  1.66it/s]WARNING src.pose_estimator: 帧 131 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  29%|██▊       | 132/460 [01:11<02:58,  1.84it/s]WARNING src.pose_estimator: 帧 132 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  29%|██▉       | 133/460 [01:12<02:46,  1.96it/s]WARNING src.pose_estimator: 帧 133 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  29%|██▉       | 134/460 [01:12<02:33,  2.12it/s]HRNet 姿态估计:  29%|██▉       | 135/460 [01:13<02:51,  1.90it/s]HRNet 姿态估计:  30%|██▉       | 136/460 [01:13<03:07,  1.73it/s]HRNet 姿态估计:  30%|██▉       | 137/460 [01:14<03:16,  1.64it/s]HRNet 姿态估计:  30%|███       | 138/460 [01:15<03:23,  1.58it/s]HRNet 姿态估计:  30%|███       | 139/460 [01:15<03:31,  1.51it/s]HRNet 姿态估计:  30%|███       | 140/460 [01:16<03:33,  1.50it/s]HRNet 姿态估计:  31%|███       | 141/460 [01:17<03:31,  1.51it/s]HRNet 姿态估计:  31%|███       | 142/460 [01:17<03:36,  1.47it/s]HRNet 姿态估计:  31%|███       | 143/460 [01:18<03:32,  1.49it/s]HRNet 姿态估计:  31%|███▏      | 144/460 [01:19<03:32,  1.48it/s]HRNet 姿态估计:  32%|███▏      | 145/460 [01:19<03:30,  1.50it/s]HRNet 姿态估计:  32%|███▏      | 146/460 [01:20<03:29,  1.50it/s]HRNet 姿态估计:  32%|███▏      | 147/460 [01:21<03:26,  1.51it/s]HRNet 姿态估计:  32%|███▏      | 148/460 [01:21<03:24,  1.52it/s]HRNet 姿态估计:  32%|███▏      | 149/460 [01:22<03:24,  1.52it/s]WARNING src.pose_estimator: 帧 149 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  33%|███▎      | 150/460 [01:22<02:58,  1.74it/s]HRNet 姿态估计:  33%|███▎      | 151/460 [01:23<03:06,  1.66it/s]WARNING src.pose_estimator: 帧 151 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  33%|███▎      | 152/460 [01:24<02:45,  1.87it/s]HRNet 姿态估计:  33%|███▎      | 153/460 [01:24<02:59,  1.71it/s]HRNet 姿态估计:  33%|███▎      | 154/460 [01:25<03:09,  1.62it/s]HRNet 姿态估计:  34%|███▎      | 155/460 [01:26<03:11,  1.59it/s]WARNING src.pose_estimator: 帧 155 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  34%|███▍      | 156/460 [01:26<02:49,  1.79it/s]WARNING src.pose_estimator: 帧 156 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  34%|███▍      | 157/460 [01:26<02:34,  1.96it/s]WARNING src.pose_estimator: 帧 157 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  34%|███▍      | 158/460 [01:27<02:24,  2.10it/s]WARNING src.pose_estimator: 帧 158 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  35%|███▍      | 159/460 [01:27<02:15,  2.23it/s]HRNet 姿态估计:  35%|███▍      | 160/460 [01:28<02:38,  1.90it/s]HRNet 姿态估计:  35%|███▌      | 161/460 [01:29<02:51,  1.75it/s]WARNING src.pose_estimator: 帧 161 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  35%|███▌      | 162/460 [01:29<02:34,  1.93it/s]WARNING src.pose_estimator: 帧 162 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  35%|███▌      | 163/460 [01:29<02:22,  2.08it/s]WARNING src.pose_estimator: 帧 163 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  36%|███▌      | 164/460 [01:30<02:13,  2.21it/s]HRNet 姿态估计:  36%|███▌      | 165/460 [01:30<02:34,  1.91it/s]WARNING src.pose_estimator: 帧 165 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  36%|███▌      | 166/460 [01:31<02:22,  2.07it/s]HRNet 姿态估计:  36%|███▋      | 167/460 [01:31<02:35,  1.88it/s]HRNet 姿态估计:  37%|███▋      | 168/460 [01:32<02:44,  1.78it/s]WARNING src.pose_estimator: 帧 168 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  37%|███▋      | 169/460 [01:32<02:27,  1.97it/s]HRNet 姿态估计:  37%|███▋      | 170/460 [01:33<02:39,  1.82it/s]HRNet 姿态估计:  37%|███▋      | 171/460 [01:34<02:46,  1.74it/s]WARNING src.pose_estimator: 帧 171 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  37%|███▋      | 172/460 [01:34<02:28,  1.93it/s]WARNING src.pose_estimator: 帧 172 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  38%|███▊      | 173/460 [01:34<02:16,  2.10it/s]WARNING src.pose_estimator: 帧 173 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  38%|███▊      | 174/460 [01:35<02:08,  2.23it/s]WARNING src.pose_estimator: 帧 174 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  38%|███▊      | 175/460 [01:35<02:01,  2.34it/s]WARNING src.pose_estimator: 帧 175 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  38%|███▊      | 176/460 [01:36<01:57,  2.41it/s]WARNING src.pose_estimator: 帧 176 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  38%|███▊      | 177/460 [01:36<01:54,  2.48it/s]WARNING src.pose_estimator: 帧 177 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  39%|███▊      | 178/460 [01:36<01:52,  2.52it/s]WARNING src.pose_estimator: 帧 178 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  39%|███▉      | 179/460 [01:37<01:50,  2.55it/s]HRNet 姿态估计:  39%|███▉      | 180/460 [01:37<02:14,  2.07it/s]HRNet 姿态估计:  39%|███▉      | 181/460 [01:38<02:32,  1.83it/s]HRNet 姿态估计:  40%|███▉      | 182/460 [01:39<02:42,  1.72it/s]HRNet 姿态估计:  40%|███▉      | 183/460 [01:40<02:50,  1.62it/s]WARNING src.pose_estimator: 帧 183 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  40%|████      | 184/460 [01:40<02:33,  1.80it/s]WARNING src.pose_estimator: 帧 184 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  40%|████      | 185/460 [01:40<02:19,  1.98it/s]WARNING src.pose_estimator: 帧 185 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  40%|████      | 186/460 [01:41<02:10,  2.10it/s]WARNING src.pose_estimator: 帧 186 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  41%|████      | 187/460 [01:41<02:03,  2.21it/s]WARNING src.pose_estimator: 帧 187 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  41%|████      | 188/460 [01:42<01:57,  2.31it/s]WARNING src.pose_estimator: 帧 188 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  41%|████      | 189/460 [01:42<01:54,  2.38it/s]WARNING src.pose_estimator: 帧 189 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  41%|████▏     | 190/460 [01:42<01:52,  2.39it/s]WARNING src.pose_estimator: 帧 190 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  42%|████▏     | 191/460 [01:43<01:56,  2.31it/s]WARNING src.pose_estimator: 帧 191 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  42%|████▏     | 192/460 [01:43<01:52,  2.37it/s]WARNING src.pose_estimator: 帧 192 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  42%|████▏     | 193/460 [01:44<01:49,  2.44it/s]WARNING src.pose_estimator: 帧 193 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  42%|████▏     | 194/460 [01:44<01:50,  2.41it/s]WARNING src.pose_estimator: 帧 194 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  42%|████▏     | 195/460 [01:44<01:49,  2.42it/s]WARNING src.pose_estimator: 帧 195 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  43%|████▎     | 196/460 [01:45<01:49,  2.41it/s]WARNING src.pose_estimator: 帧 196 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  43%|████▎     | 197/460 [01:45<01:48,  2.43it/s]WARNING src.pose_estimator: 帧 197 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  43%|████▎     | 198/460 [01:46<01:46,  2.47it/s]WARNING src.pose_estimator: 帧 198 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  43%|████▎     | 199/460 [01:46<01:43,  2.51it/s]WARNING src.pose_estimator: 帧 199 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  43%|████▎     | 200/460 [01:46<01:42,  2.53it/s]WARNING src.pose_estimator: 帧 200 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  44%|████▎     | 201/460 [01:47<01:46,  2.43it/s]WARNING src.pose_estimator: 帧 201 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  44%|████▍     | 202/460 [01:47<01:46,  2.41it/s]WARNING src.pose_estimator: 帧 202 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  44%|████▍     | 203/460 [01:48<01:54,  2.25it/s]WARNING src.pose_estimator: 帧 203 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  44%|████▍     | 204/460 [01:48<01:49,  2.34it/s]WARNING src.pose_estimator: 帧 204 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  45%|████▍     | 205/460 [01:49<01:45,  2.42it/s]WARNING src.pose_estimator: 帧 205 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  45%|████▍     | 206/460 [01:49<01:43,  2.45it/s]WARNING src.pose_estimator: 帧 206 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  45%|████▌     | 207/460 [01:49<01:47,  2.35it/s]WARNING src.pose_estimator: 帧 207 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  45%|████▌     | 208/460 [01:50<01:48,  2.33it/s]WARNING src.pose_estimator: 帧 208 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  45%|████▌     | 209/460 [01:50<01:45,  2.39it/s]WARNING src.pose_estimator: 帧 209 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  46%|████▌     | 210/460 [01:51<01:43,  2.41it/s]WARNING src.pose_estimator: 帧 210 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  46%|████▌     | 211/460 [01:51<01:41,  2.44it/s]WARNING src.pose_estimator: 帧 211 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  46%|████▌     | 212/460 [01:51<01:40,  2.47it/s]WARNING src.pose_estimator: 帧 212 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  46%|████▋     | 213/460 [01:52<01:39,  2.49it/s]WARNING src.pose_estimator: 帧 213 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  47%|████▋     | 214/460 [01:52<01:38,  2.51it/s]WARNING src.pose_estimator: 帧 214 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  47%|████▋     | 215/460 [01:53<01:41,  2.41it/s]WARNING src.pose_estimator: 帧 215 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  47%|████▋     | 216/460 [01:53<01:39,  2.45it/s]WARNING src.pose_estimator: 帧 216 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  47%|████▋     | 217/460 [01:54<01:42,  2.37it/s]WARNING src.pose_estimator: 帧 217 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  47%|████▋     | 218/460 [01:54<01:39,  2.42it/s]WARNING src.pose_estimator: 帧 218 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  48%|████▊     | 219/460 [01:54<01:37,  2.47it/s]WARNING src.pose_estimator: 帧 219 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  48%|████▊     | 220/460 [01:55<01:36,  2.50it/s]WARNING src.pose_estimator: 帧 220 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  48%|████▊     | 221/460 [01:55<01:37,  2.44it/s]WARNING src.pose_estimator: 帧 221 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  48%|████▊     | 222/460 [01:56<01:41,  2.35it/s]WARNING src.pose_estimator: 帧 222 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  48%|████▊     | 223/460 [01:56<01:38,  2.41it/s]WARNING src.pose_estimator: 帧 223 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  49%|████▊     | 224/460 [01:56<01:37,  2.43it/s]WARNING src.pose_estimator: 帧 224 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  49%|████▉     | 225/460 [01:57<01:35,  2.47it/s]WARNING src.pose_estimator: 帧 225 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  49%|████▉     | 226/460 [01:57<01:35,  2.46it/s]WARNING src.pose_estimator: 帧 226 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  49%|████▉     | 227/460 [01:58<01:33,  2.50it/s]WARNING src.pose_estimator: 帧 227 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  50%|████▉     | 228/460 [01:58<01:34,  2.46it/s]WARNING src.pose_estimator: 帧 228 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  50%|████▉     | 229/460 [01:58<01:32,  2.49it/s]WARNING src.pose_estimator: 帧 229 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  50%|█████     | 230/460 [01:59<01:33,  2.47it/s]WARNING src.pose_estimator: 帧 230 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  50%|█████     | 231/460 [01:59<01:33,  2.46it/s]WARNING src.pose_estimator: 帧 231 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  50%|█████     | 232/460 [02:00<01:31,  2.50it/s]WARNING src.pose_estimator: 帧 232 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  51%|█████     | 233/460 [02:00<01:29,  2.53it/s]WARNING src.pose_estimator: 帧 233 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  51%|█████     | 234/460 [02:01<01:47,  2.10it/s]WARNING src.pose_estimator: 帧 234 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  51%|█████     | 235/460 [02:01<01:42,  2.20it/s]WARNING src.pose_estimator: 帧 235 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  51%|█████▏    | 236/460 [02:01<01:38,  2.27it/s]WARNING src.pose_estimator: 帧 236 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  52%|█████▏    | 237/460 [02:02<01:38,  2.27it/s]WARNING src.pose_estimator: 帧 237 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  52%|█████▏    | 238/460 [02:02<01:34,  2.35it/s]WARNING src.pose_estimator: 帧 238 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  52%|█████▏    | 239/460 [02:03<01:30,  2.43it/s]WARNING src.pose_estimator: 帧 239 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  52%|█████▏    | 240/460 [02:03<01:29,  2.46it/s]WARNING src.pose_estimator: 帧 240 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  52%|█████▏    | 241/460 [02:03<01:30,  2.42it/s]WARNING src.pose_estimator: 帧 241 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  53%|█████▎    | 242/460 [02:04<01:29,  2.43it/s]WARNING src.pose_estimator: 帧 242 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  53%|█████▎    | 243/460 [02:04<01:27,  2.47it/s]WARNING src.pose_estimator: 帧 243 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  53%|█████▎    | 244/460 [02:05<01:25,  2.52it/s]WARNING src.pose_estimator: 帧 244 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  53%|█████▎    | 245/460 [02:05<01:26,  2.50it/s]WARNING src.pose_estimator: 帧 245 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  53%|█████▎    | 246/460 [02:05<01:26,  2.49it/s]WARNING src.pose_estimator: 帧 246 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  54%|█████▎    | 247/460 [02:06<01:25,  2.48it/s]WARNING src.pose_estimator: 帧 247 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  54%|█████▍    | 248/460 [02:06<01:26,  2.46it/s]WARNING src.pose_estimator: 帧 248 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  54%|█████▍    | 249/460 [02:07<01:24,  2.50it/s]WARNING src.pose_estimator: 帧 249 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  54%|█████▍    | 250/460 [02:07<01:23,  2.53it/s]WARNING src.pose_estimator: 帧 250 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  55%|█████▍    | 251/460 [02:07<01:21,  2.55it/s]WARNING src.pose_estimator: 帧 251 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  55%|█████▍    | 252/460 [02:08<01:20,  2.57it/s]WARNING src.pose_estimator: 帧 252 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  55%|█████▌    | 253/460 [02:08<01:19,  2.59it/s]WARNING src.pose_estimator: 帧 253 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  55%|█████▌    | 254/460 [02:09<01:19,  2.61it/s]WARNING src.pose_estimator: 帧 254 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  55%|█████▌    | 255/460 [02:09<01:18,  2.61it/s]WARNING src.pose_estimator: 帧 255 姿态估计失败: 下肢有效关节数不足 (0 < 4)
+HRNet 姿态估计:  56%|█████▌    | 256/460 [02:10<01:35,  2.13it/s]WARNING src.pose_estimator: 帧 256 姿态估计失败: 下肢有效关节数不足 (3 < 4)
+HRNet 姿态估计:  56%|█████▌    | 257/460 [02:10<01:50,  1.83it/s]WARNING src.pose_estimator: 帧 257 姿态估计失败: 下肢有效关节数不足 (3 < 4)
+HRNet 姿态估计:  56%|█████▌    | 258/460 [02:11<01:58,  1.70it/s]WARNING src.pose_estimator: 帧 258 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  56%|█████▋    | 259/460 [02:11<01:46,  1.89it/s]WARNING src.pose_estimator: 帧 259 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  57%|█████▋    | 260/460 [02:12<01:38,  2.04it/s]WARNING src.pose_estimator: 帧 260 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  57%|█████▋    | 261/460 [02:12<01:31,  2.18it/s]WARNING src.pose_estimator: 帧 261 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  57%|█████▋    | 262/460 [02:13<01:32,  2.13it/s]WARNING src.pose_estimator: 帧 262 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  57%|█████▋    | 263/460 [02:13<01:27,  2.26it/s]WARNING src.pose_estimator: 帧 263 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  57%|█████▋    | 264/460 [02:14<01:25,  2.29it/s]WARNING src.pose_estimator: 帧 264 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  58%|█████▊    | 265/460 [02:14<01:22,  2.36it/s]WARNING src.pose_estimator: 帧 265 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  58%|█████▊    | 266/460 [02:14<01:20,  2.42it/s]WARNING src.pose_estimator: 帧 266 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  58%|█████▊    | 267/460 [02:15<01:19,  2.43it/s]WARNING src.pose_estimator: 帧 267 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  58%|█████▊    | 268/460 [02:15<01:18,  2.45it/s]WARNING src.pose_estimator: 帧 268 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  58%|█████▊    | 269/460 [02:15<01:17,  2.47it/s]WARNING src.pose_estimator: 帧 269 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  59%|█████▊    | 270/460 [02:16<01:16,  2.48it/s]WARNING src.pose_estimator: 帧 270 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  59%|█████▉    | 271/460 [02:16<01:18,  2.40it/s]WARNING src.pose_estimator: 帧 271 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  59%|█████▉    | 272/460 [02:17<01:16,  2.46it/s]WARNING src.pose_estimator: 帧 272 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  59%|█████▉    | 273/460 [02:17<01:16,  2.45it/s]WARNING src.pose_estimator: 帧 273 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  60%|█████▉    | 274/460 [02:18<01:14,  2.51it/s]WARNING src.pose_estimator: 帧 274 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  60%|█████▉    | 275/460 [02:18<01:13,  2.53it/s]WARNING src.pose_estimator: 帧 275 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  60%|██████    | 276/460 [02:18<01:11,  2.56it/s]WARNING src.pose_estimator: 帧 276 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  60%|██████    | 277/460 [02:19<01:10,  2.59it/s]WARNING src.pose_estimator: 帧 277 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  60%|██████    | 278/460 [02:19<01:09,  2.61it/s]WARNING src.pose_estimator: 帧 278 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  61%|██████    | 279/460 [02:19<01:09,  2.61it/s]WARNING src.pose_estimator: 帧 279 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  61%|██████    | 280/460 [02:20<01:10,  2.56it/s]WARNING src.pose_estimator: 帧 280 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  61%|██████    | 281/460 [02:20<01:10,  2.54it/s]WARNING src.pose_estimator: 帧 281 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  61%|██████▏   | 282/460 [02:21<01:10,  2.53it/s]WARNING src.pose_estimator: 帧 282 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  62%|██████▏   | 283/460 [02:21<01:10,  2.51it/s]WARNING src.pose_estimator: 帧 283 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  62%|██████▏   | 284/460 [02:21<01:10,  2.51it/s]WARNING src.pose_estimator: 帧 284 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  62%|██████▏   | 285/460 [02:22<01:12,  2.40it/s]WARNING src.pose_estimator: 帧 285 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  62%|██████▏   | 286/460 [02:22<01:11,  2.44it/s]WARNING src.pose_estimator: 帧 286 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  62%|██████▏   | 287/460 [02:23<01:10,  2.47it/s]WARNING src.pose_estimator: 帧 287 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  63%|██████▎   | 288/460 [02:23<01:09,  2.47it/s]WARNING src.pose_estimator: 帧 288 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  63%|██████▎   | 289/460 [02:23<01:08,  2.49it/s]WARNING src.pose_estimator: 帧 289 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  63%|██████▎   | 290/460 [02:24<01:07,  2.51it/s]WARNING src.pose_estimator: 帧 290 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  63%|██████▎   | 291/460 [02:24<01:06,  2.54it/s]WARNING src.pose_estimator: 帧 291 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  63%|██████▎   | 292/460 [02:25<01:08,  2.44it/s]WARNING src.pose_estimator: 帧 292 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  64%|██████▎   | 293/460 [02:25<01:09,  2.41it/s]WARNING src.pose_estimator: 帧 293 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  64%|██████▍   | 294/460 [02:26<01:07,  2.45it/s]WARNING src.pose_estimator: 帧 294 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  64%|██████▍   | 295/460 [02:26<01:05,  2.50it/s]WARNING src.pose_estimator: 帧 295 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  64%|██████▍   | 296/460 [02:26<01:04,  2.53it/s]WARNING src.pose_estimator: 帧 296 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  65%|██████▍   | 297/460 [02:27<01:04,  2.52it/s]WARNING src.pose_estimator: 帧 297 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  65%|██████▍   | 298/460 [02:27<01:03,  2.55it/s]WARNING src.pose_estimator: 帧 298 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  65%|██████▌   | 299/460 [02:27<01:03,  2.54it/s]WARNING src.pose_estimator: 帧 299 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  65%|██████▌   | 300/460 [02:28<01:02,  2.56it/s]WARNING src.pose_estimator: 帧 300 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  65%|██████▌   | 301/460 [02:28<01:03,  2.51it/s]WARNING src.pose_estimator: 帧 301 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  66%|██████▌   | 302/460 [02:29<01:02,  2.53it/s]WARNING src.pose_estimator: 帧 302 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  66%|██████▌   | 303/460 [02:29<01:01,  2.56it/s]WARNING src.pose_estimator: 帧 303 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  66%|██████▌   | 304/460 [02:29<01:00,  2.57it/s]WARNING src.pose_estimator: 帧 304 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  66%|██████▋   | 305/460 [02:30<01:00,  2.55it/s]WARNING src.pose_estimator: 帧 305 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  67%|██████▋   | 306/460 [02:30<01:02,  2.48it/s]WARNING src.pose_estimator: 帧 306 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  67%|██████▋   | 307/460 [02:31<01:01,  2.47it/s]WARNING src.pose_estimator: 帧 307 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  67%|██████▋   | 308/460 [02:31<01:00,  2.49it/s]WARNING src.pose_estimator: 帧 308 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  67%|██████▋   | 309/460 [02:32<01:04,  2.34it/s]WARNING src.pose_estimator: 帧 309 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  67%|██████▋   | 310/460 [02:32<01:03,  2.38it/s]WARNING src.pose_estimator: 帧 310 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  68%|██████▊   | 311/460 [02:32<01:01,  2.42it/s]WARNING src.pose_estimator: 帧 311 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  68%|██████▊   | 312/460 [02:33<00:59,  2.47it/s]WARNING src.pose_estimator: 帧 312 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  68%|██████▊   | 313/460 [02:33<00:58,  2.49it/s]WARNING src.pose_estimator: 帧 313 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  68%|██████▊   | 314/460 [02:34<00:58,  2.48it/s]WARNING src.pose_estimator: 帧 314 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  68%|██████▊   | 315/460 [02:34<01:06,  2.17it/s]WARNING src.pose_estimator: 帧 315 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  69%|██████▊   | 316/460 [02:34<01:02,  2.30it/s]WARNING src.pose_estimator: 帧 316 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  69%|██████▉   | 317/460 [02:35<01:00,  2.37it/s]WARNING src.pose_estimator: 帧 317 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  69%|██████▉   | 318/460 [02:35<00:59,  2.37it/s]WARNING src.pose_estimator: 帧 318 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  69%|██████▉   | 319/460 [02:36<00:58,  2.41it/s]WARNING src.pose_estimator: 帧 319 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  70%|██████▉   | 320/460 [02:36<00:57,  2.41it/s]WARNING src.pose_estimator: 帧 320 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  70%|██████▉   | 321/460 [02:36<00:56,  2.46it/s]WARNING src.pose_estimator: 帧 321 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  70%|███████   | 322/460 [02:37<00:55,  2.48it/s]WARNING src.pose_estimator: 帧 322 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  70%|███████   | 323/460 [02:37<00:54,  2.52it/s]WARNING src.pose_estimator: 帧 323 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  70%|███████   | 324/460 [02:38<00:53,  2.53it/s]WARNING src.pose_estimator: 帧 324 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  71%|███████   | 325/460 [02:38<00:56,  2.39it/s]WARNING src.pose_estimator: 帧 325 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  71%|███████   | 326/460 [02:39<00:54,  2.44it/s]WARNING src.pose_estimator: 帧 326 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  71%|███████   | 327/460 [02:39<00:53,  2.50it/s]WARNING src.pose_estimator: 帧 327 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  71%|███████▏  | 328/460 [02:39<00:54,  2.40it/s]WARNING src.pose_estimator: 帧 328 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  72%|███████▏  | 329/460 [02:40<00:53,  2.45it/s]WARNING src.pose_estimator: 帧 329 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  72%|███████▏  | 330/460 [02:40<00:51,  2.50it/s]WARNING src.pose_estimator: 帧 330 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  72%|███████▏  | 331/460 [02:41<00:51,  2.51it/s]WARNING src.pose_estimator: 帧 331 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  72%|███████▏  | 332/460 [02:41<00:50,  2.54it/s]WARNING src.pose_estimator: 帧 332 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  72%|███████▏  | 333/460 [02:41<00:49,  2.56it/s]WARNING src.pose_estimator: 帧 333 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  73%|███████▎  | 334/460 [02:42<00:48,  2.57it/s]WARNING src.pose_estimator: 帧 334 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  73%|███████▎  | 335/460 [02:42<00:50,  2.48it/s]WARNING src.pose_estimator: 帧 335 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  73%|███████▎  | 336/460 [02:43<00:50,  2.45it/s]WARNING src.pose_estimator: 帧 336 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  73%|███████▎  | 337/460 [02:43<00:49,  2.46it/s]WARNING src.pose_estimator: 帧 337 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  73%|███████▎  | 338/460 [02:43<00:49,  2.46it/s]WARNING src.pose_estimator: 帧 338 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  74%|███████▎  | 339/460 [02:44<00:48,  2.48it/s]WARNING src.pose_estimator: 帧 339 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  74%|███████▍  | 340/460 [02:44<00:48,  2.48it/s]WARNING src.pose_estimator: 帧 340 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  74%|███████▍  | 341/460 [02:45<00:48,  2.46it/s]WARNING src.pose_estimator: 帧 341 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  74%|███████▍  | 342/460 [02:45<00:48,  2.45it/s]WARNING src.pose_estimator: 帧 342 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  75%|███████▍  | 343/460 [02:45<00:47,  2.47it/s]WARNING src.pose_estimator: 帧 343 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  75%|███████▍  | 344/460 [02:46<00:47,  2.44it/s]WARNING src.pose_estimator: 帧 344 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  75%|███████▌  | 345/460 [02:46<00:46,  2.45it/s]WARNING src.pose_estimator: 帧 345 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  75%|███████▌  | 346/460 [02:47<00:48,  2.36it/s]WARNING src.pose_estimator: 帧 346 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  75%|███████▌  | 347/460 [02:47<00:46,  2.42it/s]WARNING src.pose_estimator: 帧 347 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  76%|███████▌  | 348/460 [02:47<00:46,  2.38it/s]WARNING src.pose_estimator: 帧 348 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  76%|███████▌  | 349/460 [02:48<00:46,  2.40it/s]WARNING src.pose_estimator: 帧 349 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  76%|███████▌  | 350/460 [02:48<00:45,  2.40it/s]WARNING src.pose_estimator: 帧 350 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  76%|███████▋  | 351/460 [02:49<00:44,  2.43it/s]WARNING src.pose_estimator: 帧 351 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  77%|███████▋  | 352/460 [02:49<00:44,  2.44it/s]WARNING src.pose_estimator: 帧 352 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  77%|███████▋  | 353/460 [02:50<00:43,  2.46it/s]WARNING src.pose_estimator: 帧 353 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  77%|███████▋  | 354/460 [02:50<00:42,  2.49it/s]WARNING src.pose_estimator: 帧 354 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  77%|███████▋  | 355/460 [02:50<00:41,  2.50it/s]WARNING src.pose_estimator: 帧 355 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  77%|███████▋  | 356/460 [02:51<00:41,  2.53it/s]WARNING src.pose_estimator: 帧 356 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  78%|███████▊  | 357/460 [02:51<00:40,  2.57it/s]WARNING src.pose_estimator: 帧 357 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  78%|███████▊  | 358/460 [02:52<00:41,  2.43it/s]WARNING src.pose_estimator: 帧 358 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  78%|███████▊  | 359/460 [02:52<00:41,  2.42it/s]WARNING src.pose_estimator: 帧 359 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  78%|███████▊  | 360/460 [02:52<00:41,  2.42it/s]WARNING src.pose_estimator: 帧 360 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  78%|███████▊  | 361/460 [02:53<00:40,  2.42it/s]WARNING src.pose_estimator: 帧 361 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  79%|███████▊  | 362/460 [02:53<00:40,  2.44it/s]WARNING src.pose_estimator: 帧 362 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  79%|███████▉  | 363/460 [02:54<00:39,  2.48it/s]WARNING src.pose_estimator: 帧 363 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  79%|███████▉  | 364/460 [02:54<00:38,  2.51it/s]WARNING src.pose_estimator: 帧 364 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  79%|███████▉  | 365/460 [02:54<00:37,  2.52it/s]WARNING src.pose_estimator: 帧 365 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  80%|███████▉  | 366/460 [02:55<00:37,  2.54it/s]WARNING src.pose_estimator: 帧 366 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  80%|███████▉  | 367/460 [02:55<00:36,  2.53it/s]WARNING src.pose_estimator: 帧 367 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  80%|████████  | 368/460 [02:56<00:40,  2.26it/s]WARNING src.pose_estimator: 帧 368 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  80%|████████  | 369/460 [02:56<00:39,  2.33it/s]WARNING src.pose_estimator: 帧 369 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  80%|████████  | 370/460 [02:56<00:37,  2.41it/s]WARNING src.pose_estimator: 帧 370 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  81%|████████  | 371/460 [02:57<00:36,  2.43it/s]WARNING src.pose_estimator: 帧 371 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  81%|████████  | 372/460 [02:57<00:36,  2.44it/s]WARNING src.pose_estimator: 帧 372 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  81%|████████  | 373/460 [02:58<00:34,  2.50it/s]WARNING src.pose_estimator: 帧 373 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  81%|████████▏ | 374/460 [02:58<00:33,  2.53it/s]WARNING src.pose_estimator: 帧 374 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  82%|████████▏ | 375/460 [02:58<00:33,  2.55it/s]WARNING src.pose_estimator: 帧 375 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  82%|████████▏ | 376/460 [02:59<00:32,  2.57it/s]WARNING src.pose_estimator: 帧 376 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  82%|████████▏ | 377/460 [02:59<00:33,  2.51it/s]WARNING src.pose_estimator: 帧 377 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  82%|████████▏ | 378/460 [03:00<00:32,  2.53it/s]WARNING src.pose_estimator: 帧 378 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  82%|████████▏ | 379/460 [03:00<00:31,  2.54it/s]WARNING src.pose_estimator: 帧 379 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  83%|████████▎ | 380/460 [03:00<00:31,  2.54it/s]WARNING src.pose_estimator: 帧 380 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  83%|████████▎ | 381/460 [03:01<00:31,  2.52it/s]WARNING src.pose_estimator: 帧 381 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  83%|████████▎ | 382/460 [03:01<00:33,  2.36it/s]WARNING src.pose_estimator: 帧 382 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  83%|████████▎ | 383/460 [03:02<00:32,  2.40it/s]WARNING src.pose_estimator: 帧 383 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  83%|████████▎ | 384/460 [03:02<00:30,  2.46it/s]WARNING src.pose_estimator: 帧 384 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  84%|████████▎ | 385/460 [03:03<00:32,  2.34it/s]WARNING src.pose_estimator: 帧 385 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  84%|████████▍ | 386/460 [03:03<00:31,  2.37it/s]WARNING src.pose_estimator: 帧 386 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  84%|████████▍ | 387/460 [03:03<00:31,  2.28it/s]WARNING src.pose_estimator: 帧 387 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  84%|████████▍ | 388/460 [03:04<00:30,  2.36it/s]WARNING src.pose_estimator: 帧 388 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  85%|████████▍ | 389/460 [03:04<00:29,  2.40it/s]WARNING src.pose_estimator: 帧 389 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  85%|████████▍ | 390/460 [03:05<00:28,  2.42it/s]WARNING src.pose_estimator: 帧 390 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  85%|████████▌ | 391/460 [03:05<00:27,  2.47it/s]WARNING src.pose_estimator: 帧 391 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  85%|████████▌ | 392/460 [03:05<00:27,  2.50it/s]WARNING src.pose_estimator: 帧 392 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  85%|████████▌ | 393/460 [03:06<00:26,  2.49it/s]WARNING src.pose_estimator: 帧 393 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  86%|████████▌ | 394/460 [03:06<00:26,  2.47it/s]WARNING src.pose_estimator: 帧 394 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  86%|████████▌ | 395/460 [03:07<00:26,  2.47it/s]WARNING src.pose_estimator: 帧 395 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  86%|████████▌ | 396/460 [03:07<00:26,  2.38it/s]WARNING src.pose_estimator: 帧 396 姿态估计失败: 下肢有效关节数不足 (0 < 4)
+HRNet 姿态估计:  86%|████████▋ | 397/460 [03:08<00:31,  1.98it/s]WARNING src.pose_estimator: 帧 397 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  87%|████████▋ | 398/460 [03:08<00:29,  2.08it/s]WARNING src.pose_estimator: 帧 398 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  87%|████████▋ | 399/460 [03:09<00:27,  2.18it/s]WARNING src.pose_estimator: 帧 399 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  87%|████████▋ | 400/460 [03:09<00:26,  2.25it/s]WARNING src.pose_estimator: 帧 400 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  87%|████████▋ | 401/460 [03:09<00:25,  2.31it/s]WARNING src.pose_estimator: 帧 401 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  87%|████████▋ | 402/460 [03:10<00:25,  2.32it/s]WARNING src.pose_estimator: 帧 402 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  88%|████████▊ | 403/460 [03:10<00:24,  2.36it/s]WARNING src.pose_estimator: 帧 403 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  88%|████████▊ | 404/460 [03:11<00:24,  2.32it/s]WARNING src.pose_estimator: 帧 404 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  88%|████████▊ | 405/460 [03:11<00:23,  2.36it/s]WARNING src.pose_estimator: 帧 405 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  88%|████████▊ | 406/460 [03:11<00:22,  2.41it/s]WARNING src.pose_estimator: 帧 406 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  88%|████████▊ | 407/460 [03:12<00:21,  2.43it/s]WARNING src.pose_estimator: 帧 407 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  89%|████████▊ | 408/460 [03:12<00:21,  2.47it/s]WARNING src.pose_estimator: 帧 408 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  89%|████████▉ | 409/460 [03:13<00:20,  2.48it/s]WARNING src.pose_estimator: 帧 409 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  89%|████████▉ | 410/460 [03:13<00:20,  2.50it/s]WARNING src.pose_estimator: 帧 410 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  89%|████████▉ | 411/460 [03:13<00:19,  2.51it/s]WARNING src.pose_estimator: 帧 411 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  90%|████████▉ | 412/460 [03:14<00:19,  2.51it/s]WARNING src.pose_estimator: 帧 412 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  90%|████████▉ | 413/460 [03:14<00:18,  2.53it/s]WARNING src.pose_estimator: 帧 413 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  90%|█████████ | 414/460 [03:15<00:18,  2.52it/s]WARNING src.pose_estimator: 帧 414 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  90%|█████████ | 415/460 [03:15<00:17,  2.53it/s]WARNING src.pose_estimator: 帧 415 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  90%|█████████ | 416/460 [03:16<00:20,  2.14it/s]WARNING src.pose_estimator: 帧 416 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  91%|█████████ | 417/460 [03:16<00:19,  2.24it/s]WARNING src.pose_estimator: 帧 417 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  91%|█████████ | 418/460 [03:16<00:18,  2.32it/s]WARNING src.pose_estimator: 帧 418 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  91%|█████████ | 419/460 [03:17<00:17,  2.38it/s]WARNING src.pose_estimator: 帧 419 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  91%|█████████▏| 420/460 [03:17<00:16,  2.42it/s]WARNING src.pose_estimator: 帧 420 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  92%|█████████▏| 421/460 [03:18<00:15,  2.46it/s]WARNING src.pose_estimator: 帧 421 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  92%|█████████▏| 422/460 [03:18<00:15,  2.48it/s]WARNING src.pose_estimator: 帧 422 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  92%|█████████▏| 423/460 [03:18<00:14,  2.51it/s]WARNING src.pose_estimator: 帧 423 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  92%|█████████▏| 424/460 [03:19<00:14,  2.53it/s]WARNING src.pose_estimator: 帧 424 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  92%|█████████▏| 425/460 [03:19<00:13,  2.53it/s]WARNING src.pose_estimator: 帧 425 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  93%|█████████▎| 426/460 [03:20<00:13,  2.53it/s]WARNING src.pose_estimator: 帧 426 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  93%|█████████▎| 427/460 [03:20<00:13,  2.54it/s]WARNING src.pose_estimator: 帧 427 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  93%|█████████▎| 428/460 [03:20<00:12,  2.54it/s]WARNING src.pose_estimator: 帧 428 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  93%|█████████▎| 429/460 [03:21<00:12,  2.53it/s]WARNING src.pose_estimator: 帧 429 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  93%|█████████▎| 430/460 [03:21<00:11,  2.53it/s]WARNING src.pose_estimator: 帧 430 姿态估计失败: 下肢有效关节数不足 (0 < 4)
+HRNet 姿态估计:  94%|█████████▎| 431/460 [03:22<00:13,  2.08it/s]WARNING src.pose_estimator: 帧 431 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  94%|█████████▍| 432/460 [03:22<00:12,  2.20it/s]WARNING src.pose_estimator: 帧 432 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  94%|█████████▍| 433/460 [03:23<00:11,  2.29it/s]WARNING src.pose_estimator: 帧 433 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  94%|█████████▍| 434/460 [03:23<00:11,  2.36it/s]WARNING src.pose_estimator: 帧 434 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  95%|█████████▍| 435/460 [03:23<00:10,  2.40it/s]WARNING src.pose_estimator: 帧 435 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  95%|█████████▍| 436/460 [03:24<00:09,  2.43it/s]WARNING src.pose_estimator: 帧 436 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  95%|█████████▌| 437/460 [03:24<00:09,  2.46it/s]HRNet 姿态估计:  95%|█████████▌| 438/460 [03:25<00:10,  2.08it/s]WARNING src.pose_estimator: 帧 438 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  95%|█████████▌| 439/460 [03:25<00:10,  2.08it/s]WARNING src.pose_estimator: 帧 439 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  96%|█████████▌| 440/460 [03:26<00:09,  2.20it/s]WARNING src.pose_estimator: 帧 440 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  96%|█████████▌| 441/460 [03:26<00:08,  2.30it/s]WARNING src.pose_estimator: 帧 441 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  96%|█████████▌| 442/460 [03:27<00:07,  2.36it/s]WARNING src.pose_estimator: 帧 442 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  96%|█████████▋| 443/460 [03:27<00:07,  2.41it/s]WARNING src.pose_estimator: 帧 443 姿态估计失败: 下肢有效关节数不足 (2 < 4)
+HRNet 姿态估计:  97%|█████████▋| 444/460 [03:28<00:07,  2.03it/s]WARNING src.pose_estimator: 帧 444 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  97%|█████████▋| 445/460 [03:28<00:06,  2.16it/s]WARNING src.pose_estimator: 帧 445 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  97%|█████████▋| 446/460 [03:28<00:06,  2.25it/s]WARNING src.pose_estimator: 帧 446 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  97%|█████████▋| 447/460 [03:29<00:05,  2.33it/s]WARNING src.pose_estimator: 帧 447 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  97%|█████████▋| 448/460 [03:29<00:05,  2.39it/s]WARNING src.pose_estimator: 帧 448 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  98%|█████████▊| 449/460 [03:30<00:04,  2.43it/s]WARNING src.pose_estimator: 帧 449 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  98%|█████████▊| 450/460 [03:30<00:04,  2.46it/s]WARNING src.pose_estimator: 帧 450 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  98%|█████████▊| 451/460 [03:30<00:03,  2.48it/s]WARNING src.pose_estimator: 帧 451 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  98%|█████████▊| 452/460 [03:31<00:03,  2.50it/s]WARNING src.pose_estimator: 帧 452 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  98%|█████████▊| 453/460 [03:31<00:02,  2.50it/s]WARNING src.pose_estimator: 帧 453 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  99%|█████████▊| 454/460 [03:32<00:02,  2.50it/s]WARNING src.pose_estimator: 帧 454 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  99%|█████████▉| 455/460 [03:32<00:02,  2.40it/s]WARNING src.pose_estimator: 帧 455 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  99%|█████████▉| 456/460 [03:32<00:01,  2.44it/s]WARNING src.pose_estimator: 帧 456 姿态估计失败: 未检测到人体
+HRNet 姿态估计:  99%|█████████▉| 457/460 [03:33<00:01,  2.47it/s]WARNING src.pose_estimator: 帧 457 姿态估计失败: 未检测到人体
+HRNet 姿态估计: 100%|█████████▉| 458/460 [03:33<00:00,  2.47it/s]WARNING src.pose_estimator: 帧 458 姿态估计失败: 未检测到人体
+HRNet 姿态估计: 100%|█████████▉| 459/460 [03:34<00:00,  2.50it/s]WARNING src.pose_estimator: 帧 459 姿态估计失败: 下肢有效关节数不足 (0 < 4)
+HRNet 姿态估计: 100%|██████████| 460/460 [03:34<00:00,  2.10it/s]HRNet 姿态估计: 100%|██████████| 460/460 [03:34<00:00,  2.14it/s]
+WARNING src.pose_estimator: 共跳过 379/460 帧
+WARNING src.feature_extractor: extract_sequence_features 共跳过 404/460 帧
+INFO src.feature_extractor: 姿态崩坏帧修复 | 5/56 帧的角度尖刺已插值修复
+INFO src.dtw_aligner: 周期分割完成 | 列=0, 波谷 1 个 (prominence=8.8, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+WARNING src.dtw_aligner: 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+INFO src.dtw_aligner: 周期分割完成 | 列=1, 波谷 1 个 (prominence=9.1, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/erichuang/Desktop/01 Study/IB learning/Extended Essay/src/pipeline.py", line 369, in <module>
+    raise SystemExit(main(_build_arg_parser().parse_args()))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/erichuang/Desktop/01 Study/IB learning/Extended Essay/src/pipeline.py", line 350, in main
+    result = pipeline.score_video(args.video)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/erichuang/Desktop/01 Study/IB learning/Extended Essay/src/pipeline.py", line 224, in score_video
+    return self.score_features(features)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/erichuang/Desktop/01 Study/IB learning/Extended Essay/src/pipeline.py", line 171, in score_features
+    raise ValueError(
+ValueError: 未能从特征中分割出任何蹬腿周期；请检查输入是否包含完整、规律的蹬腿动作，或调整分割参数。

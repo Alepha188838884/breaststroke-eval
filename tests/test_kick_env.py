@@ -16,14 +16,20 @@ _PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if _PROJECT_ROOT not in sys.path:
     sys.path.insert(0, _PROJECT_ROOT)
 
-from src.kick_env import BreaststrokeKickEnv
+from src.kick_env import (
+    BreaststrokeKickEnv,
+    _ANGLE_DEV_MAX,
+    _SYMMETRY_DEV_MAX,
+    _TIMING_WARP_MAX,
+    _SMOOTHNESS_MAX,
+)
 
 
 # --------------------------------------------------------------------------- #
 # 常量与工具
 # --------------------------------------------------------------------------- #
 
-_OBS_DIM: int = 35
+_OBS_DIM: int = 28  # 仅原始运动学（角度/对称/角速度统计量），不含 DTW 偏差/warp
 _N_ACTIONS: int = 21
 _MAX_SCORE: float = 100.0
 _CYCLE_LEN: int = 30
@@ -120,7 +126,7 @@ def _make_env(seed: int = 0) -> BreaststrokeKickEnv:
 def test_spaces() -> None:
     env = _make_env()
     assert env.observation_space.shape == (_OBS_DIM,), (
-        f"observation_space.shape 期望 (35,)，得到 {env.observation_space.shape}"
+        f"observation_space.shape 期望 ({_OBS_DIM},)，得到 {env.observation_space.shape}"
     )
     assert env.observation_space.dtype == np.float32, (
         f"observation_space.dtype 期望 float32，得到 {env.observation_space.dtype}"
@@ -132,14 +138,14 @@ def test_spaces() -> None:
 
 
 # --------------------------------------------------------------------------- #
-# 2. reset 返回 shape (35,) float32 观测
+# 2. reset 返回 shape (28,) float32 观测
 # --------------------------------------------------------------------------- #
 
 def test_reset_shape() -> None:
     env = _make_env()
     obs, info = env.reset()
     assert isinstance(obs, np.ndarray), f"obs 应为 ndarray，得到 {type(obs)}"
-    assert obs.shape == (_OBS_DIM,), f"obs.shape 期望 (35,)，得到 {obs.shape}"
+    assert obs.shape == (_OBS_DIM,), f"obs.shape 期望 ({_OBS_DIM},)，得到 {obs.shape}"
     assert obs.dtype == np.float32, f"obs.dtype 期望 float32，得到 {obs.dtype}"
     assert env.observation_space.contains(obs), "obs 必须落在观测空间内"
     assert isinstance(info, dict), "info 应为 dict"
@@ -294,6 +300,86 @@ def test_kick_cycles_defensive_copy() -> None:
 
 
 # --------------------------------------------------------------------------- #
+# 9. score_scales=None 与显式传默认值四键 等价（逐 bit 不变）
+# --------------------------------------------------------------------------- #
+
+def test_score_scales_default_equivalence() -> None:
+    cycles = _make_random_cycles(seed=7)
+    aligner = _MockDTWAligner()
+    env_default = BreaststrokeKickEnv(
+        list(cycles), aligner, seed=0  # type: ignore[arg-type]
+    )
+    env_explicit = BreaststrokeKickEnv(
+        list(cycles),
+        aligner,  # type: ignore[arg-type]
+        seed=0,
+        score_scales={
+            "angle": _ANGLE_DEV_MAX,
+            "symmetry": _SYMMETRY_DEV_MAX,
+            "timing": _TIMING_WARP_MAX,
+            "smoothness": _SMOOTHNESS_MAX,
+        },
+    )
+    assert env_default._cached_target_score == env_explicit._cached_target_score, (
+        "score_scales=None 应与显式传默认值四键逐一相等"
+    )
+    dist_default = env_default.factor_distribution()["current_scale_maxes"]
+    dist_explicit = env_explicit.factor_distribution()["current_scale_maxes"]
+    assert dist_default == dist_explicit
+    print("test_score_scales_default_equivalence PASSED")
+
+
+# --------------------------------------------------------------------------- #
+# 10. 覆盖生效：调小 smoothness 尺度后 target_score 单调不升
+# --------------------------------------------------------------------------- #
+
+def test_score_scales_override_lowers_or_equal_score() -> None:
+    cycles = _make_random_cycles(seed=11)  # 角速度 ∈ [-200, 200]，非零
+    aligner = _MockDTWAligner()
+    env_default = BreaststrokeKickEnv(list(cycles), aligner, seed=0)  # type: ignore[arg-type]
+    env_tight = BreaststrokeKickEnv(
+        list(cycles),
+        aligner,  # type: ignore[arg-type]
+        seed=0,
+        score_scales={"smoothness": 1.0},
+    )
+    for i, (s_default, s_tight) in enumerate(
+        zip(env_default._cached_target_score, env_tight._cached_target_score)
+    ):
+        assert s_tight <= s_default + 1e-9, (
+            f"周期 {i}: smoothness 尺度收紧后分数应更低或相等，"
+            f"得到 default={s_default} tight={s_tight}"
+        )
+    scales = env_tight.factor_distribution()["current_scale_maxes"]
+    assert scales["smoothness"] == 1.0, f"current_scale_maxes 未反映新值: {scales}"
+    assert scales["angle"] == _ANGLE_DEV_MAX, "未覆盖的键应保留默认值"
+    print("test_score_scales_override_lowers_or_equal_score PASSED")
+
+
+# --------------------------------------------------------------------------- #
+# 11. 非法 score_scales：未知键 / 非正值 -> ValueError
+# --------------------------------------------------------------------------- #
+
+def test_score_scales_invalid_raises_value_error() -> None:
+    cycles = _make_random_cycles()
+    aligner = _MockDTWAligner()
+
+    for bad_scales in (
+        {"bogus_key": 1.0},
+        {"angle": 0.0},
+        {"symmetry": -5.0},
+    ):
+        try:
+            BreaststrokeKickEnv(
+                list(cycles), aligner, seed=0, score_scales=bad_scales  # type: ignore[arg-type]
+            )
+        except ValueError:
+            continue
+        raise AssertionError(f"score_scales={bad_scales} 应抛出 ValueError")
+    print("test_score_scales_invalid_raises_value_error PASSED")
+
+
+# --------------------------------------------------------------------------- #
 
 if __name__ == "__main__":
     test_spaces()
@@ -304,4 +390,7 @@ if __name__ == "__main__":
     test_passes_check_env()
     test_obs_and_info_are_isolated_from_cache()
     test_kick_cycles_defensive_copy()
+    test_score_scales_default_equivalence()
+    test_score_scales_override_lowers_or_equal_score()
+    test_score_scales_invalid_raises_value_error()
     print("ALL TESTS PASSED")

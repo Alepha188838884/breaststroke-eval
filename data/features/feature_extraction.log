@@ -1,0 +1,966 @@
+2026-07-04 11:34:33,377 | INFO | __main__ | 合并 4 份质量报告，共 784 视频
+2026-07-04 11:34:33,377 | INFO | __main__ | 合格视频（非 low_quality）237 个
+2026-07-04 11:34:33,377 | INFO | src.dtw_aligner | 已加载模板 data/templates/champion_template.npy | shape=(45, 10)
+2026-07-04 11:34:33,385 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 99/301 帧
+2026-07-04 11:34:33,385 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 4/202 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,385 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,386 | INFO | __main__ |   -EtzU3Qj7gQ_64_74 | 202 有效帧 | 3 周期 | 平均周期长 36.3 帧
+2026-07-04 11:34:33,388 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 190/285 帧
+2026-07-04 11:34:33,388 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/95 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,388 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.4, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,389 | INFO | __main__ |   -GvFmYm0xwQ_7_17 | 95 有效帧 | 3 周期 | 平均周期长 24.0 帧
+2026-07-04 11:34:33,392 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 115/251 帧
+2026-07-04 11:34:33,392 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 5/136 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,392 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,392 | INFO | __main__ |   -eYXPoMyrXw_71_81 | 136 有效帧 | 2 周期 | 平均周期长 24.5 帧
+2026-07-04 11:34:33,396 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 132/301 帧
+2026-07-04 11:34:33,396 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 22/169 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,396 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=14.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,396 | INFO | __main__ |   -k7_81FaDgc_114_124 | 169 有效帧 | 2 周期 | 平均周期长 35.0 帧
+2026-07-04 11:34:33,400 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 129/297 帧
+2026-07-04 11:34:33,400 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,401 | INFO | __main__ |   00Klr-1s1FY_29_39 | 168 有效帧 | 2 周期 | 平均周期长 33.0 帧
+2026-07-04 11:34:33,404 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 184/301 帧
+2026-07-04 11:34:33,404 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 5/117 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,404 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,404 | INFO | __main__ |   0GIpCCTEGVc_303_313 | 117 有效帧 | 1 周期 | 平均周期长 28.0 帧
+2026-07-04 11:34:33,409 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 31/260 帧
+2026-07-04 11:34:33,409 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/229 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,409 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 7 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 6 个，过滤异常 0 个
+2026-07-04 11:34:33,410 | INFO | __main__ |   0HW6HfdS8iA_0_10 | 229 有效帧 | 6 周期 | 平均周期长 32.2 帧
+2026-07-04 11:34:33,412 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 172/301 帧
+2026-07-04 11:34:33,413 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,413 | INFO | __main__ |   0amUCNWCg24_219_229 | 129 有效帧 | 1 周期 | 平均周期长 45.0 帧
+2026-07-04 11:34:33,416 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 152/301 帧
+2026-07-04 11:34:33,417 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,417 | INFO | __main__ |   0hVtX45KhS8_75_85 | 149 有效帧 | 3 周期 | 平均周期长 38.0 帧
+2026-07-04 11:34:33,419 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 164/251 帧
+2026-07-04 11:34:33,419 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 13/87 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,420 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,420 | INFO | __main__ |   0mgg1ty1vPQ_61_71 | 87 有效帧 | 2 周期 | 平均周期长 22.5 帧
+2026-07-04 11:34:33,425 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 83/301 帧
+2026-07-04 11:34:33,425 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/218 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,425 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 6 个 (prominence=7.6, distance=20, 平滑核=5) → 周期 5 个，过滤异常 0 个
+2026-07-04 11:34:33,425 | INFO | __main__ |   0uKkp6FqoTg_20_30 | 218 有效帧 | 5 周期 | 平均周期长 36.6 帧
+2026-07-04 11:34:33,431 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 32/301 帧
+2026-07-04 11:34:33,431 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/269 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,431 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 7 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 6 个，过滤异常 0 个
+2026-07-04 11:34:33,432 | INFO | __main__ |   1X47bjr68u4_44_54 | 269 有效帧 | 6 周期 | 平均周期长 38.3 帧
+2026-07-04 11:34:33,436 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 131/301 帧
+2026-07-04 11:34:33,436 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 19/170 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,436 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 6 个 (prominence=6.1, distance=20, 平滑核=5) → 周期 5 个，过滤异常 0 个
+2026-07-04 11:34:33,436 | INFO | __main__ |   25xL3XDClIU_37_47 | 170 有效帧 | 5 周期 | 平均周期长 24.4 帧
+2026-07-04 11:34:33,437 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 186/198 帧
+2026-07-04 11:34:33,437 | WARNING | src.dtw_aligner | 特征序列过短 (N=12)，无法分割出有效周期
+2026-07-04 11:34:33,437 | INFO | __main__ |   2dD7-peMjIY_58_68 | 12 有效帧 | 未分割出周期
+2026-07-04 11:34:33,440 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 189/289 帧
+2026-07-04 11:34:33,440 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,440 | INFO | __main__ |   2fRD4L_7kOM_41_51 | 100 有效帧 | 1 周期 | 平均周期长 64.0 帧
+2026-07-04 11:34:33,443 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 163/301 帧
+2026-07-04 11:34:33,444 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 5/138 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,444 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,444 | INFO | __main__ |   2lGD1fGYing_25_35 | 138 有效帧 | 2 周期 | 平均周期长 58.5 帧
+2026-07-04 11:34:33,450 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 18/298 帧
+2026-07-04 11:34:33,450 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/280 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,450 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:33,450 | INFO | __main__ |   2uDuWpBiTQE_21_31 | 280 有效帧 | 4 周期 | 平均周期长 43.8 帧
+2026-07-04 11:34:33,453 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 179/301 帧
+2026-07-04 11:34:33,454 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,454 | INFO | __main__ |   3LAYSvgZ5k8_63_73 | 122 有效帧 | 2 周期 | 平均周期长 50.5 帧
+2026-07-04 11:34:33,456 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 166/241 帧
+2026-07-04 11:34:33,456 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,456 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:33,456 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,456 | INFO | __main__ |   3P1oRlBzWNo_42_52 | 75 有效帧 | 未分割出周期
+2026-07-04 11:34:33,459 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 136/282 帧
+2026-07-04 11:34:33,460 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/146 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,460 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=6.4, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,460 | INFO | __main__ |   3Zk1lQE2iLA_31_41 | 146 有效帧 | 1 周期 | 平均周期长 36.0 帧
+2026-07-04 11:34:33,464 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 121/301 帧
+2026-07-04 11:34:33,464 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/180 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,464 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,464 | INFO | __main__ |   3sxKDL_w8r0_50_60 | 180 有效帧 | 3 周期 | 平均周期长 49.0 帧
+2026-07-04 11:34:33,468 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 150/301 帧
+2026-07-04 11:34:33,468 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/151 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,468 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,468 | INFO | __main__ |   44tMUwPenAQ_26_36 | 151 有效帧 | 2 周期 | 平均周期长 46.5 帧
+2026-07-04 11:34:33,472 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 155/301 帧
+2026-07-04 11:34:33,472 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/146 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,472 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,472 | INFO | __main__ |   4DsdbkZh79A_77_87 | 146 有效帧 | 2 周期 | 平均周期长 37.0 帧
+2026-07-04 11:34:33,474 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 248/301 帧
+2026-07-04 11:34:33,474 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 6/53 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,474 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,474 | INFO | __main__ |   4FX13VFUM2I_78_88 | 53 有效帧 | 1 周期 | 平均周期长 38.0 帧
+2026-07-04 11:34:33,478 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 115/251 帧
+2026-07-04 11:34:33,478 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,479 | INFO | __main__ |   4GYdcCnJDHw_78_88 | 136 有效帧 | 1 周期 | 平均周期长 93.0 帧
+2026-07-04 11:34:33,483 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 75/300 帧
+2026-07-04 11:34:33,484 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/225 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,484 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:33,484 | INFO | __main__ |   4agHGdKhYjo_33_43 | 225 有效帧 | 4 周期 | 平均周期长 39.5 帧
+2026-07-04 11:34:33,488 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 122/301 帧
+2026-07-04 11:34:33,488 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 19/179 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,489 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,489 | INFO | __main__ |   4q2I1X5rlvU_58_68 | 179 有效帧 | 3 周期 | 平均周期长 40.0 帧
+2026-07-04 11:34:33,492 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 180/301 帧
+2026-07-04 11:34:33,492 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,492 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:33,492 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,492 | INFO | __main__ |   4sKsYvUQLkU_2_12 | 121 有效帧 | 2 周期 | 平均周期长 53.0 帧
+2026-07-04 11:34:33,497 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 58/264 帧
+2026-07-04 11:34:33,497 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/206 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,497 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:33,497 | INFO | __main__ |   5Az9BjFlNZA_33_43 | 206 有效帧 | 4 周期 | 平均周期长 31.5 帧
+2026-07-04 11:34:33,500 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 170/298 帧
+2026-07-04 11:34:33,500 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/128 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,500 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,501 | INFO | __main__ |   5SPVL3ke4EA_20_30 | 128 有效帧 | 2 周期 | 平均周期长 45.0 帧
+2026-07-04 11:34:33,502 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 132/201 帧
+2026-07-04 11:34:33,503 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,503 | INFO | __main__ |   5mWouQ2q03c_11_21 | 69 有效帧 | 1 周期 | 平均周期长 58.0 帧
+2026-07-04 11:34:33,506 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 182/301 帧
+2026-07-04 11:34:33,506 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/119 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,506 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,506 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:33,506 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,506 | INFO | __main__ |   5pw_vWpktaA_34_44 | 119 有效帧 | 1 周期 | 平均周期长 36.0 帧
+2026-07-04 11:34:33,510 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 142/301 帧
+2026-07-04 11:34:33,510 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 9/159 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,510 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=7.5, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:33,511 | INFO | __main__ |   65NlQjCDAyw_20_30 | 159 有效帧 | 4 周期 | 平均周期长 31.8 帧
+2026-07-04 11:34:33,512 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 203/251 帧
+2026-07-04 11:34:33,512 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/48 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,512 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=7.9, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,512 | INFO | __main__ |   67eXwE73ITg_58_68 | 48 有效帧 | 1 周期 | 平均周期长 35.0 帧
+2026-07-04 11:34:33,516 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 155/301 帧
+2026-07-04 11:34:33,516 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,516 | INFO | __main__ |   69RyHJpLFII_44_54 | 146 有效帧 | 1 周期 | 平均周期长 35.0 帧
+2026-07-04 11:34:33,520 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 148/301 帧
+2026-07-04 11:34:33,520 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 10/153 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,520 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 6 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 5 个，过滤异常 0 个
+2026-07-04 11:34:33,520 | INFO | __main__ |   6QyIK-6xdgw_11_21 | 153 有效帧 | 5 周期 | 平均周期长 27.0 帧
+2026-07-04 11:34:33,524 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 128/301 帧
+2026-07-04 11:34:33,525 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 25/173 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,525 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=14.1, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,525 | INFO | __main__ |   6UN4nMsLDIE_12_22 | 173 有效帧 | 2 周期 | 平均周期长 54.0 帧
+2026-07-04 11:34:33,529 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 134/301 帧
+2026-07-04 11:34:33,529 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 4/167 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,529 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:33,529 | INFO | __main__ |   6itStoeUKEc_62_72 | 167 有效帧 | 4 周期 | 平均周期长 35.2 帧
+2026-07-04 11:34:33,532 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 210/301 帧
+2026-07-04 11:34:33,532 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,532 | INFO | __main__ |   6mzXcoDbwX8_18_28 | 91 有效帧 | 1 周期 | 平均周期长 47.0 帧
+2026-07-04 11:34:33,535 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 190/301 帧
+2026-07-04 11:34:33,535 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 7/111 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,535 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=11.8, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,536 | INFO | __main__ |   6sbl2hX4kLs_11_21 | 111 有效帧 | 2 周期 | 平均周期长 36.5 帧
+2026-07-04 11:34:33,539 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 174/301 帧
+2026-07-04 11:34:33,539 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/127 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,539 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,539 | INFO | __main__ |   8Y152i748Wo_43_53 | 127 有效帧 | 2 周期 | 平均周期长 40.5 帧
+2026-07-04 11:34:33,543 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 150/301 帧
+2026-07-04 11:34:33,543 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/151 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,543 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,544 | INFO | __main__ |   9LKG4xPLSAQ_20_30 | 151 有效帧 | 3 周期 | 平均周期长 37.7 帧
+2026-07-04 11:34:33,549 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 54/301 帧
+2026-07-04 11:34:33,549 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=12.7, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,550 | INFO | __main__ |   9NNbBifitds_53_63 | 247 有效帧 | 2 周期 | 平均周期长 64.0 帧
+2026-07-04 11:34:33,556 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 27/301 帧
+2026-07-04 11:34:33,556 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 13/274 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,556 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 6 个 (prominence=6.7, distance=20, 平滑核=5) → 周期 5 个，过滤异常 0 个
+2026-07-04 11:34:33,556 | INFO | __main__ |   9eERmmowS5c_76_86 | 274 有效帧 | 5 周期 | 平均周期长 34.8 帧
+2026-07-04 11:34:33,559 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 164/301 帧
+2026-07-04 11:34:33,560 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 18/137 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,560 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=11.3, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,560 | INFO | __main__ |   9g9maSiKMcM_137_147 | 137 有效帧 | 2 周期 | 平均周期长 53.5 帧
+2026-07-04 11:34:33,562 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 78/151 帧
+2026-07-04 11:34:33,562 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 6/73 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,562 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,562 | INFO | __main__ |   A6VdDP7ZhkQ_15_25 | 73 有效帧 | 1 周期 | 平均周期长 28.0 帧
+2026-07-04 11:34:33,563 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 59/101 帧
+2026-07-04 11:34:33,563 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 0 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,563 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:33,563 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,564 | INFO | __main__ |   ABN5YJe1o90_79_89 | 42 有效帧 | 未分割出周期
+2026-07-04 11:34:33,564 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 297/301 帧
+2026-07-04 11:34:33,564 | WARNING | src.dtw_aligner | 特征序列过短 (N=4)，无法分割出有效周期
+2026-07-04 11:34:33,564 | INFO | __main__ |   ATtSWDTgFWg_45_55 | 4 有效帧 | 未分割出周期
+2026-07-04 11:34:33,571 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 8/301 帧
+2026-07-04 11:34:33,571 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:33,571 | INFO | __main__ |   AYBG9I07OZA_27_37 | 293 有效帧 | 4 周期 | 平均周期长 49.2 帧
+2026-07-04 11:34:33,576 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 70/300 帧
+2026-07-04 11:34:33,577 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,577 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:33,577 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,577 | INFO | __main__ |   B-uXEsUbaeU_26_36 | 230 有效帧 | 未分割出周期
+2026-07-04 11:34:33,583 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 17/301 帧
+2026-07-04 11:34:33,583 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 6/284 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,583 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,584 | INFO | __main__ |   BQXtOSnyZt0_111_121 | 284 有效帧 | 3 周期 | 平均周期长 58.0 帧
+2026-07-04 11:34:33,586 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 143/251 帧
+2026-07-04 11:34:33,586 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/108 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,586 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,587 | INFO | __main__ |   BplZKBmpXIg_16_26 | 108 有效帧 | 2 周期 | 平均周期长 27.5 帧
+2026-07-04 11:34:33,588 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 267/301 帧
+2026-07-04 11:34:33,588 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/34 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,588 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,588 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:33,588 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,588 | INFO | __main__ |   C3XP7IyQQ_o_246_256 | 34 有效帧 | 未分割出周期
+2026-07-04 11:34:33,590 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 68/151 帧
+2026-07-04 11:34:33,590 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,590 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:33,591 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,591 | INFO | __main__ |   CJo3gc8gZ0s_2_12 | 83 有效帧 | 1 周期 | 平均周期长 31.0 帧
+2026-07-04 11:34:33,593 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 170/281 帧
+2026-07-04 11:34:33,594 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 15/111 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,594 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.7, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,594 | INFO | __main__ |   Cf1zV39GO8E_54_64 | 111 有效帧 | 2 周期 | 平均周期长 38.5 帧
+2026-07-04 11:34:33,596 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 152/241 帧
+2026-07-04 11:34:33,596 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 8/89 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,596 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,596 | INFO | __main__ |   CgxzXIzYxnQ_67_77 | 89 有效帧 | 1 周期 | 平均周期长 42.0 帧
+2026-07-04 11:34:33,602 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 49/301 帧
+2026-07-04 11:34:33,602 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/252 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,602 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 7 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 6 个，过滤异常 0 个
+2026-07-04 11:34:33,602 | INFO | __main__ |   DgH7oBgK0F4_37_47 | 252 有效帧 | 6 周期 | 平均周期长 36.5 帧
+2026-07-04 11:34:33,608 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 21/301 帧
+2026-07-04 11:34:33,609 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:33,609 | INFO | __main__ |   DwpeIBd8QJE_45_55 | 280 有效帧 | 4 周期 | 平均周期长 39.5 帧
+2026-07-04 11:34:33,611 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 219/301 帧
+2026-07-04 11:34:33,611 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 9/82 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,612 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=6.2, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,612 | INFO | __main__ |   E9xlgcWHt-I_6_16 | 82 有效帧 | 1 周期 | 平均周期长 53.0 帧
+2026-07-04 11:34:33,615 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 130/251 帧
+2026-07-04 11:34:33,615 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 6/121 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,615 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,615 | INFO | __main__ |   EIvKD-zMbcs_56_66 | 121 有效帧 | 2 周期 | 平均周期长 25.5 帧
+2026-07-04 11:34:33,621 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 44/297 帧
+2026-07-04 11:34:33,621 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 6 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 5 个，过滤异常 0 个
+2026-07-04 11:34:33,621 | INFO | __main__ |   EMXGCGOW6DI_194_204 | 253 有效帧 | 5 周期 | 平均周期长 40.8 帧
+2026-07-04 11:34:33,626 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 95/301 帧
+2026-07-04 11:34:33,626 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/206 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,626 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 6 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 5 个，过滤异常 0 个
+2026-07-04 11:34:33,626 | INFO | __main__ |   ETAHedIc5Co_30_40 | 206 有效帧 | 5 周期 | 平均周期长 32.8 帧
+2026-07-04 11:34:33,628 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 176/251 帧
+2026-07-04 11:34:33,628 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 15/75 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,629 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,629 | INFO | __main__ |   EdU7LFanhps_64_74 | 75 有效帧 | 2 周期 | 平均周期长 27.5 帧
+2026-07-04 11:34:33,632 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 186/301 帧
+2026-07-04 11:34:33,632 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 6/115 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,632 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,632 | INFO | __main__ |   G-VqYo_LUUA_18_28 | 115 有效帧 | 1 周期 | 平均周期长 53.0 帧
+2026-07-04 11:34:33,634 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 182/251 帧
+2026-07-04 11:34:33,634 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 6/69 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,634 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=9.1, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,634 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:33,634 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 2 个 (prominence=6.1, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,634 | INFO | __main__ |   G1waG8EHDt8_8_18 | 69 有效帧 | 1 周期 | 平均周期长 30.0 帧
+2026-07-04 11:34:33,639 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 95/301 帧
+2026-07-04 11:34:33,639 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 16/206 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,639 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=10.4, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,639 | INFO | __main__ |   GQKh5kUSrRs_23_33 | 206 有效帧 | 2 周期 | 平均周期长 46.5 帧
+2026-07-04 11:34:33,642 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 228/301 帧
+2026-07-04 11:34:33,642 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/73 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,642 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,642 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:33,642 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,642 | INFO | __main__ |   GqmVoia9cRo_41_51 | 73 有效帧 | 未分割出周期
+2026-07-04 11:34:33,648 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 4/301 帧
+2026-07-04 11:34:33,649 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:33,649 | INFO | __main__ |   GthyPj-F2Rc_141_151 | 297 有效帧 | 4 周期 | 平均周期长 59.8 帧
+2026-07-04 11:34:33,651 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 212/300 帧
+2026-07-04 11:34:33,651 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 8/88 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,652 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.2, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,652 | INFO | __main__ |   HI6k03MNTcI_93_103 | 88 有效帧 | 1 周期 | 平均周期长 35.0 帧
+2026-07-04 11:34:33,654 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 198/300 帧
+2026-07-04 11:34:33,654 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 7/102 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,654 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=7.5, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,655 | INFO | __main__ |   HhnaVqBmuSE_28_38 | 102 有效帧 | 2 周期 | 平均周期长 31.0 帧
+2026-07-04 11:34:33,660 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 42/301 帧
+2026-07-04 11:34:33,660 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/259 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,660 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 9 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 8 个，过滤异常 0 个
+2026-07-04 11:34:33,661 | INFO | __main__ |   I6SRDU3JBw8_17_27 | 259 有效帧 | 8 周期 | 平均周期长 30.9 帧
+2026-07-04 11:34:33,664 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 146/301 帧
+2026-07-04 11:34:33,664 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,665 | INFO | __main__ |   J44-zGIdA0U_22_32 | 155 有效帧 | 1 周期 | 平均周期长 72.0 帧
+2026-07-04 11:34:33,668 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 148/301 帧
+2026-07-04 11:34:33,668 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,669 | INFO | __main__ |   JD2dkewhHmY_42_52 | 153 有效帧 | 1 周期 | 平均周期长 25.0 帧
+2026-07-04 11:34:33,674 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 74/286 帧
+2026-07-04 11:34:33,674 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 25/212 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,674 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=10.5, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:33,674 | INFO | __main__ |   JaC6iS48gRE_0_10 | 212 有效帧 | 4 周期 | 平均周期长 42.8 帧
+2026-07-04 11:34:33,679 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 102/301 帧
+2026-07-04 11:34:33,679 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/199 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,679 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,679 | INFO | __main__ |   Jg85rgJOI5c_117_127 | 199 有效帧 | 3 周期 | 平均周期长 36.0 帧
+2026-07-04 11:34:33,681 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 238/301 帧
+2026-07-04 11:34:33,681 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 6/63 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,681 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=5.4, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,681 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:33,681 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 2 个 (prominence=6.1, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,682 | INFO | __main__ |   JgTXY6NWHJA_9_19 | 63 有效帧 | 1 周期 | 平均周期长 47.0 帧
+2026-07-04 11:34:33,684 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 187/300 帧
+2026-07-04 11:34:33,684 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/113 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,684 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,685 | INFO | __main__ |   JhD1K5ph75s_24_34 | 113 有效帧 | 2 周期 | 平均周期长 47.0 帧
+2026-07-04 11:34:33,689 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 213/301 帧
+2026-07-04 11:34:33,689 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 17/88 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,689 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=8.6, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,689 | INFO | __main__ |   KXVFjynC0Ek_4_14 | 88 有效帧 | 2 周期 | 平均周期长 29.0 帧
+2026-07-04 11:34:33,693 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 131/301 帧
+2026-07-04 11:34:33,693 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 7/170 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,693 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 6 个 (prominence=7.4, distance=20, 平滑核=5) → 周期 5 个，过滤异常 0 个
+2026-07-04 11:34:33,693 | INFO | __main__ |   KcBSXtZn7mI_13_23 | 170 有效帧 | 5 周期 | 平均周期长 24.8 帧
+2026-07-04 11:34:33,699 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 50/301 帧
+2026-07-04 11:34:33,699 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 14/251 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,699 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 9 个 (prominence=6.9, distance=20, 平滑核=5) → 周期 8 个，过滤异常 0 个
+2026-07-04 11:34:33,699 | INFO | __main__ |   Kdbbf-cTJ3Y_15_25 | 251 有效帧 | 8 周期 | 平均周期长 28.8 帧
+2026-07-04 11:34:33,702 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 210/301 帧
+2026-07-04 11:34:33,702 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 11/91 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,702 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,702 | INFO | __main__ |   LnmKfGmfAJs_71_81 | 91 有效帧 | 2 周期 | 平均周期长 37.0 帧
+2026-07-04 11:34:33,706 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 122/282 帧
+2026-07-04 11:34:33,706 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/160 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,706 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:33,706 | INFO | __main__ |   M9fBCmXmlhk_4_14 | 160 有效帧 | 4 周期 | 平均周期长 35.0 帧
+2026-07-04 11:34:33,710 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 114/251 帧
+2026-07-04 11:34:33,710 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 9/137 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,710 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.5, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,710 | INFO | __main__ |   MOXxHXMwaRw_31_41 | 137 有效帧 | 2 周期 | 平均周期长 47.0 帧
+2026-07-04 11:34:33,713 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 185/301 帧
+2026-07-04 11:34:33,713 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 23/116 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,713 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=6.5, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,713 | INFO | __main__ |   MkXI2IVEr8Q_21_31 | 116 有效帧 | 3 周期 | 平均周期长 26.3 帧
+2026-07-04 11:34:33,717 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 112/301 帧
+2026-07-04 11:34:33,717 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/189 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,717 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,717 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:33,717 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,718 | INFO | __main__ |   NPtmsvcFPUI_103_113 | 189 有效帧 | 1 周期 | 平均周期长 28.0 帧
+2026-07-04 11:34:33,722 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 120/301 帧
+2026-07-04 11:34:33,722 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,722 | INFO | __main__ |   NSF_NhKB4P8_59_69 | 181 有效帧 | 3 周期 | 平均周期长 28.0 帧
+2026-07-04 11:34:33,726 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 142/301 帧
+2026-07-04 11:34:33,726 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,726 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:33,726 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,726 | INFO | __main__ |   Ntb-M0vWOus_45_55 | 159 有效帧 | 1 周期 | 平均周期长 76.0 帧
+2026-07-04 11:34:33,730 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 137/301 帧
+2026-07-04 11:34:33,730 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 5/164 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,730 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,730 | INFO | __main__ |   OR9yuGPAjQQ_13_23 | 164 有效帧 | 3 周期 | 平均周期长 39.3 帧
+2026-07-04 11:34:33,732 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 92/165 帧
+2026-07-04 11:34:33,733 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,733 | INFO | __main__ |   Os18bvsn-1s_61_71 | 73 有效帧 | 1 周期 | 平均周期长 29.0 帧
+2026-07-04 11:34:33,736 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 180/300 帧
+2026-07-04 11:34:33,736 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 9/120 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,736 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=9.2, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,736 | INFO | __main__ |   OsAJoVshj7A_58_68 | 120 有效帧 | 2 周期 | 平均周期长 41.0 帧
+2026-07-04 11:34:33,741 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 73/291 帧
+2026-07-04 11:34:33,741 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/218 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,741 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:33,742 | INFO | __main__ |   OxFNzcAnQGc_43_53 | 218 有效帧 | 4 周期 | 平均周期长 27.8 帧
+2026-07-04 11:34:33,743 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 187/234 帧
+2026-07-04 11:34:33,743 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/47 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,743 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,743 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:33,743 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 2 个 (prominence=8.3, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,744 | INFO | __main__ |   P-Lv4HPTsSc_18_28 | 47 有效帧 | 1 周期 | 平均周期长 30.0 帧
+2026-07-04 11:34:33,748 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 97/301 帧
+2026-07-04 11:34:33,748 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/204 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,748 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 6 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 5 个，过滤异常 0 个
+2026-07-04 11:34:33,749 | INFO | __main__ |   P2ybUV7VKQY_70_80 | 204 有效帧 | 5 周期 | 平均周期长 30.2 帧
+2026-07-04 11:34:33,751 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 206/301 帧
+2026-07-04 11:34:33,751 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,751 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:33,751 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 0 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,752 | INFO | __main__ |   PXdhB2zfPGc_72_82 | 95 有效帧 | 未分割出周期
+2026-07-04 11:34:33,754 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 117/251 帧
+2026-07-04 11:34:33,754 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 11/134 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,755 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,755 | INFO | __main__ |   PulqkOLoXn4_1_11 | 134 有效帧 | 2 周期 | 平均周期长 48.0 帧
+2026-07-04 11:34:33,760 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 75/301 帧
+2026-07-04 11:34:33,760 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 12/226 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,760 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 6 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 5 个，过滤异常 0 个
+2026-07-04 11:34:33,760 | INFO | __main__ |   Q6FrxOkIsbk_12_22 | 226 有效帧 | 5 周期 | 平均周期长 35.8 帧
+2026-07-04 11:34:33,762 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 238/301 帧
+2026-07-04 11:34:33,762 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/63 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,762 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,762 | INFO | __main__ |   Q9wUffN_Y1Q_52_62 | 63 有效帧 | 1 周期 | 平均周期长 31.0 帧
+2026-07-04 11:34:33,766 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 138/300 帧
+2026-07-04 11:34:33,766 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 11/162 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,766 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,767 | INFO | __main__ |   R01pDef7uy8_32_42 | 162 有效帧 | 3 周期 | 平均周期长 37.0 帧
+2026-07-04 11:34:33,769 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 112/241 帧
+2026-07-04 11:34:33,770 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/129 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,770 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,770 | INFO | __main__ |   R3DJXmnUnEw_92_102 | 129 有效帧 | 1 周期 | 平均周期长 20.0 帧
+2026-07-04 11:34:33,775 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 57/300 帧
+2026-07-04 11:34:33,775 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/243 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,775 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,776 | INFO | __main__ |   REkZPRTzAWg_63_73 | 243 有效帧 | 3 周期 | 平均周期长 29.7 帧
+2026-07-04 11:34:33,781 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 33/301 帧
+2026-07-04 11:34:33,782 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/268 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,782 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,782 | INFO | __main__ |   RSLrLx5gwzI_30_40 | 268 有效帧 | 3 周期 | 平均周期长 33.3 帧
+2026-07-04 11:34:33,785 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 151/301 帧
+2026-07-04 11:34:33,786 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,786 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:33,786 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,786 | INFO | __main__ |   RXMWSmT93I0_44_54 | 150 有效帧 | 1 周期 | 平均周期长 93.0 帧
+2026-07-04 11:34:33,791 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 88/301 帧
+2026-07-04 11:34:33,791 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 4/213 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,791 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:33,791 | INFO | __main__ |   RoFkw2-K-Zo_37_47 | 213 有效帧 | 4 周期 | 平均周期长 46.0 帧
+2026-07-04 11:34:33,795 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 145/301 帧
+2026-07-04 11:34:33,795 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 6/156 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,795 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=7.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,795 | INFO | __main__ |   T0_BM9K6rwM_3_13 | 156 有效帧 | 2 周期 | 平均周期长 40.0 帧
+2026-07-04 11:34:33,797 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 198/291 帧
+2026-07-04 11:34:33,798 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 8/93 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,798 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,798 | INFO | __main__ |   T4mGeUpEE08_1_11 | 93 有效帧 | 2 周期 | 平均周期长 30.5 帧
+2026-07-04 11:34:33,802 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 93/251 帧
+2026-07-04 11:34:33,802 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 6/158 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,802 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,802 | INFO | __main__ |   TVWkcorcCbg_11_21 | 158 有效帧 | 2 周期 | 平均周期长 50.5 帧
+2026-07-04 11:34:33,807 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 49/301 帧
+2026-07-04 11:34:33,807 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/252 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,807 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 6 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 5 个，过滤异常 0 个
+2026-07-04 11:34:33,808 | INFO | __main__ |   TZkoOYfRt2E_76_86 | 252 有效帧 | 5 周期 | 平均周期长 39.2 帧
+2026-07-04 11:34:33,811 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 183/301 帧
+2026-07-04 11:34:33,811 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 13/118 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,811 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=10.5, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,811 | INFO | __main__ |   TaDiHuDxndM_55_65 | 118 有效帧 | 2 周期 | 平均周期长 25.5 帧
+2026-07-04 11:34:33,815 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 71/241 帧
+2026-07-04 11:34:33,815 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/170 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,815 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=7.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:33,816 | INFO | __main__ |   TseSz1cep50_4_14 | 170 有效帧 | 4 周期 | 平均周期长 34.8 帧
+2026-07-04 11:34:33,818 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 159/251 帧
+2026-07-04 11:34:33,818 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 11/92 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,818 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.2, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,819 | INFO | __main__ |   U1sXqUUs3J8_63_73 | 92 有效帧 | 1 周期 | 平均周期长 37.0 帧
+2026-07-04 11:34:33,821 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 179/301 帧
+2026-07-04 11:34:33,821 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 11/122 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,821 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,822 | INFO | __main__ |   UHxZaSikstg_223_233 | 122 有效帧 | 3 周期 | 平均周期长 32.7 帧
+2026-07-04 11:34:33,825 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 131/301 帧
+2026-07-04 11:34:33,825 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 10/170 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,825 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,826 | INFO | __main__ |   UsuUy0ZXWfI_64_74 | 170 有效帧 | 2 周期 | 平均周期长 41.5 帧
+2026-07-04 11:34:33,829 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 141/300 帧
+2026-07-04 11:34:33,830 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 4/159 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,830 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,830 | INFO | __main__ |   V-Ptu93ZAtM_16_26 | 159 有效帧 | 3 周期 | 平均周期长 43.7 帧
+2026-07-04 11:34:33,836 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 37/300 帧
+2026-07-04 11:34:33,836 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 4/263 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,836 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 7 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 6 个，过滤异常 0 个
+2026-07-04 11:34:33,836 | INFO | __main__ |   V1vkvDRwlgQ_43_53 | 263 有效帧 | 6 周期 | 平均周期长 31.3 帧
+2026-07-04 11:34:33,840 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 140/301 帧
+2026-07-04 11:34:33,840 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/161 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,840 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 1 个
+2026-07-04 11:34:33,840 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:33,840 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,840 | INFO | __main__ |   VJ3GlaIVF58_11_21 | 161 有效帧 | 未分割出周期
+2026-07-04 11:34:33,843 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 201/301 帧
+2026-07-04 11:34:33,843 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/100 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,843 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.8, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,843 | INFO | __main__ |   VLtC0_oYLwk_14_24 | 100 有效帧 | 3 周期 | 平均周期长 24.0 帧
+2026-07-04 11:34:33,848 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 75/301 帧
+2026-07-04 11:34:33,848 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 7 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 6 个，过滤异常 0 个
+2026-07-04 11:34:33,849 | INFO | __main__ |   Vl4Zkp2uf5I_4_14 | 226 有效帧 | 6 周期 | 平均周期长 33.0 帧
+2026-07-04 11:34:33,852 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 176/301 帧
+2026-07-04 11:34:33,852 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/125 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,852 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=8.2, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,852 | INFO | __main__ |   Vxtr3z8I_vo_20_30 | 125 有效帧 | 3 周期 | 平均周期长 37.7 帧
+2026-07-04 11:34:33,856 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 130/300 帧
+2026-07-04 11:34:33,856 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/170 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,856 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,856 | INFO | __main__ |   W7r-zD9WqUc_25_35 | 170 有效帧 | 2 周期 | 平均周期长 60.0 帧
+2026-07-04 11:34:33,859 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 134/251 帧
+2026-07-04 11:34:33,859 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 13/117 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,859 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=12.5, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,860 | INFO | __main__ |   X1aBseorodM_93_103 | 117 有效帧 | 2 周期 | 平均周期长 37.0 帧
+2026-07-04 11:34:33,865 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 61/300 帧
+2026-07-04 11:34:33,865 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 15/239 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,866 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=8.3, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:33,866 | INFO | __main__ |   X1y1IGEhtPI_13_23 | 239 有效帧 | 4 周期 | 平均周期长 37.8 帧
+2026-07-04 11:34:33,871 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 93/301 帧
+2026-07-04 11:34:33,871 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/208 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,871 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,871 | INFO | __main__ |   X49-NtuSCgI_38_48 | 208 有效帧 | 3 周期 | 平均周期长 26.0 帧
+2026-07-04 11:34:33,874 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 165/282 帧
+2026-07-04 11:34:33,874 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/117 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,874 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,875 | INFO | __main__ |   X551SqY-Q6U_33_43 | 117 有效帧 | 2 周期 | 平均周期长 36.0 帧
+2026-07-04 11:34:33,879 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 132/301 帧
+2026-07-04 11:34:33,879 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/169 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,879 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,879 | INFO | __main__ |   XFFfXhdSnwQ_18_28 | 169 有效帧 | 1 周期 | 平均周期长 38.0 帧
+2026-07-04 11:34:33,881 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 41/101 帧
+2026-07-04 11:34:33,881 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 7/60 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,881 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=9.3, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,881 | INFO | __main__ |   XT-Iv-x4T4s_0_10 | 60 有效帧 | 1 周期 | 平均周期长 21.0 帧
+2026-07-04 11:34:33,887 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 48/301 帧
+2026-07-04 11:34:33,887 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 8/253 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,887 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:33,887 | INFO | __main__ |   XhH5Y-n5_9o_18_28 | 253 有效帧 | 4 周期 | 平均周期长 42.0 帧
+2026-07-04 11:34:33,890 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 156/301 帧
+2026-07-04 11:34:33,891 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/145 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,891 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,891 | INFO | __main__ |   YK3gWui9UZg_17_27 | 145 有效帧 | 2 周期 | 平均周期长 35.0 帧
+2026-07-04 11:34:33,896 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 64/300 帧
+2026-07-04 11:34:33,896 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 9/236 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,897 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=10.4, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,897 | INFO | __main__ |   YOR9YAkURWE_259_269 | 236 有效帧 | 1 周期 | 平均周期长 71.0 帧
+2026-07-04 11:34:33,902 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 62/301 帧
+2026-07-04 11:34:33,902 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 17/239 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,902 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=8.3, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,903 | INFO | __main__ |   YU0hue7iObE_18_28 | 239 有效帧 | 1 周期 | 平均周期长 63.0 帧
+2026-07-04 11:34:33,907 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 139/300 帧
+2026-07-04 11:34:33,907 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/161 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,907 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,907 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:33,907 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,907 | INFO | __main__ |   Yvw2fdi1TGQ_92_102 | 161 有效帧 | 2 周期 | 平均周期长 27.0 帧
+2026-07-04 11:34:33,910 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 178/301 帧
+2026-07-04 11:34:33,910 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 23/123 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,910 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=11.5, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,910 | INFO | __main__ |   ZBtjCFqRwG0_5_15 | 123 有效帧 | 3 周期 | 平均周期长 33.0 帧
+2026-07-04 11:34:33,914 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 113/301 帧
+2026-07-04 11:34:33,915 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 5/188 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,915 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,915 | INFO | __main__ |   ZRnorDCLxas_51_61 | 188 有效帧 | 3 周期 | 平均周期长 44.0 帧
+2026-07-04 11:34:33,918 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 156/301 帧
+2026-07-04 11:34:33,918 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/145 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,918 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,919 | INFO | __main__ |   ZzqhxM8NQ-I_43_53 | 145 有效帧 | 3 周期 | 平均周期长 30.7 帧
+2026-07-04 11:34:33,920 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 86/151 帧
+2026-07-04 11:34:33,920 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 0 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,920 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:33,920 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,921 | INFO | __main__ |   _8LGAEaxpqc_87_97 | 65 有效帧 | 未分割出周期
+2026-07-04 11:34:33,922 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 272/301 帧
+2026-07-04 11:34:33,922 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/29 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,922 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 0 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,922 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:33,922 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,922 | INFO | __main__ |   _ScNMMeSJU4_81_91 | 29 有效帧 | 未分割出周期
+2026-07-04 11:34:33,926 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 164/300 帧
+2026-07-04 11:34:33,926 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,926 | INFO | __main__ |   _hjQPBzq5bk_32_42 | 136 有效帧 | 1 周期 | 平均周期长 68.0 帧
+2026-07-04 11:34:33,932 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 27/301 帧
+2026-07-04 11:34:33,932 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/274 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,932 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,933 | INFO | __main__ |   _thoiRoFrmA_90_100 | 274 有效帧 | 3 周期 | 平均周期长 49.3 帧
+2026-07-04 11:34:33,936 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 138/301 帧
+2026-07-04 11:34:33,936 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/163 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,936 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,937 | INFO | __main__ |   a-YR8Kq-Oug_9_19 | 163 有效帧 | 3 周期 | 平均周期长 41.7 帧
+2026-07-04 11:34:33,940 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 91/271 帧
+2026-07-04 11:34:33,941 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/180 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,941 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 6 个 (prominence=10.4, distance=20, 平滑核=5) → 周期 5 个，过滤异常 0 个
+2026-07-04 11:34:33,941 | INFO | __main__ |   a3L6MQ1k16U_3_13 | 180 有效帧 | 5 周期 | 平均周期长 29.6 帧
+2026-07-04 11:34:33,944 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 169/301 帧
+2026-07-04 11:34:33,944 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 15/132 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,944 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=7.6, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:33,945 | INFO | __main__ |   aF1P3tO_C-4_20_30 | 132 有效帧 | 4 周期 | 平均周期长 28.0 帧
+2026-07-04 11:34:33,946 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 113/151 帧
+2026-07-04 11:34:33,946 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/38 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,946 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=9.6, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,946 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:33,946 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 1 个 (prominence=11.4, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:33,946 | INFO | __main__ |   aGfGOpuwSvM_0_10 | 38 有效帧 | 未分割出周期
+2026-07-04 11:34:33,950 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 120/301 帧
+2026-07-04 11:34:33,950 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:33,951 | INFO | __main__ |   a_b5Rim0YTY_9_19 | 181 有效帧 | 2 周期 | 平均周期长 47.0 帧
+2026-07-04 11:34:33,960 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 13/301 帧
+2026-07-04 11:34:33,960 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/288 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,960 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 7 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 6 个，过滤异常 0 个
+2026-07-04 11:34:33,960 | INFO | __main__ |   aa2KIxkCSe8_51_61 | 288 有效帧 | 6 周期 | 平均周期长 38.0 帧
+2026-07-04 11:34:33,965 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 91/301 帧
+2026-07-04 11:34:33,965 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/210 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,965 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:33,966 | INFO | __main__ |   ahr8sAKgVUg_6_16 | 210 有效帧 | 4 周期 | 平均周期长 44.5 帧
+2026-07-04 11:34:33,971 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 67/301 帧
+2026-07-04 11:34:33,971 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 7 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 6 个，过滤异常 0 个
+2026-07-04 11:34:33,971 | INFO | __main__ |   b33WbBAff_k_44_54 | 234 有效帧 | 6 周期 | 平均周期长 36.3 帧
+2026-07-04 11:34:33,974 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 191/301 帧
+2026-07-04 11:34:33,974 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 6/110 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,974 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=6.5, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,975 | INFO | __main__ |   b3LKl7arlEc_9_19 | 110 有效帧 | 3 周期 | 平均周期长 24.7 帧
+2026-07-04 11:34:33,978 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 158/301 帧
+2026-07-04 11:34:33,978 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/143 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,978 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:33,978 | INFO | __main__ |   bIAA0822sdE_209_219 | 143 有效帧 | 3 周期 | 平均周期长 39.7 帧
+2026-07-04 11:34:33,985 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 21/301 帧
+2026-07-04 11:34:33,985 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/280 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,985 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=6.2, distance=20, 平滑核=5) → 周期 1 个，过滤异常 1 个
+2026-07-04 11:34:33,986 | INFO | __main__ |   bMTyhI3Ej_0_73_83 | 280 有效帧 | 1 周期 | 平均周期长 58.0 帧
+2026-07-04 11:34:33,988 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 185/300 帧
+2026-07-04 11:34:33,988 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/115 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,989 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,989 | INFO | __main__ |   ba2ataHXAVk_128_138 | 115 有效帧 | 1 周期 | 平均周期长 26.0 帧
+2026-07-04 11:34:33,993 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 49/271 帧
+2026-07-04 11:34:33,994 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 15/222 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,994 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=6.8, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:33,994 | INFO | __main__ |   bagstOhffhk_17_27 | 222 有效帧 | 4 周期 | 平均周期长 41.5 帧
+2026-07-04 11:34:33,997 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 201/301 帧
+2026-07-04 11:34:33,997 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/100 帧的角度尖刺已插值修复
+2026-07-04 11:34:33,997 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:33,997 | INFO | __main__ |   byiV4yF6CMk_47_57 | 100 有效帧 | 1 周期 | 平均周期长 29.0 帧
+2026-07-04 11:34:34,001 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 143/301 帧
+2026-07-04 11:34:34,001 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 16/158 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,001 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=6.9, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:34,001 | INFO | __main__ |   c494nfwKdhk_1_11 | 158 有效帧 | 3 周期 | 平均周期长 33.0 帧
+2026-07-04 11:34:34,003 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 105/151 帧
+2026-07-04 11:34:34,003 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 9/46 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,003 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:34,003 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:34,003 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:34,003 | INFO | __main__ |   cDsptHlATww_4_14 | 46 有效帧 | 未分割出周期
+2026-07-04 11:34:34,006 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 161/301 帧
+2026-07-04 11:34:34,006 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/140 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,006 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:34,007 | INFO | __main__ |   cXjuT01Go4Q_104_114 | 140 有效帧 | 2 周期 | 平均周期长 44.5 帧
+2026-07-04 11:34:34,009 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 157/237 帧
+2026-07-04 11:34:34,009 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 12/80 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,009 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,009 | INFO | __main__ |   cjnHz9y9Gfs_12_22 | 80 有效帧 | 1 周期 | 平均周期长 56.0 帧
+2026-07-04 11:34:34,014 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 118/301 帧
+2026-07-04 11:34:34,014 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,014 | INFO | __main__ |   dLmuiA7dkDg_104_114 | 183 有效帧 | 1 周期 | 平均周期长 83.0 帧
+2026-07-04 11:34:34,017 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 199/301 帧
+2026-07-04 11:34:34,017 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:34,017 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:34,017 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:34,017 | INFO | __main__ |   dQ7jtJ1wYiE_53_63 | 102 有效帧 | 未分割出周期
+2026-07-04 11:34:34,019 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 259/301 帧
+2026-07-04 11:34:34,019 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:34,019 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:34,019 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,019 | INFO | __main__ |   dYrtsv40jxI_11_21 | 42 有效帧 | 1 周期 | 平均周期长 23.0 帧
+2026-07-04 11:34:34,025 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 53/301 帧
+2026-07-04 11:34:34,025 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 9/248 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,025 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=7.2, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:34,025 | INFO | __main__ |   df-ygdNM-6A_17_27 | 248 有效帧 | 4 周期 | 平均周期长 50.5 帧
+2026-07-04 11:34:34,032 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 4/301 帧
+2026-07-04 11:34:34,032 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 12/297 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,032 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 7 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 6 个，过滤异常 0 个
+2026-07-04 11:34:34,032 | INFO | __main__ |   dxz7zRX8EHw_54_64 | 297 有效帧 | 6 周期 | 平均周期长 37.3 帧
+2026-07-04 11:34:34,035 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 176/301 帧
+2026-07-04 11:34:34,035 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/125 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,035 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:34,036 | INFO | __main__ |   e4KoPBfHW3Y_101_111 | 125 有效帧 | 3 周期 | 平均周期长 28.0 帧
+2026-07-04 11:34:34,040 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 63/291 帧
+2026-07-04 11:34:34,041 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 10/228 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,041 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:34,041 | INFO | __main__ |   e9j9TwlHhqw_23_33 | 228 有效帧 | 2 周期 | 平均周期长 83.0 帧
+2026-07-04 11:34:34,045 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 104/300 帧
+2026-07-04 11:34:34,045 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/196 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,046 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:34,046 | INFO | __main__ |   f0m2pVXJxdA_47_57 | 196 有效帧 | 2 周期 | 平均周期长 73.0 帧
+2026-07-04 11:34:34,049 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 147/301 帧
+2026-07-04 11:34:34,050 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/154 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,050 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:34,050 | INFO | __main__ |   f3A5QITZuTo_32_42 | 154 有效帧 | 3 周期 | 平均周期长 35.7 帧
+2026-07-04 11:34:34,056 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 13/301 帧
+2026-07-04 11:34:34,056 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 6 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 5 个，过滤异常 0 个
+2026-07-04 11:34:34,057 | INFO | __main__ |   fecaG8CvMXU_189_199 | 288 有效帧 | 5 周期 | 平均周期长 41.0 帧
+2026-07-04 11:34:34,061 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 98/297 帧
+2026-07-04 11:34:34,061 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/199 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,062 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=8.4, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,062 | INFO | __main__ |   fgfv_uFUldw_4_14 | 199 有效帧 | 1 周期 | 平均周期长 84.0 帧
+2026-07-04 11:34:34,067 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 64/301 帧
+2026-07-04 11:34:34,068 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/237 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,068 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:34,068 | INFO | __main__ |   fuPkfe3hgKk_10_20 | 237 有效帧 | 3 周期 | 平均周期长 57.7 帧
+2026-07-04 11:34:34,071 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 191/301 帧
+2026-07-04 11:34:34,071 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:34,071 | INFO | __main__ |   g5HAMDxD1A0_34_44 | 110 有效帧 | 2 周期 | 平均周期长 27.0 帧
+2026-07-04 11:34:34,074 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 178/301 帧
+2026-07-04 11:34:34,074 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/123 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,074 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:34,074 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:34,074 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:34,075 | INFO | __main__ |   gADbP1N47vU_15_25 | 123 有效帧 | 未分割出周期
+2026-07-04 11:34:34,079 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 107/301 帧
+2026-07-04 11:34:34,079 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 11/194 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,079 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 6 个 (prominence=8.7, distance=20, 平滑核=5) → 周期 5 个，过滤异常 0 个
+2026-07-04 11:34:34,079 | INFO | __main__ |   h6ZPIbMAUCg_14_24 | 194 有效帧 | 5 周期 | 平均周期长 32.8 帧
+2026-07-04 11:34:34,083 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 159/301 帧
+2026-07-04 11:34:34,083 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/142 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,083 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=10.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,083 | INFO | __main__ |   hVJ58rkhDGQ_56_66 | 142 有效帧 | 1 周期 | 平均周期长 30.0 帧
+2026-07-04 11:34:34,085 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 257/301 帧
+2026-07-04 11:34:34,085 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/44 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,085 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=15.8, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:34,085 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:34,085 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 1 个 (prominence=15.3, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:34,085 | INFO | __main__ |   homOOwwBR3E_43_53 | 44 有效帧 | 未分割出周期
+2026-07-04 11:34:34,088 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 211/298 帧
+2026-07-04 11:34:34,088 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/87 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,088 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,088 | INFO | __main__ |   htuUStwzPss_31_41 | 87 有效帧 | 1 周期 | 平均周期长 60.0 帧
+2026-07-04 11:34:34,094 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 27/301 帧
+2026-07-04 11:34:34,094 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 6 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 5 个，过滤异常 0 个
+2026-07-04 11:34:34,094 | INFO | __main__ |   hyUCw0SxjCs_12_22 | 274 有效帧 | 5 周期 | 平均周期长 39.4 帧
+2026-07-04 11:34:34,097 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 61/150 帧
+2026-07-04 11:34:34,097 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 10/89 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,097 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:34,097 | INFO | __main__ |   i3N3tyFlAiM_17_27 | 89 有效帧 | 2 周期 | 平均周期长 31.0 帧
+2026-07-04 11:34:34,101 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 82/251 帧
+2026-07-04 11:34:34,101 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 10/169 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,101 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 6 个 (prominence=7.3, distance=20, 平滑核=5) → 周期 5 个，过滤异常 0 个
+2026-07-04 11:34:34,101 | INFO | __main__ |   i8pFQ-etr3Q_5_15 | 169 有效帧 | 5 周期 | 平均周期长 24.4 帧
+2026-07-04 11:34:34,105 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 59/241 帧
+2026-07-04 11:34:34,105 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/182 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,106 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 6 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 5 个，过滤异常 0 个
+2026-07-04 11:34:34,106 | INFO | __main__ |   iQHBTfk2yS8_10_20 | 182 有效帧 | 5 周期 | 平均周期长 28.0 帧
+2026-07-04 11:34:34,109 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 135/300 帧
+2026-07-04 11:34:34,109 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 4/165 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,109 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:34,110 | INFO | __main__ |   iY5o62SKSxg_91_101 | 165 有效帧 | 3 周期 | 平均周期长 35.0 帧
+2026-07-04 11:34:34,112 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 235/301 帧
+2026-07-04 11:34:34,112 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 35/66 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,112 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,112 | INFO | __main__ |   ijQ5i7-cpCk_115_125 | 66 有效帧 | 1 周期 | 平均周期长 38.0 帧
+2026-07-04 11:34:34,118 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 37/301 帧
+2026-07-04 11:34:34,118 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/264 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,118 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=9.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:34,118 | INFO | __main__ |   jDGL1QIaqBo_217_227 | 264 有效帧 | 4 周期 | 平均周期长 54.5 帧
+2026-07-04 11:34:34,121 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 157/301 帧
+2026-07-04 11:34:34,122 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 19/144 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,122 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=7.7, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:34,122 | INFO | __main__ |   jw9TsJvLZT0_3_13 | 144 有效帧 | 3 周期 | 平均周期长 28.3 帧
+2026-07-04 11:34:34,128 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 45/301 帧
+2026-07-04 11:34:34,128 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 7/256 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,128 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 1 个
+2026-07-04 11:34:34,128 | INFO | __main__ |   kR5D_m22ZMc_3_13 | 256 有效帧 | 1 周期 | 平均周期长 72.0 帧
+2026-07-04 11:34:34,134 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 34/301 帧
+2026-07-04 11:34:34,134 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 8/267 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,134 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=8.6, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,134 | INFO | __main__ |   kRv3nxKGQ48_61_71 | 267 有效帧 | 1 周期 | 平均周期长 27.0 帧
+2026-07-04 11:34:34,137 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 179/300 帧
+2026-07-04 11:34:34,137 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 7/121 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,137 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=9.6, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:34,138 | INFO | __main__ |   kcDR3hMczro_82_92 | 121 有效帧 | 2 周期 | 平均周期长 29.5 帧
+2026-07-04 11:34:34,141 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 173/301 帧
+2026-07-04 11:34:34,141 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 11/128 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,141 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:34,141 | INFO | __main__ |   kqeoN-AoW1s_12_22 | 128 有效帧 | 3 周期 | 平均周期长 31.0 帧
+2026-07-04 11:34:34,142 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 288/301 帧
+2026-07-04 11:34:34,142 | WARNING | src.dtw_aligner | 特征序列过短 (N=13)，无法分割出有效周期
+2026-07-04 11:34:34,142 | INFO | __main__ |   lCRo7xcWn-I_0_10 | 13 有效帧 | 未分割出周期
+2026-07-04 11:34:34,147 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 101/301 帧
+2026-07-04 11:34:34,147 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,147 | INFO | __main__ |   lFf6tUM0u-0_38_48 | 200 有效帧 | 1 周期 | 平均周期长 110.0 帧
+2026-07-04 11:34:34,148 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 47/67 帧
+2026-07-04 11:34:34,148 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/20 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,148 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:34,148 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:34,149 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:34,149 | INFO | __main__ |   lcjL_-iw1Yk_0_10 | 20 有效帧 | 未分割出周期
+2026-07-04 11:34:34,152 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 142/295 帧
+2026-07-04 11:34:34,152 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 15/153 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,152 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=8.3, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:34,153 | INFO | __main__ |   m7miqo9q4uU_13_23 | 153 有效帧 | 3 周期 | 平均周期长 42.0 帧
+2026-07-04 11:34:34,155 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 132/251 帧
+2026-07-04 11:34:34,156 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 4/119 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,156 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,156 | INFO | __main__ |   mD-XvsT0w-s_26_36 | 119 有效帧 | 1 周期 | 平均周期长 48.0 帧
+2026-07-04 11:34:34,160 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 88/285 帧
+2026-07-04 11:34:34,160 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/197 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,160 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:34,161 | INFO | __main__ |   mE2To8xJqBU_15_25 | 197 有效帧 | 3 周期 | 平均周期长 52.7 帧
+2026-07-04 11:34:34,163 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 221/300 帧
+2026-07-04 11:34:34,163 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/79 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,163 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:34,163 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:34,163 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 1 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:34,163 | INFO | __main__ |   mu8WxWoBSIk_24_34 | 79 有效帧 | 未分割出周期
+2026-07-04 11:34:34,167 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 113/251 帧
+2026-07-04 11:34:34,167 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 7/138 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,167 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=15.9, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:34,167 | INFO | __main__ |   nDA9WZpCEjY_13_23 | 138 有效帧 | 4 周期 | 平均周期长 27.5 帧
+2026-07-04 11:34:34,173 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 4/301 帧
+2026-07-04 11:34:34,174 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/297 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,174 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 6 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 5 个，过滤异常 0 个
+2026-07-04 11:34:34,174 | INFO | __main__ |   okyV5XYyzLM_52_62 | 297 有效帧 | 5 周期 | 平均周期长 34.4 帧
+2026-07-04 11:34:34,175 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 264/301 帧
+2026-07-04 11:34:34,176 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,176 | INFO | __main__ |   ox0EgFsgUSo_2_12 | 37 有效帧 | 1 周期 | 平均周期长 22.0 帧
+2026-07-04 11:34:34,180 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 71/301 帧
+2026-07-04 11:34:34,181 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 6/230 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,181 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=8.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:34,181 | INFO | __main__ |   pAsj817UdvM_96_106 | 230 有效帧 | 4 周期 | 平均周期长 50.2 帧
+2026-07-04 11:34:34,184 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 188/301 帧
+2026-07-04 11:34:34,184 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/113 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,184 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,184 | INFO | __main__ |   pO0NS1Kgx3s_68_78 | 113 有效帧 | 1 周期 | 平均周期长 51.0 帧
+2026-07-04 11:34:34,186 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 260/301 帧
+2026-07-04 11:34:34,186 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/41 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,186 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,186 | INFO | __main__ |   q36qASjR-Eo_50_60 | 41 有效帧 | 1 周期 | 平均周期长 20.0 帧
+2026-07-04 11:34:34,189 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 136/241 帧
+2026-07-04 11:34:34,189 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 11/105 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,189 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,189 | INFO | __main__ |   q4HkCZ6Jl-Y_12_22 | 105 有效帧 | 1 周期 | 平均周期长 52.0 帧
+2026-07-04 11:34:34,193 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 125/300 帧
+2026-07-04 11:34:34,193 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 12/175 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,193 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=13.4, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:34,194 | INFO | __main__ |   qJnev-fTU0o_59_69 | 175 有效帧 | 2 周期 | 平均周期长 39.5 帧
+2026-07-04 11:34:34,196 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 183/301 帧
+2026-07-04 11:34:34,197 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/118 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,197 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=13.4, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,197 | INFO | __main__ |   qdNcRjNiYHo_145_155 | 118 有效帧 | 1 周期 | 平均周期长 70.0 帧
+2026-07-04 11:34:34,199 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 229/301 帧
+2026-07-04 11:34:34,199 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,199 | INFO | __main__ |   r5pvWPa9UJA_32_42 | 72 有效帧 | 1 周期 | 平均周期长 39.0 帧
+2026-07-04 11:34:34,205 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 28/301 帧
+2026-07-04 11:34:34,205 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/273 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,206 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:34,206 | INFO | __main__ |   r9yutFTXX0w_12_22 | 273 有效帧 | 4 周期 | 平均周期长 29.2 帧
+2026-07-04 11:34:34,208 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 60/150 帧
+2026-07-04 11:34:34,208 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/90 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,208 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=7.2, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,208 | INFO | __main__ |   rK3GL2dKka8_8_18 | 90 有效帧 | 1 周期 | 平均周期长 30.0 帧
+2026-07-04 11:34:34,214 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 25/301 帧
+2026-07-04 11:34:34,215 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/276 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,215 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 7 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 6 个，过滤异常 0 个
+2026-07-04 11:34:34,215 | INFO | __main__ |   rUGMPbXQabw_172_182 | 276 有效帧 | 6 周期 | 平均周期长 37.3 帧
+2026-07-04 11:34:34,223 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 22/241 帧
+2026-07-04 11:34:34,223 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 16/219 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,223 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 6 个 (prominence=9.3, distance=20, 平滑核=5) → 周期 5 个，过滤异常 0 个
+2026-07-04 11:34:34,223 | INFO | __main__ |   s5NvfJWxYXk_154_164 | 219 有效帧 | 5 周期 | 平均周期长 32.8 帧
+2026-07-04 11:34:34,224 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 286/300 帧
+2026-07-04 11:34:34,224 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/14 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,224 | WARNING | src.dtw_aligner | 特征序列过短 (N=14)，无法分割出有效周期
+2026-07-04 11:34:34,225 | INFO | __main__ |   sWn9JWezUAM_62_72 | 14 有效帧 | 未分割出周期
+2026-07-04 11:34:34,227 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 139/271 帧
+2026-07-04 11:34:34,228 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/132 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,228 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:34,228 | INFO | __main__ |   sa391NAMpPA_4_14 | 132 有效帧 | 3 周期 | 平均周期长 27.0 帧
+2026-07-04 11:34:34,231 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 177/301 帧
+2026-07-04 11:34:34,231 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 7/124 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,231 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.1, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:34,231 | INFO | __main__ |   t8znL9JnYfo_73_83 | 124 有效帧 | 2 周期 | 平均周期长 48.5 帧
+2026-07-04 11:34:34,234 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 48/181 帧
+2026-07-04 11:34:34,235 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.8, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:34,235 | INFO | __main__ |   t9xd7icDrR4_39_49 | 133 有效帧 | 2 周期 | 平均周期长 29.0 帧
+2026-07-04 11:34:34,239 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 111/301 帧
+2026-07-04 11:34:34,239 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/190 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,239 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:34,240 | INFO | __main__ |   tZ8LprBSw_M_9_19 | 190 有效帧 | 2 周期 | 平均周期长 38.0 帧
+2026-07-04 11:34:34,243 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 143/296 帧
+2026-07-04 11:34:34,243 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 10/153 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,243 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:34,243 | INFO | __main__ |   tdWVDG7XGRo_65_75 | 153 有效帧 | 4 周期 | 平均周期长 29.5 帧
+2026-07-04 11:34:34,246 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 131/251 帧
+2026-07-04 11:34:34,246 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 8/120 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,246 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=9.7, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,246 | INFO | __main__ |   teANT7l3vPY_187_197 | 120 有效帧 | 1 周期 | 平均周期长 24.0 帧
+2026-07-04 11:34:34,251 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 73/300 帧
+2026-07-04 11:34:34,252 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 8/227 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,252 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=5.4, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:34,252 | INFO | __main__ |   tirzcqHQWXs_33_43 | 227 有效帧 | 4 周期 | 平均周期长 46.8 帧
+2026-07-04 11:34:34,255 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 123/251 帧
+2026-07-04 11:34:34,255 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 6/128 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,255 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:34,255 | INFO | __main__ |   tyz6zDN_cNM_12_22 | 128 有效帧 | 3 周期 | 平均周期长 37.7 帧
+2026-07-04 11:34:34,259 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 121/301 帧
+2026-07-04 11:34:34,259 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/180 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,260 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:34,260 | INFO | __main__ |   uo4TV_sC8r4_111_121 | 180 有效帧 | 3 周期 | 平均周期长 45.3 帧
+2026-07-04 11:34:34,264 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 83/298 帧
+2026-07-04 11:34:34,265 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 11/215 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,265 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:34,265 | INFO | __main__ |   v49DHkDe6Ow_4_14 | 215 有效帧 | 3 周期 | 平均周期长 47.0 帧
+2026-07-04 11:34:34,267 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 208/301 帧
+2026-07-04 11:34:34,267 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 1/93 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,268 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,268 | INFO | __main__ |   vGhqmn_70KE_19_29 | 93 有效帧 | 1 周期 | 平均周期长 39.0 帧
+2026-07-04 11:34:34,271 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 152/301 帧
+2026-07-04 11:34:34,271 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 8/149 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,272 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 4 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 3 个，过滤异常 0 个
+2026-07-04 11:34:34,272 | INFO | __main__ |   w5cCKA8n7YE_20_30 | 149 有效帧 | 3 周期 | 平均周期长 39.3 帧
+2026-07-04 11:34:34,275 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 180/301 帧
+2026-07-04 11:34:34,275 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:34,275 | INFO | __main__ |   w922O8Z6wHk_111_121 | 121 有效帧 | 2 周期 | 平均周期长 51.0 帧
+2026-07-04 11:34:34,277 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 216/301 帧
+2026-07-04 11:34:34,278 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 13/85 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,278 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=6.8, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,278 | INFO | __main__ |   wd1mi732Lzg_13_23 | 85 有效帧 | 1 周期 | 平均周期长 57.0 帧
+2026-07-04 11:34:34,283 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 61/300 帧
+2026-07-04 11:34:34,283 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 4/239 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,283 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 6 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 5 个，过滤异常 0 个
+2026-07-04 11:34:34,283 | INFO | __main__ |   wlkBJfN9Ku0_32_42 | 239 有效帧 | 5 周期 | 平均周期长 40.2 帧
+2026-07-04 11:34:34,284 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 218/223 帧
+2026-07-04 11:34:34,284 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 2/5 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,285 | WARNING | src.dtw_aligner | 特征序列过短 (N=5)，无法分割出有效周期
+2026-07-04 11:34:34,285 | INFO | __main__ |   wyYJ9XU_K2A_63_73 | 5 有效帧 | 未分割出周期
+2026-07-04 11:34:34,288 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 158/301 帧
+2026-07-04 11:34:34,288 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 6/143 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,288 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:34,289 | INFO | __main__ |   xO_tJJKsLS0_46_56 | 143 有效帧 | 4 周期 | 平均周期长 22.8 帧
+2026-07-04 11:34:34,291 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 177/301 帧
+2026-07-04 11:34:34,292 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 8/124 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,292 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 1 个 (prominence=6.0, distance=20, 平滑核=5) → 周期 0 个，过滤异常 0 个
+2026-07-04 11:34:34,292 | WARNING | src.dtw_aligner | 左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试
+2026-07-04 11:34:34,292 | INFO | src.dtw_aligner | 周期分割完成 | 列=1, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,292 | INFO | __main__ |   xSQNc8BsyoM_54_64 | 124 有效帧 | 1 周期 | 平均周期长 61.0 帧
+2026-07-04 11:34:34,297 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 63/301 帧
+2026-07-04 11:34:34,297 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 5/238 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,297 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=15.3, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,298 | INFO | __main__ |   xfhxLmHf14c_8_18 | 238 有效帧 | 1 周期 | 平均周期长 33.0 帧
+2026-07-04 11:34:34,301 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 100/241 帧
+2026-07-04 11:34:34,301 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 19/141 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,301 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:34,302 | INFO | __main__ |   xwl83a16evo_168_178 | 141 有效帧 | 4 周期 | 平均周期长 23.8 帧
+2026-07-04 11:34:34,304 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 192/300 帧
+2026-07-04 11:34:34,304 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 8/108 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,304 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=6.8, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,305 | INFO | __main__ |   y6rkUYivfOQ_33_43 | 108 有效帧 | 1 周期 | 平均周期长 82.0 帧
+2026-07-04 11:34:34,307 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 199/301 帧
+2026-07-04 11:34:34,307 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,308 | INFO | __main__ |   yVqUvXnVthg_90_100 | 102 有效帧 | 1 周期 | 平均周期长 39.0 帧
+2026-07-04 11:34:34,312 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 87/301 帧
+2026-07-04 11:34:34,312 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/214 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,312 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:34,313 | INFO | __main__ |   y_jypE3jN7c_4_14 | 214 有效帧 | 4 周期 | 平均周期长 39.5 帧
+2026-07-04 11:34:34,317 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 48/251 帧
+2026-07-04 11:34:34,317 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 4/203 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,317 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=5.5, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:34,317 | INFO | __main__ |   ydGEIai_Mh8_37_47 | 203 有效帧 | 4 周期 | 平均周期长 41.8 帧
+2026-07-04 11:34:34,318 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 288/300 帧
+2026-07-04 11:34:34,318 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/12 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,318 | WARNING | src.dtw_aligner | 特征序列过短 (N=12)，无法分割出有效周期
+2026-07-04 11:34:34,318 | INFO | __main__ |   yyTo4o888-g_98_108 | 12 有效帧 | 未分割出周期
+2026-07-04 11:34:34,323 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 37/251 帧
+2026-07-04 11:34:34,323 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 6 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 5 个，过滤异常 0 个
+2026-07-04 11:34:34,324 | INFO | __main__ |   z2PLbFfB6AE_67_77 | 214 有效帧 | 5 周期 | 平均周期长 34.8 帧
+2026-07-04 11:34:34,327 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 158/301 帧
+2026-07-04 11:34:34,327 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 6/143 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,327 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:34,327 | INFO | __main__ |   z5pWNZJ9Igo_9_19 | 143 有效帧 | 2 周期 | 平均周期长 48.5 帧
+2026-07-04 11:34:34,331 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 121/301 帧
+2026-07-04 11:34:34,331 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 3/180 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,331 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 5 个 (prominence=5.0, distance=20, 平滑核=5) → 周期 4 个，过滤异常 0 个
+2026-07-04 11:34:34,332 | INFO | __main__ |   zXUjq6Foa8g_68_78 | 180 有效帧 | 4 周期 | 平均周期长 31.0 帧
+2026-07-04 11:34:34,343 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 81/251 帧
+2026-07-04 11:34:34,343 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 2 个 (prominence=8.4, distance=20, 平滑核=5) → 周期 1 个，过滤异常 0 个
+2026-07-04 11:34:34,344 | INFO | __main__ |   zwHdM0cMquY_166_176 | 170 有效帧 | 1 周期 | 平均周期长 27.0 帧
+2026-07-04 11:34:34,346 | WARNING | src.feature_extractor | extract_sequence_features 共跳过 213/301 帧
+2026-07-04 11:34:34,346 | INFO | src.feature_extractor | 姿态崩坏帧修复 | 9/88 帧的角度尖刺已插值修复
+2026-07-04 11:34:34,346 | INFO | src.dtw_aligner | 周期分割完成 | 列=0, 波谷 3 个 (prominence=5.8, distance=20, 平滑核=5) → 周期 2 个，过滤异常 0 个
+2026-07-04 11:34:34,347 | INFO | __main__ |   zzwCOlR6TC4_6_16 | 88 有效帧 | 2 周期 | 平均周期长 30.0 帧
+2026-07-04 11:34:34,347 | INFO | __main__ | ============================================================
+2026-07-04 11:34:34,347 | INFO | __main__ | 特征提取汇总 | 处理视频 237 | 总有效帧 36219 | 总周期 575 | 无周期视频 22
+2026-07-04 11:34:34,347 | INFO | __main__ |   角度 left_knee_angle  | min=0.0 max=180.0 mean=162.1
+2026-07-04 11:34:34,347 | INFO | __main__ |   角度 right_knee_angle | min=0.5 max=180.0 mean=162.1
+2026-07-04 11:34:34,347 | INFO | __main__ |   角度 left_hip_angle   | min=0.1 max=180.0 mean=162.4
+2026-07-04 11:34:34,347 | INFO | __main__ |   角度 right_hip_angle  | min=0.1 max=180.0 mean=161.7
+2026-07-04 11:34:34,347 | INFO | __main__ | 特征报告: data/features/feature_report.csv

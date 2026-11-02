@@ -16,7 +16,8 @@ breaststroke-eval/
 │   ├── pose_estimator.py        # Module 2
 │   ├── feature_extractor.py     # Module 3
 │   ├── dtw_aligner.py           # Module 4
-│   ├── rl_env.py                # Module 5 (CORE)
+│   ├── swimxyz_loader.py        # SwimXYZ 合成数据加载
+│   ├── kick_env.py              # Module 5 (CORE)
 │   ├── train_agent.py           # Module 5b
 │   ├── feedback.py              # Module 6
 │   └── pipeline.py              # End-to-end orchestration
@@ -166,10 +167,14 @@ class BreaststrokeKickEnv(gymnasium.Env):
         # (rounded to nearest multiple of 5, matching the action bins)
 ```
 
-**State空间**: 一个完整蹬腿周期的偏差特征向量（对齐后各帧各角度与模板的差值，加上对称性和timing指标）
+**State空间**: 一个完整蹬腿周期的 28 维**原始运动学**统计摘要（4 角度的 mean/std/min/max + 2 对称性的 mean/std + 4 角速度的 mean/std，均归一化）。刻意**不含** DTW 偏差/warp 等参考分公式的中间量——否则智能体只需"读出答案"，评估退化为自指
 **Action空间**: Discrete(21)，对应0-100分的21个档位（0,5,…,100）
 **Reward**: 预测分数与参考分数的负绝对误差
 **Episode**: 单步——agent看完一个周期的特征，输出一个分数，episode结束
+
+The reference score is a hand-crafted rule-based proxy, not an external ground
+truth; agreement with it measures reproducibility of the rule, not clinical
+correctness. External validity requires blinded coach ratings.
 
 ---
 

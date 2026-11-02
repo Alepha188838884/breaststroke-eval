@@ -11,3 +11,15 @@ data/swimxyz/
 venv/
 venv_pose/
 .DS_Store
+
+# Self-filmed videos: over GitHub's size limit, and they show other swimmers
+test_videos/
+*.MOV
+
+# Essay documents: kept local, not published in this public repo
+Essay/
+文献/
+Extended_Essay_Final.docx
+Extended Essay.pdf
+main (13).pdf
+Breaststroke_Kick_EE_Deck.pptx

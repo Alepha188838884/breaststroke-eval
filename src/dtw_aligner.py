@@ -96,10 +96,9 @@ class DTWAligner:
         np.save(save_path, features)
         logger.info("已保存模板 %s | shape=%s", save_path, tuple(features.shape))
 
-    def segment_kick_cycles(
-        self, features: np.ndarray, angle_column: int = 0
-    ) -> list[np.ndarray]:
-        """通过检测指定角度列的周期性波谷分割出单个蹬腿周期。
+    @staticmethod
+    def _segment_on_column(features: np.ndarray, angle_column: int) -> list[np.ndarray]:
+        """在指定角度列上执行"平滑→找波谷→切周期→过滤长度"的周期分割主体逻辑。
 
         实现要点（见模块顶部 ``_SMOOTH_KERNEL`` 等常量说明）：
             - 对 ``features[:, angle_column]`` 先做中值滤波去除姿态尖刺；
@@ -110,22 +109,13 @@ class DTWAligner:
 
         Args:
             features: shape (N, 10) 的连续特征矩阵
-            angle_column: 用于波谷检测的列索引，默认 0（left_knee_angle）
+            angle_column: 用于波谷检测的列索引
 
         Returns:
-            每个有效蹬腿周期的特征矩阵列表，每项 shape (cycle_len, 10)
+            每个有效蹬腿周期的特征矩阵列表，每项 shape (cycle_len, 10)；
+            未检出任何有效周期时返回 []。
         """
-        if features.ndim != 2:
-            raise ValueError(
-                f"features 必须为 2 维，得到 {features.ndim} 维"
-            )
         n = features.shape[0]
-        if n < _MIN_CYCLE_FRAMES * 2:
-            logger.warning(
-                "特征序列过短 (N=%d)，无法分割出有效周期", n
-            )
-            return []
-
         raw_signal = features[:, angle_column]
         # 中值滤波（mode='nearest' 复制边缘，避免零填充在首尾造成伪波谷）仅用于
         # 定位波谷；核宽不超过序列长度（取奇数）。
@@ -149,8 +139,9 @@ class DTWAligner:
             cycles.append(features[start:end])
 
         logger.info(
-            "周期分割完成 | 波谷 %d 个 (prominence=%.1f, distance=%d, 平滑核=%d) "
+            "周期分割完成 | 列=%d, 波谷 %d 个 (prominence=%.1f, distance=%d, 平滑核=%d) "
             "→ 周期 %d 个，过滤异常 %d 个",
+            angle_column,
             len(valleys),
             prominence,
             _VALLEY_MIN_DISTANCE,
@@ -158,6 +149,44 @@ class DTWAligner:
             len(cycles),
             filtered,
         )
+        return cycles
+
+    def segment_kick_cycles(
+        self, features: np.ndarray, angle_column: int = 0
+    ) -> list[np.ndarray]:
+        """通过检测指定角度列的周期性波谷分割出单个蹬腿周期。
+
+        分割主体逻辑见 :meth:`_segment_on_column`。当使用默认列
+        （``angle_column == 0``，left_knee_angle）且左膝列分不出任何周期时
+        （如左腿被遮挡导致该列近似平直），自动回退到列 1
+        （right_knee_angle）重试一次。调用方显式指定非 0 列时不回退，
+        以尊重显式指定。
+
+        Args:
+            features: shape (N, 10) 的连续特征矩阵
+            angle_column: 用于波谷检测的列索引，默认 0（left_knee_angle）
+
+        Returns:
+            每个有效蹬腿周期的特征矩阵列表，每项 shape (cycle_len, 10)；
+            主列与回退列均分割失败时返回 []。
+        """
+        if features.ndim != 2:
+            raise ValueError(
+                f"features 必须为 2 维，得到 {features.ndim} 维"
+            )
+        n = features.shape[0]
+        if n < _MIN_CYCLE_FRAMES * 2:
+            logger.warning(
+                "特征序列过短 (N=%d)，无法分割出有效周期", n
+            )
+            return []
+
+        cycles = self._segment_on_column(features, angle_column)
+        if not cycles and angle_column == 0:
+            logger.warning(
+                "左膝列(0)未分割出任何周期，可能左腿被遮挡；回退到右膝列(1)重试"
+            )
+            cycles = self._segment_on_column(features, 1)
         return cycles
 
     def align(

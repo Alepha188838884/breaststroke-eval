@@ -1,0 +1,38 @@
+# Kinetics-700 蛙泳批处理 pipeline 依赖（scripts/01–04）
+# 版本对齐本机 venv_pose 现状，可在 venv_pose 中 `pip install -r` 幂等安装
+# （已满足的包会被 pip 跳过，实际只新增 yt-dlp）。
+#
+# 系统级依赖（非 pip，需另行安装）：
+#   ffmpeg  —— yt-dlp 的 --download-sections 精确切片必需
+#             macOS: brew install ffmpeg   Ubuntu/Colab: apt-get install -y ffmpeg
+#
+# 注意：mmcv / mmdet / mmpose 在**全新**环境中建议用 openmim 安装以匹配 CUDA/torch：
+#   pip install -U openmim
+#   mim install mmengine "mmcv==2.1.0" "mmdet==3.3.0" "mmpose==1.3.2"
+# 本机 venv_pose 已装好，下方 pin 仅用于记录与幂等校验。
+
+# --- 脚本 1：下载 ---
+yt-dlp>=2024.1.1            # YouTube 片段下载（片段切割需系统 ffmpeg）
+
+# --- 脚本 2：HRNet 姿态估计 ---
+torch==2.12.0
+mmengine==0.10.7
+mmcv==2.1.0
+mmdet==3.3.0
+mmpose==1.3.2
+opencv-python==4.10.0.84
+
+# --- 脚本 3：特征提取 + 周期分割 ---
+numpy==1.26.4
+scipy==1.17.1
+dtw-python==1.5.3
+
+# --- 脚本 4：构建训练集（导入 kick_env 需 gymnasium）---
+gymnasium==1.2.3
+
+# --- 通用 ---
+tqdm==4.65.2
+pyyaml==6.0.3
+
+# --- 下游 PPO 训练（非本 pipeline 必需，随环境一并记录）---
+stable-baselines3==2.8.0

@@ -13,7 +13,14 @@ logger = logging.getLogger(__name__)
 
 
 class VideoLoader:
-    """读取视频文件，按目标 FPS 抽帧并 resize 为统一尺寸。"""
+    """读取视频文件，按目标 FPS 抽帧并 resize 为统一尺寸。
+
+    resize 采用等比缩放 + letterbox 补黑边（见 :meth:`_letterbox`），保持原始
+    宽高比，从而不改变关节角度的几何关系。旧版本用 ``cv2.resize`` 直接非等比
+    拉伸到目标尺寸，16:9 片源被压成 4:3 时会系统性扭曲关节角度。**注意**：
+    历史上已用旧版本提取的 joints/features 是非等比拉伸的产物，与本版本混用
+    时需注意口径不一致。
+    """
 
     def __init__(
         self,
@@ -65,8 +72,39 @@ class VideoLoader:
             self.frame_interval,
         )
 
+    def _letterbox(self, frame: np.ndarray) -> np.ndarray:
+        """等比缩放 frame 并补黑边到 (resize_height, resize_width)。
+
+        按 ``min(resize_width / W, resize_height / H)`` 缩放比例等比缩放原帧，
+        再用 ``cv2.copyMakeBorder`` 在上下/左右对称补黑边，保持原始宽高比不变
+        （从而不扭曲关节角度）。缩放后与目标尺寸的差值为奇数时，多出的 1
+        像素补在下边/右边。
+
+        Args:
+            frame: 原始 BGR 帧，shape (H, W, 3)
+
+        Returns:
+            shape (resize_height, resize_width, 3) 的 letterbox 后 BGR 帧
+        """
+        h, w = frame.shape[:2]
+        scale = min(self.resize_width / w, self.resize_height / h)
+        new_w = max(1, round(w * scale))
+        new_h = max(1, round(h * scale))
+        scaled = cv2.resize(frame, (new_w, new_h))
+
+        pad_w = self.resize_width - new_w
+        pad_h = self.resize_height - new_h
+        top = pad_h // 2
+        bottom = pad_h - top
+        left = pad_w // 2
+        right = pad_w - left
+
+        return cv2.copyMakeBorder(
+            scaled, top, bottom, left, right, cv2.BORDER_CONSTANT, value=(0, 0, 0)
+        )
+
     def extract_frames(self) -> Generator[tuple[int, np.ndarray], None, None]:
-        """按 frame_interval 抽帧，每帧 resize 后逐个 yield。
+        """按 frame_interval 抽帧，每帧 letterbox resize 后逐个 yield。
 
         Yields:
             (frame_index, BGR_frame) 元组，frame_index 为原视频中的帧索引。
@@ -80,9 +118,7 @@ class VideoLoader:
             if not ret:
                 break
             if frame_idx % self.frame_interval == 0:
-                resized = cv2.resize(
-                    frame, (self.resize_width, self.resize_height)
-                )
+                resized = self._letterbox(frame)
                 yield frame_idx, resized
             frame_idx += 1
 

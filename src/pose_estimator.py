@@ -76,6 +76,7 @@ class PoseEstimator:
         model_name: str = "hrnet_w48",
         device: str = "cuda",
         min_confidence: float = 0.3,
+        det_score_threshold: float = _DET_SCORE_THRESHOLD,
     ) -> None:
         """初始化人体检测器与 HRNet 姿态模型。
 
@@ -83,6 +84,7 @@ class PoseEstimator:
             model_name: 姿态模型名称，目前仅支持 "hrnet_w48"
             device: 推理设备，"cuda" 或 "cpu"
             min_confidence: 关节点置信度阈值，低于此值视为无效
+            det_score_threshold: 人体检测置信度阈值，低于此值的检测框视为无效
 
         Raises:
             ImportError: 未安装 mmpose / mmdet / mmengine
@@ -107,6 +109,7 @@ class PoseEstimator:
         self.model_name = model_name
         self.device = device
         self.min_confidence = min_confidence
+        self.det_score_threshold = det_score_threshold
 
         # 保存推理函数引用，供 estimate_single 调用
         self._inference_topdown = inference_topdown
@@ -125,7 +128,7 @@ class PoseEstimator:
     ) -> dict[str, tuple[float, float, float]]:
         """对单帧 BGR 图像估计关节点。
 
-        流程：mmdet 检测人体 → 取面积最大的 bbox → mmpose 推理关键点
+        流程：mmdet 检测人体 → 取置信度最高的 bbox → mmpose 推理关键点
         → 组装关节字典并附加 mid_shoulder。
 
         Args:
@@ -147,19 +150,17 @@ class PoseEstimator:
         scores = _to_numpy(pred.scores)
         labels = _to_numpy(pred.labels)
 
-        person_mask = (labels == _PERSON_LABEL) & (scores >= _DET_SCORE_THRESHOLD)
+        person_mask = (labels == _PERSON_LABEL) & (scores >= self.det_score_threshold)
         if not bool(person_mask.any()):
             raise PoseEstimationError("未检测到人体")
 
         person_bboxes = bboxes[person_mask]
-        # 选择面积最大的 bbox
-        areas = (person_bboxes[:, 2] - person_bboxes[:, 0]) * (
-            person_bboxes[:, 3] - person_bboxes[:, 1]
-        )
-        biggest_bbox = person_bboxes[int(np.argmax(areas))][None, :]  # shape (1, 4)
+        person_scores = scores[person_mask]
+        # 选择置信度最高的 bbox
+        best_bbox = person_bboxes[int(np.argmax(person_scores))][None, :]  # shape (1, 4)
 
         # 2. HRNet 推理
-        pose_results = self._inference_topdown(self.pose_model, frame, biggest_bbox)
+        pose_results = self._inference_topdown(self.pose_model, frame, best_bbox)
         if not pose_results:
             raise PoseEstimationError("HRNet 未返回关节点结果")
 

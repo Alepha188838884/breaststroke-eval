@@ -18,7 +18,7 @@ import mmcfg_bridge  # noqa: F401 — patch Config.fromfile 路径重定向
 
 from src.video_loader import VideoLoader
 from src.pose_estimator import PoseEstimator, PoseEstimationError
-from src.feature_extractor import FeatureExtractor
+from src.feature_extractor import FeatureExtractor, smooth_feature_matrix
 
 
 FPS = 30
@@ -109,6 +109,9 @@ def main() -> int:
 
     lengths = [c.shape[0] for c in cycles]
     rep = cycles[int(np.argsort(lengths)[len(lengths) // 2])]
+    # HRNet 逐帧抖动会让模板角速度虚高，存盘前平滑一次角度（见 feature_extractor.
+    # smooth_feature_matrix docstring），避免把估计噪声当成技术基准。
+    rep = smooth_feature_matrix(rep, window=5, fps=FPS)
     np.save(out_path, rep)
     print(
         f"从 {len(cycles)} 个蹬腿周期中选中位长度单周期 ({rep.shape[0]} 帧) 作为模板"

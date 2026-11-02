@@ -1,12 +1,29 @@
 """蛙泳蹬腿评分 RL 环境：Gymnasium 自定义 Env，单步 MDP。
 
-观测空间为 35 维的周期摘要向量（10 列特征的统计量 + DTW 阶段偏差等），
+观测空间为 28 维的**原始运动学**摘要向量（10 列特征的统计量；**不含** DTW
+阶段偏差 / warp）。设计要点：参考分数由模板对齐的 DTW 偏差公式算出，若把这些
+偏差也放进观测，智能体只需把答案读出来即可（实测可零误差复现 → RL 退化为计算器）。
+仅暴露原始运动学后，智能体必须**从动作本身学习**预测技术分，残差量化了"原始运动学
+在多大程度上决定技术正确性分数"（即研究问题的 to-what-extent）。
+
 动作空间为 ``Discrete(21)``，对应 0–100 分（步长 5）。每次 ``step`` 后
 episode 立即结束（``terminated=True``），奖励为智能体评分与"参考分数"的
 归一化绝对误差的相反数。
 
+单步 episode（step 恒 ``terminated=True``）使本环境在 RL 意义上退化为
+contextual bandit：不存在跨步状态转移，SB3 的 GAE / gamma 折扣在此设置下无
+操作（每步 advantage = r − V(s)，没有未来回报可折算），PPO 实际执行的是带
+价值函数基线的策略梯度回归。这是刻意设计——研究问题的对象是 reward function
+（reference_score 能否被原始运动学预测），PPO 只是测量装置；论文表述应按
+contextual bandit 定位，而非序列决策 MDP。
+
 参考分数（reference_score）按 ``architecture.md §5`` 的 4 因素加权：
 ``angle 0.40 + symmetry 0.20 + timing 0.20 + smoothness 0.20``。
+
+效度边界：reference_score 是规则公式（角度/对称/时序/平滑加权），**不含任何
+外部人工真值**；本系统度量的是"原始运动学能在多大程度上重建该规则分"，
+而非临床意义上的技术正确性。外部效度需教练盲评对照（见
+``scripts/export_blind_eval.py``）。
 """
 
 from __future__ import annotations
@@ -55,8 +72,10 @@ _VELOCITY_COLS: slice = slice(6, 10)    # 4 个角速度
 # 蹬腿周期帧数下界（与 dtw_aligner 保持一致，避免 4 帧周期破坏阶段划分）
 _MIN_CYCLE_FRAMES: int = _ALIGNER_MIN_CYCLE_FRAMES   # 10
 
-# 观测向量总维度（4×4 + 2×2 + 4×2 + 4 + 1 + 1 + 1 = 35）
-_OBS_DIM: int = 35
+# 观测向量总维度（仅原始运动学：角度 4×4 + 对称 2×2 + 角速度 4×2 = 28）。
+# 不含 DTW 阶段偏差/总偏差/warp——那些是参考分公式的输入，放进观测会让评分变成
+# 平凡的"读答案"。DTW 仍在 _compute_observation 内部计算，仅用于算参考分（reward）。
+_OBS_DIM: int = 28
 
 # 动作空间档数：21 档 × 5 分 = 0..100（覆盖 architecture.md 规定的 0–100 满分）
 _N_ACTIONS: int = 21
@@ -66,7 +85,6 @@ _MAX_SCORE: float = float((_N_ACTIONS - 1) * _SCORE_PER_ACTION)  # 100.0
 # 观测归一化常量（避免 PPO 输入尺度差异过大）
 _ANGLE_SCALE: float = 180.0       # 角度 / 对称性 / 偏差均按角度上界归一
 _VELOCITY_SCALE: float = 1.0e3    # 角速度归一（人膝伸展典型 ~500°/s）
-_DTW_DIST_SCALE: float = 360.0    # 4 维角度向量欧式距离上界 sqrt(4·180²)
 
 # 4 因素参考评分（与 architecture.md §5 一致）
 _REFERENCE_WEIGHTS: dict[str, float] = {
@@ -90,9 +108,17 @@ _SMOOTHNESS_MAX: float = 120.0    # 角速度 std ≥ 120°/s 视为最差
 # 标定自 SwimXYZ 834 周期分布（warp P99≈0.87）。
 _TIMING_WARP_MAX: float = 0.9
 
+# score_scales 关键字 -> 模块默认常量的映射（用于 __init__ 缺省填充与合法性校验）
+_SCALE_DEFAULTS: dict[str, float] = {
+    "angle": _ANGLE_DEV_MAX,
+    "symmetry": _SYMMETRY_DEV_MAX,
+    "timing": _TIMING_WARP_MAX,
+    "smoothness": _SMOOTHNESS_MAX,
+}
+
 
 def _build_obs_bounds() -> tuple[np.ndarray, np.ndarray]:
-    """构造 35 维观测空间的下界 / 上界。所有维度归一化到 [0, 1] 或 [-1, 1]。
+    """构造 28 维观测空间的下界 / 上界。所有维度归一化到 [0, 1] 或 [-1, 1]。
 
     与 :func:`_compute_observation` 的布局一致：归一化保证 PPO MlpPolicy
     输入尺度统一，避免大尺度维度（角速度）淹没小尺度维度（偏差）。
@@ -114,6 +140,7 @@ class BreaststrokeKickEnv(gym.Env):
         kick_cycles: list[np.ndarray],
         dtw_aligner: DTWAligner,
         seed: int | None = None,
+        score_scales: dict[str, float] | None = None,
     ) -> None:
         """初始化环境。
 
@@ -122,13 +149,43 @@ class BreaststrokeKickEnv(gym.Env):
                 内部会做浅拷贝（list），调用方后续 append/pop 不影响本环境。
             dtw_aligner: 已加载模板的 :class:`DTWAligner` 实例。
             seed: 可选随机种子。
+            score_scales: 可选的参考分数尺度覆盖，键为 ``angle`` /
+                ``symmetry`` / ``timing`` / ``smoothness``，对应覆盖模块常量
+                ``_ANGLE_DEV_MAX`` / ``_SYMMETRY_DEV_MAX`` / ``_TIMING_WARP_MAX`` /
+                ``_SMOOTHNESS_MAX``。缺省的键使用模块默认值；``None``（默认）
+                等价于四键全部使用默认值，行为与旧版本逐 bit 一致。
+                这些尺度标定自 SwimXYZ 合成数据分布，换数据域（如真实
+                HRNet/Kinetics 姿态，角速度噪声显著更大）时评分因素会饱和，
+                应从 config 的 ``reference_score.scale_max_real`` 传入按该域
+                重标定的值（见 :meth:`factor_distribution` 的标定诊断）。
 
         Raises:
-            ValueError: ``kick_cycles`` 为空，或包含 shape / 帧数不合法的元素。
+            ValueError: ``kick_cycles`` 为空，或包含 shape / 帧数不合法的元素；
+                或 ``score_scales`` 含未知键 / 非正值。
         """
         super().__init__()
         if not kick_cycles:
             raise ValueError("kick_cycles 不能为空")
+
+        # 尺度覆盖：先解析校验，供下方预计算循环（target_score）使用。
+        unknown_keys = set((score_scales or {})) - set(_SCALE_DEFAULTS)
+        if unknown_keys:
+            raise ValueError(
+                f"score_scales 含未知键 {sorted(unknown_keys)}，"
+                f"合法键为 {sorted(_SCALE_DEFAULTS)}"
+            )
+        resolved_scales: dict[str, float] = dict(_SCALE_DEFAULTS)
+        if score_scales:
+            for key, value in score_scales.items():
+                if not value > 0:
+                    raise ValueError(
+                        f"score_scales[{key!r}] 必须 > 0，得到 {value}"
+                    )
+                resolved_scales[key] = float(value)
+        self._scale_angle: float = resolved_scales["angle"]
+        self._scale_symmetry: float = resolved_scales["symmetry"]
+        self._scale_timing: float = resolved_scales["timing"]
+        self._scale_smoothness: float = resolved_scales["smoothness"]
         for i, c in enumerate(kick_cycles):
             if c.ndim != 2 or c.shape[1] != 10:
                 raise ValueError(
@@ -225,7 +282,7 @@ class BreaststrokeKickEnv(gym.Env):
         seed: int | None = None,
         options: dict[str, Any] | None = None,
     ) -> tuple[np.ndarray, dict[str, Any]]:
-        """随机抽取一个周期、读取预计算的 35 维观测并返回。"""
+        """随机抽取一个周期、读取预计算的 28 维观测并返回。"""
         del options  # 当前环境不消费 options
         super().reset(seed=seed)
 
@@ -283,7 +340,11 @@ class BreaststrokeKickEnv(gym.Env):
     def _compute_observation(
         self, cycle: np.ndarray
     ) -> tuple[np.ndarray, dict[str, float], float, float, float]:
-        """将 ``(cycle_len, 10)`` 的特征矩阵转为 35 维摘要向量。
+        """将 ``(cycle_len, 10)`` 的特征矩阵转为 28 维**原始运动学**摘要向量。
+
+        注意：DTW 对齐、阶段偏差、warp 仍在本方法内计算并**返回**（供
+        :meth:`_compute_reference_score` 算参考分），但**不写入观测向量**——
+        观测仅含角度/对称/角速度的统计量，迫使智能体从原始动作学习评分。
 
         Returns:
             ``(obs, phase_deviations, overall_deviation, dtw_distance, warp_amount)``：
@@ -311,11 +372,6 @@ class BreaststrokeKickEnv(gym.Env):
         phase_devs = self.aligner.compute_phase_deviations(aligned_q, aligned_t)
         overall_dev = self.aligner.compute_overall_deviation(phase_devs)
 
-        phase_vec = np.array(
-            [float(phase_devs[name]) for name in _PHASE_NAMES],
-            dtype=np.float64,
-        )
-
         # timing：DTW warp path 超出"匀速对齐最小长度 max(Q,T)"的量，按可能的最大超出
         # 量 (Q+T-1)-max(Q,T) = min(Q,T)-1 归一化到 [0,1]。整体匀速快/慢时 DTW 仍能用
         # 近对角线 staircase 对齐（path_len≈max(Q,T) → warp≈0）；仅当周期内阶段节奏错位、
@@ -328,6 +384,9 @@ class BreaststrokeKickEnv(gym.Env):
             np.clip((path_len - max_len) / max(min_len - 1, 1), 0.0, 1.0)
         )
 
+        # 观测仅含原始运动学统计量（28 维）。DTW 派生量（overall_dev/dtw_dist/
+        # warp_amount/phase_devs）虽在上方算出并返回，但**刻意不进观测**——否则
+        # 智能体可直接读出参考分。warp_amount 仍需算出以供参考分使用。
         obs = np.concatenate(
             [
                 ang_mean / _ANGLE_SCALE,
@@ -338,15 +397,6 @@ class BreaststrokeKickEnv(gym.Env):
                 sym_std / _ANGLE_SCALE,
                 vel_mean / _VELOCITY_SCALE,
                 vel_std / _VELOCITY_SCALE,
-                phase_vec / _ANGLE_SCALE,
-                np.array(
-                    [
-                        float(overall_dev) / _ANGLE_SCALE,
-                        float(dtw_dist) / _DTW_DIST_SCALE,
-                        warp_amount,
-                    ],
-                    dtype=np.float64,
-                ),
             ],
             axis=0,
         ).astype(np.float32)
@@ -390,19 +440,19 @@ class BreaststrokeKickEnv(gym.Env):
         cycle = np.asarray(cycle, dtype=np.float64)
 
         # 1) angle：DTW 阶段加权角度偏差
-        angle = float(np.clip(overall_deviation / _ANGLE_DEV_MAX, 0.0, 1.0))
+        angle = float(np.clip(overall_deviation / self._scale_angle, 0.0, 1.0))
 
         # 2) symmetry：knee_symmetry + hip_symmetry 在整个周期的均值
         symmetry = float(
-            np.clip(cycle[:, _SYMMETRY_COLS].mean() / _SYMMETRY_DEV_MAX, 0.0, 1.0)
+            np.clip(cycle[:, _SYMMETRY_COLS].mean() / self._scale_symmetry, 0.0, 1.0)
         )
 
         # 3) timing：DTW warp path 的非均匀时间扭曲量（整体速度差异已被 DTW 吸收）
-        timing = float(np.clip(warp_amount / _TIMING_WARP_MAX, 0.0, 1.0))
+        timing = float(np.clip(warp_amount / self._scale_timing, 0.0, 1.0))
 
         # 4) smoothness：角速度 std（越大越抖）
         smoothness = float(
-            np.clip(cycle[:, _VELOCITY_COLS].std() / _SMOOTHNESS_MAX, 0.0, 1.0)
+            np.clip(cycle[:, _VELOCITY_COLS].std() / self._scale_smoothness, 0.0, 1.0)
         )
 
         weighted = (
@@ -453,10 +503,10 @@ class BreaststrokeKickEnv(gym.Env):
             "timing_warp": _pct(timing),
             "smoothness_vel_std": _pct(smoothness),
             "current_scale_maxes": {
-                "angle": _ANGLE_DEV_MAX,
-                "symmetry": _SYMMETRY_DEV_MAX,
-                "timing": _TIMING_WARP_MAX,
-                "smoothness": _SMOOTHNESS_MAX,
+                "angle": self._scale_angle,
+                "symmetry": self._scale_symmetry,
+                "timing": self._scale_timing,
+                "smoothness": self._scale_smoothness,
             },
             "target_score": {
                 "min": float(scores.min()),

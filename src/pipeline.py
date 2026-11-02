@@ -26,7 +26,7 @@ import numpy as np
 import yaml
 
 from src.dtw_aligner import DTWAligner
-from src.feature_extractor import FeatureExtractor
+from src.feature_extractor import FeatureExtractor, smooth_feature_matrix
 from src.feedback import FeedbackGenerator
 from src.kick_env import BreaststrokeKickEnv
 
@@ -35,6 +35,14 @@ logger = logging.getLogger(__name__)
 
 _DEFAULT_CONFIG_PATH: str = "configs/config.yaml"
 _SCORE_PER_ACTION: int = 5  # 与 kick_env 动作档位一致（action × 5 = 分数）
+
+# config.yaml reference_score.scale_max_real 的键 -> kick_env.score_scales 键
+_SCALE_KEY_MAP: dict[str, str] = {
+    "angle_dev": "angle",
+    "symmetry_dev": "symmetry",
+    "timing_warp": "timing",
+    "smoothness": "smoothness",
+}
 
 
 def load_config(config_path: str) -> dict[str, Any]:
@@ -101,6 +109,20 @@ class EvaluationPipeline:
         )
         self._model: Any = None  # 惰性加载
 
+        # 真实(HRNet)部署域的评分尺度覆盖：存在则解析一次备用，None 表示沿用
+        # kick_env 的 SwimXYZ 合成标定默认值。见 kick_env.BreaststrokeKickEnv
+        # 的 score_scales 参数说明。
+        scale_max_real = self.cfg.get("reference_score", {}).get("scale_max_real")
+        self._score_scales: Optional[dict[str, float]] = (
+            {
+                _SCALE_KEY_MAP[k]: float(v)
+                for k, v in scale_max_real.items()
+                if k in _SCALE_KEY_MAP
+            }
+            if scale_max_real
+            else None
+        )
+
     # ------------------------------------------------------------------ #
     # 模型（惰性）
     # ------------------------------------------------------------------ #
@@ -137,7 +159,9 @@ class EvaluationPipeline:
             ``{"score": int, "n_cycles": int, "cycles": [per-cycle dict...]}``。
             每个 per-cycle dict 含 ``agent_score`` / ``reference_score`` /
             ``phase_deviations`` / ``feedback``。``score`` 为各周期 agent 分均值
-            （四舍五入到 5 的倍数）。
+            （四舍五入到 5 的倍数）。参考分数尺度按 ``self._score_scales``
+            （来自 config 的 ``reference_score.scale_max_real``，未配置则为
+            SwimXYZ 合成默认值）计算。
 
         Raises:
             ValueError: 无法从特征中分割出任何蹬腿周期。
@@ -154,7 +178,9 @@ class EvaluationPipeline:
         agent_scores: list[float] = []
         for idx, cycle in enumerate(cycles):
             # 用单周期 env 的公共接口取观测与参考分（reset 必返回该唯一周期）
-            env = BreaststrokeKickEnv([cycle], self.aligner, seed=0)
+            env = BreaststrokeKickEnv(
+                [cycle], self.aligner, seed=0, score_scales=self._score_scales
+            )
             obs, info = env.reset()
             action, _ = model.predict(obs, deterministic=True)
             agent_score = float(int(action) * _SCORE_PER_ACTION)
@@ -225,6 +251,9 @@ class EvaluationPipeline:
             )
         lengths = [c.shape[0] for c in cycles]
         rep = cycles[int(np.argsort(lengths)[len(lengths) // 2])]
+        # HRNet 逐帧抖动会让模板角速度虚高，存盘前平滑一次角度（见 feature_extractor.
+        # smooth_feature_matrix docstring），避免把估计噪声当成技术基准。
+        rep = smooth_feature_matrix(rep, window=5, fps=self.fps)
         DTWAligner.save_template(rep, target_path)
         # 更新当前实例使用的模板，便于构建后立即打分
         self.aligner.template = rep

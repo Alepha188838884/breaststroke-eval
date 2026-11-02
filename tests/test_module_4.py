@@ -122,6 +122,33 @@ def test_segment_kick_cycles() -> None:
 
 
 # --------------------------------------------------------------------------- #
+# 2b. segment_kick_cycles：左膝列失效时回退右膝列（R-2）
+# --------------------------------------------------------------------------- #
+
+def test_segment_kick_cycles_fallback_to_right_knee() -> None:
+    aligner = DTWAligner(_TEMPLATE_PATH)
+    base = _make_continuous_features(n_cycles=5, cycle_len=60)
+
+    # 左膝列(0)恒定平直（模拟左腿被遮挡，分不出波谷）；周期信号搬到右膝列(1)
+    features = base.copy()
+    features[:, 1] = base[:, 0]
+    features[:, 0] = _ANGLE_CENTER
+
+    # 默认 angle_column=0：主列失效，应自动回退到列 1 并切出周期
+    cycles = aligner.segment_kick_cycles(features, angle_column=0)
+    assert isinstance(cycles, list), "应返回 list"
+    assert 4 <= len(cycles) <= 6, f"回退后期望 4-6 个周期，得到 {len(cycles)}"
+
+    # 显式指定非 0 列（如恒定平直的列 2）时不应回退，即使列 1 有有效信号
+    flat_col2 = features.copy()
+    flat_col2[:, 2] = _ANGLE_CENTER
+    cycles_explicit = aligner.segment_kick_cycles(flat_col2, angle_column=2)
+    assert cycles_explicit == [], "显式指定非 0 列失效时不应回退到其它列"
+
+    print("test_segment_kick_cycles_fallback_to_right_knee PASSED")
+
+
+# --------------------------------------------------------------------------- #
 # 3. align
 # --------------------------------------------------------------------------- #
 
@@ -198,6 +225,7 @@ if __name__ == "__main__":
     try:
         test_save_load_template()
         test_segment_kick_cycles()
+        test_segment_kick_cycles_fallback_to_right_knee()
         test_align()
         test_compute_phase_deviations()
         test_compute_overall_deviation()

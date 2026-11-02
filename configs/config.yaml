@@ -13,9 +13,13 @@ paths:
   raw_dir: data/raw
   processed_dir: data/processed
   template: data/templates/champion_template.npy
-  model_output: models/ppo_kick_scorer.zip
+  # 2026-07-04 起指向 Kinetics 真实数据重训模型（val MAE=4.44 vs 常数基线 10.79 /
+  # kNN 5.70，无坍缩）。旧 SwimXYZ 合成模型保留在 models/ppo_kick_scorer.zip。
+  model_output: models/ppo_kick_scorer_kinetics.zip
   # SwimXYZ 解压后的 Breaststroke 标注目录（训练数据，需自行下载放置）
-  swimxyz_labels_dir: data/swimxyz/Breaststroke_labels
+  swimxyz_labels_dir: data/swimxyz/Breaststroke
+  features_dir: data/features               # 真实 Kinetics 视频的 {video_id}_cycles.pkl 所在目录
+  dataset_meta: data/training/dataset_meta.json  # 真实数据 train/test 视频级划分
 
 # ---------------------------------------------------------------------------- #
 # 视频处理 (VideoLoader) + 姿态估计 (PoseEstimator)  ——【运行时】pipeline 消费
@@ -63,21 +67,41 @@ reference_score:
     symmetry_dev: 18.0    # 左右关节差 ≥ 该值视为最差
     timing_warp: 0.9      # DTW warp 相对超出量 ≥ 该值视为最差时序
     smoothness: 120.0     # 角速度 std ≥ 该值视为最差平滑度
+  # 真实(HRNet/Kinetics)域的评分尺度。标定自 2026-07-04 重建的 Kinetics 数据集
+  # （修复跳帧 dt / NaN 退化角 / 右膝回退分割后：215 视频 575 周期）上
+  # train_agent --source kinetics --calibrate_only 打印的 ≈P90 分位：
+  #   angle P90=19.4  symmetry P90=20.3  timing P90=0.96  smoothness P90=253
+  # （HRNet 逐帧抖动使真实域 smoothness 远大于合成域；timing 取理论上界 1.0，
+  #   真实周期对 champion 模板的 warp 分布整体偏高、该因素区分度有限。）
+  scale_max_real:
+    angle_dev: 20.0
+    symmetry_dev: 20.0
+    timing_warp: 1.0
+    smoothness: 250.0
 
 # ---------------------------------------------------------------------------- #
 # PPO 训练 (train_agent.py)  ——【运行时】
 # ---------------------------------------------------------------------------- #
 training:
-  total_timesteps: 50000
+  # swimxyz=合成数据训练（现状默认）；kinetics=真实数据训练，用 features_dir+dataset_meta
+  # 的既有 video 级划分
+  source: swimxyz
+  # 单步打分本质是 contextual bandit；PPO 易坍缩成常数预测，需较长训练 + 防坍缩配置。
+  # 实测：旧配置(256/64/10/3e-4, 50k 步)坍缩到只打一个分(MAE≈常数基线)；下方配置可让
+  # val MAE 从随机~29 降到~2.2（达到 kNN 可学习天花板）。
+  total_timesteps: 160000
   train_ratio: 0.8        # 序列级 train/val 划分比例
-  n_val_episodes: 100
+  # n_val_episodes: 已废弃（2026-07-04）——评估协议改为全量确定性枚举
+  # （train_agent._full_eval 逐周期各评一次），不再有放回抽样，此键不再被读取。
   fps: 30                 # 角速度计算帧率（SwimXYZ 真实渲染帧率未知，30 为假设）
   seed: 42
   ppo:
-    n_steps: 256
-    batch_size: 64
-    n_epochs: 10
-    learning_rate: 0.0003
+    n_steps: 1024
+    batch_size: 128
+    n_epochs: 15
+    learning_rate: 0.0005
+    ent_coef: 0.01         # 正熵系数：保持探索，避免过早坍缩成单一动作
+    net_arch: [256, 256]   # 较大 MLP 以拟合 raw-kinematics → score 映射
 
 # ---------------------------------------------------------------------------- #
 # 反馈生成 (FeedbackGenerator)  ——【运行时】pipeline 消费
